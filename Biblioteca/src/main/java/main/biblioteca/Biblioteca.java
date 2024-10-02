@@ -19,7 +19,8 @@ public class Biblioteca {
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
         
         LogIn loginWindow = new LogIn();
-        
+        FlatLightLaf.setup();
+        UIManager.put("Button.arc", 999);
         // Hacer visible la ventana
         loginWindow.setVisible(true);
     }

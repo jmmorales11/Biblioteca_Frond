@@ -5,7 +5,11 @@
 package view;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -19,10 +23,6 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn() {
         initComponents();
         this.setExtendedState(LogIn.MAXIMIZED_BOTH);
-        
-        FlatLightLaf.setup();
-            // Establece las propiedades de UIManager, como el radio de los bordes (arc)
-            UIManager.put("Component.arc", 20); // Cambia 20 por el radio deseado
     }
 
     /**
@@ -34,6 +34,7 @@ public class LogIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         PA_login = new javax.swing.JPanel();
         PA_login_form = new javax.swing.JPanel();
         login_title = new javax.swing.JLabel();
@@ -55,6 +56,12 @@ public class LogIn extends javax.swing.JFrame {
         login_title.setText("Login");
 
         jLabel3.setText("Usuario");
+
+        TF_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TF_usernameActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Contraseña");
 
@@ -154,6 +161,18 @@ public class LogIn extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TF_passwordActionPerformed
 
+    private void TF_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_usernameActionPerformed
+    SwingUtilities.invokeLater(() -> {
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+});
+       // TODO add your handling code here:
+    }//GEN-LAST:event_TF_usernameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +218,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JLabel login_title;
     // End of variables declaration//GEN-END:variables
 }
