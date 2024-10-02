@@ -4,18 +4,27 @@
  */
 package view;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ASUS TUF A15
  */
 public class LogIn extends javax.swing.JFrame {
-
+    Background back = new Background();
     /**
      * Creates new form LogIn
      */
     public LogIn() {
+        this.setContentPane(back);
         initComponents();
         this.setExtendedState(LogIn.MAXIMIZED_BOTH);
+        
     }
 
     /**
@@ -36,10 +45,10 @@ public class LogIn extends javax.swing.JFrame {
         TF_password = new javax.swing.JTextField();
         BTN_login = new javax.swing.JButton();
         img_acces = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PA_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         PA_login_form.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -83,7 +92,7 @@ public class LogIn extends javax.swing.JFrame {
                     .addGroup(PA_login_formLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(login_title)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         PA_login_formLayout.setVerticalGroup(
             PA_login_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,17 +132,12 @@ public class LogIn extends javax.swing.JFrame {
                 .addGroup(PA_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PA_login_form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(img_acces, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         img_acces.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(PA_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 690, 420));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_logint.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1300, 867));
-        jLabel1.setMinimumSize(new java.awt.Dimension(0, 0));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 510));
+        getContentPane().add(PA_login, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +180,8 @@ public class LogIn extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                ;
+
                 new LogIn().setVisible(true);
             }
         });
@@ -188,9 +194,11 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JTextField TF_password;
     private javax.swing.JTextField TF_username;
     private javax.swing.JLabel img_acces;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel login_title;
     // End of variables declaration//GEN-END:variables
+
+    
+  
 }

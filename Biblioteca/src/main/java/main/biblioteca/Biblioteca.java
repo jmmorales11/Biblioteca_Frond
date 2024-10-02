@@ -5,6 +5,7 @@
 package main.biblioteca;
 
 import view.LogIn;
+import view.LogIn1;
 
 /**
  *
@@ -13,7 +14,7 @@ import view.LogIn;
 public class Biblioteca {
 
     public static void main(String[] args) {
-        LogIn loginWindow = new LogIn();
+        LogIn1 loginWindow = new LogIn1();
         
         // Hacer visible la ventana
         loginWindow.setVisible(true);
