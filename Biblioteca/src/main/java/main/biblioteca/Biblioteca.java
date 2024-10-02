@@ -4,6 +4,10 @@
 
 package main.biblioteca;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import view.LogIn;
 
 /**
@@ -12,7 +16,8 @@ import view.LogIn;
  */
 public class Biblioteca {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        
         LogIn loginWindow = new LogIn();
         
         // Hacer visible la ventana

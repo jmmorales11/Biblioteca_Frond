@@ -4,6 +4,9 @@
  */
 package view;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
+
 /**
  *
  * @author ASUS TUF A15
@@ -16,6 +19,10 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn() {
         initComponents();
         this.setExtendedState(LogIn.MAXIMIZED_BOTH);
+        
+        FlatLightLaf.setup();
+            // Establece las propiedades de UIManager, como el radio de los bordes (arc)
+            UIManager.put("Component.arc", 20); // Cambia 20 por el radio deseado
     }
 
     /**
@@ -42,6 +49,7 @@ public class LogIn extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PA_login_form.setBackground(new java.awt.Color(255, 255, 255));
+        PA_login_form.setName(""); // NOI18N
 
         login_title.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         login_title.setText("Login");
