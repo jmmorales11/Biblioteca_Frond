@@ -4,8 +4,12 @@
 
 package main.biblioteca;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import view.LogIn;
-import view.LogIn1;
+
 
 /**
  *
@@ -13,9 +17,13 @@ import view.LogIn1;
  */
 public class Biblioteca {
 
-    public static void main(String[] args) {
-        LogIn1 loginWindow = new LogIn1();
-        
+
+
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+
+        LogIn loginWindow = new LogIn();
+        FlatLightLaf.setup();
+        UIManager.put("Button.arc", 999);
         // Hacer visible la ventana
         loginWindow.setVisible(true);
     }
