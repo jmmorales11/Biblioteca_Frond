@@ -4,6 +4,8 @@
  */
 package view;
 
+import Controller.Ctrlogin;
+import Modelo.User;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,15 +17,20 @@ import javax.swing.JPanel;
  *
  * @author ASUS TUF A15
  */
-public class LogIn extends javax.swing.JFrame {
+public class FrmLogIn extends javax.swing.JFrame {
     Background back = new Background();
+    
+    Ctrlogin log;
     /**
      * Creates new form LogIn
      */
-    public LogIn() {
+    public FrmLogIn() {
         this.setContentPane(back);
         initComponents();
-        this.setExtendedState(LogIn.MAXIMIZED_BOTH);
+        this.setExtendedState(FrmLogIn.MAXIMIZED_BOTH);
+        User user = new User();
+        FrmMenuOptions frmMenu= new FrmMenuOptions();
+        log= new Ctrlogin( user,this,frmMenu);
         
     }
 
@@ -35,29 +42,34 @@ public class LogIn extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         PA_login = new javax.swing.JPanel();
         PA_login_form = new javax.swing.JPanel();
         login_title = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        JL_user = new javax.swing.JLabel();
         TF_username = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        JL_password = new javax.swing.JLabel();
         TF_password = new javax.swing.JTextField();
         BTN_login = new javax.swing.JButton();
         img_acces = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(null);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        PA_login.setBackground(new java.awt.Color(255, 255, 255));
         PA_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        PA_login.setMinimumSize(new java.awt.Dimension(32767, 32767));
 
-        PA_login_form.setBackground(new java.awt.Color(255, 255, 255));
+        PA_login_form.setBackground(new java.awt.Color(255, 253, 255));
 
         login_title.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         login_title.setText("Login");
 
-        jLabel3.setText("Usuario");
+        JL_user.setText("Usuario");
 
-        jLabel2.setText("Contraseña");
+        JL_password.setText("Contraseña");
 
         TF_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,32 +96,32 @@ public class LogIn extends javax.swing.JFrame {
                     .addGroup(PA_login_formLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(PA_login_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JL_user, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JL_password, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TF_username)
                             .addComponent(TF_password)
-                            .addComponent(BTN_login, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(BTN_login, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)))
                     .addGroup(PA_login_formLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(211, 211, 211)
                         .addComponent(login_title)))
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         PA_login_formLayout.setVerticalGroup(
             PA_login_formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PA_login_formLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(52, 52, 52)
                 .addComponent(login_title, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(JL_user)
+                .addGap(18, 18, 18)
                 .addComponent(TF_username, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(JL_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TF_password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(BTN_login)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(BTN_login, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         img_acces.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_acc1.png"))); // NOI18N
@@ -119,31 +131,36 @@ public class LogIn extends javax.swing.JFrame {
         PA_loginLayout.setHorizontalGroup(
             PA_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PA_loginLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(PA_login_form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(img_acces, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addGap(37, 37, 37)
+                .addComponent(PA_login_form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(img_acces, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         PA_loginLayout.setVerticalGroup(
             PA_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PA_loginLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(49, 49, 49)
                 .addGroup(PA_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PA_login_form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(img_acces, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                    .addComponent(img_acces, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                    .addComponent(PA_login_form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         img_acces.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(PA_login, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = -14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(PA_login, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
-        // TODO add your handling code here:
+        log.input();
     }//GEN-LAST:event_BTN_loginActionPerformed
 
     private void TF_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_passwordActionPerformed
@@ -167,14 +184,16 @@ public class LogIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -183,20 +202,27 @@ public class LogIn extends javax.swing.JFrame {
             public void run() {
                 ;
 
-                new LogIn().setVisible(true);
+                new FrmLogIn().setVisible(true);
             }
         });
+    }
+    
+    public String getUser(){
+        return TF_username.getText();
+    }
+    public String getPassword(){
+        return TF_password.getText();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_login;
+    private javax.swing.JLabel JL_password;
+    private javax.swing.JLabel JL_user;
     private javax.swing.JPanel PA_login;
     private javax.swing.JPanel PA_login_form;
     private javax.swing.JTextField TF_password;
-    private javax.swing.JTextField TF_username;
+    public javax.swing.JTextField TF_username;
     private javax.swing.JLabel img_acces;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel login_title;
     // End of variables declaration//GEN-END:variables
 
