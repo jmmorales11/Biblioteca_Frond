@@ -4,6 +4,7 @@
  */
 package view;
 
+import Controller.CtrUser;
 import java.awt.Color;
 
 /**
@@ -15,10 +16,14 @@ public class FrmUser extends javax.swing.JFrame {
     /**
      * Creates new form MenuOptions
      */
+    
+    CtrUser ctrUser;
     public FrmUser() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUser.MAXIMIZED_BOTH);
+        ctrUser = new CtrUser();
+        ctrUser.loadUsers(JTableUser);
     }
 
     /**
@@ -35,12 +40,10 @@ public class FrmUser extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        FiltterTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTableUser = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -59,10 +62,14 @@ public class FrmUser extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar");
 
-        jTextField1.setText("Buscar uwu");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        FiltterTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                FiltterTextFieldActionPerformed(evt);
+            }
+        });
+        FiltterTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                FiltterTextFieldKeyReleased(evt);
             }
         });
 
@@ -76,7 +83,7 @@ public class FrmUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FiltterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(263, 263, 263))
@@ -85,39 +92,20 @@ public class FrmUser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(FiltterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 120, 1350, 80);
 
-        jPanel3.setBackground(new java.awt.Color(217, 217, 217));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        jButton4.setBackground(new java.awt.Color(9, 57, 134));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Seleccionar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.ipady = 30;
-        jPanel3.add(jButton4, gridBagConstraints);
-
-        jPanel2.add(jPanel3);
-        jPanel3.setBounds(0, 450, 1350, 100);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTableUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -136,12 +124,10 @@ public class FrmUser extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setMinimumSize(new java.awt.Dimension(90, 80));
-        jTable1.setPreferredSize(new java.awt.Dimension(450, 80));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JTableUser);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(70, 200, 1200, 190);
+        jScrollPane1.setBounds(70, 200, 1200, 360);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 1350;
@@ -151,13 +137,13 @@ public class FrmUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void FiltterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltterTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_FiltterTextFieldActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void FiltterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltterTextFieldKeyReleased
+        ctrUser.DataFiltter(FiltterTextField);
+    }//GEN-LAST:event_FiltterTextFieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -210,15 +196,13 @@ public class FrmUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
+    private javax.swing.JTextField FiltterTextField;
+    private javax.swing.JTable JTableUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,69 +18,68 @@ public class User {
     public User() {
     }
 
-   
-    
-    public void connectiondb(){
-        
+    public void connectiondb() {
+
         try {
-            URL  url = new URL("http://localhost:8080/user");
-            HttpURLConnection connection = (HttpURLConnection)  url.openConnection();
+            URL url = new URL("http://localhost:8080/user");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
 
             //Pedir
             int responseCode = connection.getResponseCode();
-            
-            if(responseCode !=200){
-                throw new RuntimeException("Error"+ responseCode);
-            }else {
+
+            if (responseCode != 200) {
+                throw new RuntimeException("Error" + responseCode);
+            } else {
                 //Leer datos
                 StringBuilder information = new StringBuilder();
                 Scanner scanner = new Scanner(url.openStream());
-                while(scanner.hasNext()){
+                while (scanner.hasNext()) {
                     information.append(scanner.nextLine());
                 }
                 scanner.close();
-                
+
                 //Mostrar la informacion ontenida
                 System.out.println(information);
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void some_user(){
-        
+
+    public String some_user() {
+        StringBuilder information = new StringBuilder();
+
         try {
-            URL  url = new URL("http://localhost:8080/user/some-data");
-            HttpURLConnection connection = (HttpURLConnection)  url.openConnection();
+            URL url = new URL("http://localhost:8080/user/some-data");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
 
-            //Pedir
             int responseCode = connection.getResponseCode();
-            
-            if(responseCode !=200){
-                throw new RuntimeException("Error"+ responseCode);
-            }else {
-                //Leer datos
-                StringBuilder information = new StringBuilder();
+
+            if (responseCode != 200) {
+                throw new RuntimeException("Error: " + responseCode);
+            } else {
+                // Leer los datos
                 Scanner scanner = new Scanner(url.openStream());
-                while(scanner.hasNext()){
+                while (scanner.hasNext()) {
                     information.append(scanner.nextLine());
                 }
                 scanner.close();
                 
-                //Mostrar la informacion ontenida
-                System.out.println(information);
+                
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            return null; 
         }
+
+        return information.toString(); 
     }
-    
-    public boolean  login(String user, String password ){
+
+    public boolean login(String user, String password) {
         try {
             URL url = new URL("http://localhost:8080/user/login");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -89,18 +88,18 @@ public class User {
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
             connection.setRequestProperty("Accept", "application/json");
 
-            String jsonInputString = "{\"code\": \"" + user + "\", \"password\": \"" + password  + "\"}";
-            try(OutputStream os = connection.getOutputStream()) {
+            String jsonInputString = "{\"code\": \"" + user + "\", \"password\": \"" + password + "\"}";
+            try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
-                os.write(input, 0, input.length);           
+                os.write(input, 0, input.length);
             }
             int responseCode = connection.getResponseCode();
-            if(responseCode != 200){
+            if (responseCode != 200) {
                 throw new RuntimeException("Error: " + responseCode);
             } else {
                 StringBuilder response = new StringBuilder();
                 Scanner scanner = new Scanner(connection.getInputStream());
-                while(scanner.hasNext()){
+                while (scanner.hasNext()) {
                     response.append(scanner.nextLine());
                 }
                 scanner.close();
@@ -114,7 +113,5 @@ public class User {
             return false;
         }
     }
-    
 
-    
 }
