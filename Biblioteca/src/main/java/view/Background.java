@@ -7,6 +7,7 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -23,7 +24,12 @@ public class Background extends JPanel  {
         setOpaque(false);
         super.paint(g);   
     }
-    
+    public void BackgroundTrasparent(JButton btn){
+        btn.setOpaque(false);
+        btn.setContentAreaFilled(false);
+        btn.setBorderPainted(false);
+        
+    }
     
     
 }
