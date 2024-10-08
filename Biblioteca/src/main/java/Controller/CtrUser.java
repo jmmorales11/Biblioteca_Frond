@@ -160,7 +160,6 @@ public class CtrUser {
         JTableLoan.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());
         JTableLoan.getColumnModel().getColumn(7).setCellEditor(new ButtonEditor(new JCheckBox()));
 
-
         //Manejamos los anchos de las columnas
         TableColumn accionesColumn = JTableLoan.getColumnModel().getColumn(7);
         TableColumn fechaDevolucionColumn = JTableLoan.getColumnModel().getColumn(6);
