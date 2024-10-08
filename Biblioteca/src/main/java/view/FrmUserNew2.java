@@ -11,21 +11,21 @@ import java.awt.Color;
  *
  * @author ASUS TUF A15
  */
-public class FrmUserNew extends javax.swing.JFrame {
+public class FrmUserNew2 extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuOptions
      */
     Background back = new Background();
     CtrUser ctrUser;
-    public FrmUserNew() {
+    public FrmUserNew2() {
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
-        this.setExtendedState(FrmUserNew.MAXIMIZED_BOTH);
+        this.setExtendedState(FrmUserNew2.MAXIMIZED_BOTH);
        // FrmPurchaseBook frmBooks= new FrmPurchaseBook();
         ctrUser = new CtrUser();
-        ctrUser.loadUsers(JTableUser);
+        ctrUser.loadLoan(JTableLoan);
         JSCROLL_tableUser.setVerticalScrollBar(new ScrollBar());
         JSCROLL_tableUser.getViewport().setBackground(Color.WHITE);
     }
@@ -44,7 +44,7 @@ public class FrmUserNew extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         panelBorder3 = new view.PanelBorder();
         JSCROLL_tableUser = new javax.swing.JScrollPane();
-        JTableUser = new view.TableUser();
+        JTableLoan = new view.TableUser();
         jPanel6 = new javax.swing.JPanel();
         BTN_nexUser = new javax.swing.JButton();
         BTN_back_menu = new javax.swing.JButton();
@@ -68,26 +68,26 @@ public class FrmUserNew extends javax.swing.JFrame {
 
         JSCROLL_tableUser.setBorder(null);
 
-        JTableUser.setModel(new javax.swing.table.DefaultTableModel(
+        JTableLoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Tipo de Usuario", "Nombre", "Apellido", "Grado", "Correo"
+                "Cedula", "Nombre", "Apellido", "Codigo", "Libro", "Fecha de adquisición", "Fecha de devolución", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        JSCROLL_tableUser.setViewportView(JTableUser);
+        JSCROLL_tableUser.setViewportView(JTableLoan);
 
         javax.swing.GroupLayout panelBorder3Layout = new javax.swing.GroupLayout(panelBorder3);
         panelBorder3.setLayout(panelBorder3Layout);
@@ -292,14 +292,142 @@ public class FrmUserNew extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUserNew2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUserNew2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUserNew2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUserNew2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -432,7 +560,7 @@ public class FrmUserNew extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmUserNew().setVisible(true);
+                new FrmUserNew2().setVisible(true);
             }
         });
     }
@@ -441,7 +569,7 @@ public class FrmUserNew extends javax.swing.JFrame {
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;
-    private view.TableUser JTableUser;
+    private view.TableUser JTableLoan;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

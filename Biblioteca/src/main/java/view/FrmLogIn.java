@@ -18,20 +18,20 @@ import javax.swing.JPanel;
  * @author ASUS TUF A15
  */
 public class FrmLogIn extends javax.swing.JFrame {
-    Background back = new Background();
+    Background back;
     
     Ctrlogin log;
     /**
      * Creates new form LogIn
      */
     public FrmLogIn() {
+        back = new Background();
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmLogIn.MAXIMIZED_BOTH);
         User user = new User();
         FrmMenuOptions frmMenu= new FrmMenuOptions();
         log= new Ctrlogin( user,this,frmMenu);
-        
     }
 
     /**

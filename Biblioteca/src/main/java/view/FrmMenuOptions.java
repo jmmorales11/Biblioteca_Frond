@@ -4,7 +4,9 @@
  */
 package view;
 
+import Controller.CtrMenuOptions;
 import java.awt.Color;
+import javax.swing.JButton;
 
 /**
  *
@@ -15,10 +17,20 @@ public class FrmMenuOptions extends javax.swing.JFrame {
     /**
      * Creates new form MenuOptions
      */
+    CtrMenuOptions ctrM ;
     public FrmMenuOptions() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
+        Background bgt= new Background();
+        bgt.BackgroundTrasparent(BTN_deliver);
+        bgt.BackgroundTrasparent(BTN_purchase);
+        bgt.BackgroundTrasparent(BTN_manage);
+        FrmUserNew frmUserNew = new FrmUserNew();
+        ctrM= new CtrMenuOptions(this,frmUserNew);
+        
+        
+        
     }
 
     /**
@@ -34,17 +46,21 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        BTN_purchase = new javax.swing.JButton();
+        BTN_deliver = new javax.swing.JButton();
+        BTN_manage = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -60,62 +76,37 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         jLabel1.setBounds(430, 40, 440, 90);
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(null);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adquirir.png"))); // NOI18N
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(30, 20, 90, 90);
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setText("Adquirir");
-        jPanel4.add(jLabel5);
-        jLabel5.setBounds(40, 120, 70, 20);
-
+        BTN_purchase.setBackground(new java.awt.Color(242, 242, 242));
+        BTN_purchase.setOpaque(isVisible());
+        BTN_purchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_purchaseActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 150;
         gridBagConstraints.weightx = 10.0;
-        jPanel1.add(jPanel4, gridBagConstraints);
+        jPanel1.add(BTN_purchase, gridBagConstraints);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(null);
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel7.setText("Entregar");
-        jPanel5.add(jLabel7);
-        jLabel7.setBounds(40, 120, 70, 20);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/entregar.png"))); // NOI18N
-        jLabel6.setText("jLabel6");
-        jPanel5.add(jLabel6);
-        jLabel6.setBounds(30, 20, 100, 100);
-
+        BTN_deliver.setBackground(new java.awt.Color(242, 242, 242));
+        BTN_deliver.setOpaque(isVisible());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 150;
         gridBagConstraints.weightx = 10.0;
-        jPanel1.add(jPanel5, gridBagConstraints);
+        jPanel1.add(BTN_deliver, gridBagConstraints);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(null);
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion.png"))); // NOI18N
-        jPanel6.add(jLabel8);
-        jLabel8.setBounds(30, 20, 90, 90);
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel9.setText("Gestion");
-        jPanel6.add(jLabel9);
-        jLabel9.setBounds(40, 120, 70, 20);
-
+        BTN_manage.setBackground(new java.awt.Color(242, 242, 242));
+        BTN_manage.setOpaque(isVisible());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 150;
         gridBagConstraints.weightx = 10.0;
-        jPanel1.add(jPanel6, gridBagConstraints);
+        jPanel1.add(BTN_manage, gridBagConstraints);
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 120, 1350, 320);
@@ -140,17 +131,87 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 440, 1350, 110);
 
+        jPanel7.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel7.setLayout(new java.awt.GridBagLayout());
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(null);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adquirir.png"))); // NOI18N
+        jPanel8.add(jLabel3);
+        jLabel3.setBounds(30, 20, 90, 90);
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel10.setText("Adquirir");
+        jPanel8.add(jLabel10);
+        jLabel10.setBounds(40, 120, 70, 20);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 150;
+        gridBagConstraints.weightx = 10.0;
+        jPanel7.add(jPanel8, gridBagConstraints);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(null);
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel11.setText("Entregar");
+        jPanel9.add(jLabel11);
+        jLabel11.setBounds(40, 120, 70, 20);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/entregar.png"))); // NOI18N
+        jLabel12.setText("jLabel6");
+        jPanel9.add(jLabel12);
+        jLabel12.setBounds(30, 20, 100, 100);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 150;
+        gridBagConstraints.weightx = 10.0;
+        jPanel7.add(jPanel9, gridBagConstraints);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(null);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion.png"))); // NOI18N
+        jPanel10.add(jLabel13);
+        jLabel13.setBounds(30, 20, 90, 90);
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel14.setText("Gestion");
+        jPanel10.add(jLabel14);
+        jLabel14.setBounds(40, 120, 70, 20);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 150;
+        gridBagConstraints.weightx = 10.0;
+        jPanel7.add(jPanel10, gridBagConstraints);
+
+        jPanel2.add(jPanel7);
+        jPanel7.setBounds(0, 120, 1350, 320);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 1350;
-        gridBagConstraints.ipady = 600;
+        gridBagConstraints.ipady = 700;
         getContentPane().add(jPanel2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Trasparencia boton
+    
+    
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void BTN_purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_purchaseActionPerformed
+        
+        ctrM.purchaseUser();
+    }//GEN-LAST:event_BTN_purchaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,19 +252,23 @@ public class FrmMenuOptions extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_deliver;
+    private javax.swing.JButton BTN_manage;
+    private javax.swing.JButton BTN_purchase;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

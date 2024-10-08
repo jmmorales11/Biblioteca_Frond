@@ -113,5 +113,36 @@ public class User {
             return false;
         }
     }
+    
+    public String some_loan() {
+        StringBuilder information = new StringBuilder();
+
+        try {
+            URL url = new URL("http://localhost:8080/loan/some-data");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode != 200) {
+                throw new RuntimeException("Error: " + responseCode);
+            } else {
+                // Leer los datos
+                Scanner scanner = new Scanner(url.openStream());
+                while (scanner.hasNext()) {
+                    information.append(scanner.nextLine());
+                }
+                scanner.close();
+                
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; 
+        }
+
+        return information.toString(); 
+    }
 
 }

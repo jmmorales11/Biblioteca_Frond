@@ -4,7 +4,6 @@
  */
 package view;
 
-import Controller.CtrUser;
 import java.awt.Color;
 
 /**
@@ -16,14 +15,10 @@ public class FrmUser extends javax.swing.JFrame {
     /**
      * Creates new form MenuOptions
      */
-    
-    CtrUser ctrUser;
     public FrmUser() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUser.MAXIMIZED_BOTH);
-        ctrUser = new CtrUser();
-        ctrUser.loadUsers(JTableUser);
     }
 
     /**
@@ -40,10 +35,12 @@ public class FrmUser extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        FiltterTextField = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTableUser = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -60,17 +57,12 @@ public class FrmUser extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Buscar");
 
-        FiltterTextField.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setText("Buscar uwu");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FiltterTextFieldActionPerformed(evt);
-            }
-        });
-        FiltterTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                FiltterTextFieldKeyReleased(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -84,7 +76,7 @@ public class FrmUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FiltterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(263, 263, 263))
@@ -99,14 +91,34 @@ public class FrmUser extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(FiltterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 120, 1350, 80);
 
-        JTableUser.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel3.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        jButton4.setBackground(new java.awt.Color(9, 57, 134));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Seleccionar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipady = 30;
+        jPanel3.add(jButton4, gridBagConstraints);
+
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(0, 450, 1350, 100);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -120,22 +132,15 @@ public class FrmUser extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
         });
-        jScrollPane1.setViewportView(JTableUser);
+        jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(70, 200, 1200, 360);
+        jScrollPane1.setBounds(70, 200, 1200, 190);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 1350;
@@ -145,13 +150,13 @@ public class FrmUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FiltterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltterTextFieldActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FiltterTextFieldActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void FiltterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltterTextFieldKeyReleased
-        ctrUser.DataFiltter(FiltterTextField);
-    }//GEN-LAST:event_FiltterTextFieldKeyReleased
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,13 +209,15 @@ public class FrmUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField FiltterTextField;
-    private javax.swing.JTable JTableUser;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

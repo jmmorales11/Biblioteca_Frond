@@ -16,6 +16,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import view.FrmMenuOptions;
+import view.FrmPurchaseBook;
+import view.FrmUserNew;
 
 /**
  *
@@ -25,7 +28,21 @@ public class CtrUser {
 
     private User user;
     TableRowSorter<DefaultTableModel> sorter;
+    
+    private FrmPurchaseBook frmBooks;
+    private FrmUserNew frmUserNew;
+    private FrmMenuOptions frmMenu;
+    
+    public CtrUser(FrmUserNew frmUserNew, FrmPurchaseBook frmBooks) {
+        this.frmBooks = frmBooks;
+        this.frmUserNew = frmUserNew;
+        this.user = new User();
+    }
 
+    public CtrUser(FrmMenuOptions frmMenu) {
+        this.frmMenu = frmMenu;
+    }
+    
 
     public CtrUser() {
         this.user = new User();
@@ -58,7 +75,37 @@ public class CtrUser {
 
         return usersList;
     }
+    
+    // This function will return the users as a list of arrays
+    public List<String[]> getLoan() {
+        List<String[]> loanList = new ArrayList<>();
 
+        try {
+            String jsonString = user.some_loan();  // Assuming some_user returns JSON string
+            JSONArray usersArray = new JSONArray(jsonString);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject userObject = usersArray.getJSONObject(i);
+                String[] loanData = new String[6];  // Array of size 6 for each column
+
+                loanData[0] = userObject.optString("codeUser", "N/A");
+                loanData[1] = userObject.optString("user_name", "N/A");
+                loanData[2] = userObject.optString("user_last_name", "N/A");
+                loanData[3] = userObject.optString("code_book", "N/A");
+                loanData[4] = userObject.optString("title", "N/A");
+                loanData[5] = userObject.optString("acquisition_date", "N/A");
+                loanData[5] = userObject.optString("date_of_devolution", "N/A");
+
+                loanList.add(loanData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return loanList;
+    }
+
+    
     public void loadUsers(JTable JTableUser) {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new Object[][]{}, 
@@ -80,6 +127,28 @@ public class CtrUser {
         sorter = new TableRowSorter<>(tableModel);
         JTableUser.setRowSorter(sorter);  
     }
+    
+    public void loadLoan(JTable JTableLoan) {
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new Object[][]{}, 
+                new String[]{"Cédula", "Nombre", "Apellido", "Código", "Libro", "Fecha de adquisición", "Fecha de adquisición","Acciones"}
+        );
+
+        JTableLoan.setModel(tableModel);
+
+        CtrUser controller = new CtrUser();
+        List<String[]> loan = controller.getLoan();
+
+        // Limpia las celdas (en caso que se use la misma tabla pa otra cosa)
+        tableModel.setRowCount(0);
+
+        for (String[] loanData : loan) {
+            tableModel.addRow(loanData); 
+        }
+        
+        sorter = new TableRowSorter<>(tableModel);
+        JTableLoan.setRowSorter(sorter);  
+    }
 
     
     //Filtrar busqueda de tabla
@@ -97,6 +166,15 @@ public class CtrUser {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
         String formattedDate = actualDate.format(formatter); 
         DateTextField.setText(formattedDate); 
+    }
+    
+    public void purchaseBook(){
+        frmBooks.setVisible(true);
+        frmUserNew.setVisible(false);
+    }
+    public void menu(){
+        frmMenu.setVisible(true);
+        frmUserNew.setVisible(false);
     }
     
     
