@@ -16,6 +16,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import view.FrmMenuOptions;
+import view.FrmPurchaseBook;
+import view.FrmUserNew;
 
 /**
  *
@@ -25,7 +28,21 @@ public class CtrUser {
 
     private User user;
     TableRowSorter<DefaultTableModel> sorter;
+    
+    private FrmPurchaseBook frmBooks;
+    private FrmUserNew frmUserNew;
+    private FrmMenuOptions frmMenu;
+    
+    public CtrUser(FrmUserNew frmUserNew, FrmPurchaseBook frmBooks) {
+        this.frmBooks = frmBooks;
+        this.frmUserNew = frmUserNew;
+        this.user = new User();
+    }
 
+    public CtrUser(FrmMenuOptions frmMenu) {
+        this.frmMenu = frmMenu;
+    }
+    
 
     public CtrUser() {
         this.user = new User();
@@ -97,6 +114,15 @@ public class CtrUser {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
         String formattedDate = actualDate.format(formatter); 
         DateTextField.setText(formattedDate); 
+    }
+    
+    public void purchaseBook(){
+        frmBooks.setVisible(true);
+        frmUserNew.setVisible(false);
+    }
+    public void menu(){
+        frmMenu.setVisible(true);
+        frmUserNew.setVisible(false);
     }
     
     

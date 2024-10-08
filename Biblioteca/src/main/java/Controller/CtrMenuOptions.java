@@ -6,6 +6,7 @@ package Controller;
 
 import view.FrmMenuOptions;
 import view.FrmPurchaseBook;
+import view.FrmUserNew;
 
 /**
  *
@@ -13,17 +14,17 @@ import view.FrmPurchaseBook;
  */
 public class CtrMenuOptions {
     private FrmMenuOptions frmMenu;
-    private FrmPurchaseBook frmPurchaseBook;
+    private FrmUserNew frmUserNew;
 
-    public CtrMenuOptions(FrmMenuOptions frmMenu, FrmPurchaseBook frmPurchaseBook) {
+    public CtrMenuOptions(FrmMenuOptions frmMenu,FrmUserNew frmUserNew) {
         this.frmMenu = frmMenu;
-        this.frmPurchaseBook = frmPurchaseBook;
+        this.frmUserNew = frmUserNew;
     }
     
     
     
-    public void purchaseBook(){
+    public void purchaseUser(){
         frmMenu.setVisible(false);
-        frmPurchaseBook.setVisible(true);
+        frmUserNew.setVisible(true);
     }
 }

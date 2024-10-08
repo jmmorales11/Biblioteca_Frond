@@ -6,6 +6,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -42,7 +43,16 @@ public class Table extends JTable {
                     setBorder(noFocusBorder);
                     return com;
                 }else{
-                    JLabel label = new JLabel("Hola", SwingConstants.RIGHT); // Texto centrado
+                    JLabel label = new JLabel() {
+                        @Override
+                        protected void paintComponent(Graphics g) {
+                            super.paintComponent(g);
+                            g.setColor(Color.GREEN);
+                            // Dibujar un círculo verde
+                            g.fillOval(getWidth() - 20, getHeight() / 2 - 10, 15, 15);
+                        }
+                    };
+                    label.setHorizontalAlignment(SwingConstants.RIGHT); // Alinear a la derecha
                     label.setBackground(Color.WHITE); // Color de fondo blanco
                     label.setOpaque(true); 
                     return label;

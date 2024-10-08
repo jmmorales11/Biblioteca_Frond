@@ -26,8 +26,8 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         bgt.BackgroundTrasparent(BTN_deliver);
         bgt.BackgroundTrasparent(BTN_purchase);
         bgt.BackgroundTrasparent(BTN_manage);
-        FrmPurchaseBook frmPurchaseBook = new FrmPurchaseBook();
-        ctrM= new CtrMenuOptions(this,frmPurchaseBook);
+        FrmUserNew frmUserNew = new FrmUserNew();
+        ctrM= new CtrMenuOptions(this,frmUserNew);
         
         
         
@@ -210,7 +210,7 @@ public class FrmMenuOptions extends javax.swing.JFrame {
 
     private void BTN_purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_purchaseActionPerformed
         
-        ctrM.purchaseBook();
+        ctrM.purchaseUser();
     }//GEN-LAST:event_BTN_purchaseActionPerformed
 
     /**
