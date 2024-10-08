@@ -118,14 +118,14 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="8" rowCount="4">
-                            <Column editable="false" title="Cedula" type="java.lang.Object"/>
-                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="false" title="Apellido" type="java.lang.Object"/>
-                            <Column editable="false" title="Codigo" type="java.lang.Object"/>
-                            <Column editable="false" title="Libro" type="java.lang.Object"/>
-                            <Column editable="false" title="Fecha de adquisici&#xf3;n" type="java.lang.Object"/>
-                            <Column editable="false" title="Fecha de devoluci&#xf3;n" type="java.lang.Object"/>
-                            <Column editable="false" title="Acciones" type="java.lang.Object"/>
+                            <Column editable="false" title="Cedula" type="java.lang.String"/>
+                            <Column editable="false" title="Nombre" type="java.lang.String"/>
+                            <Column editable="false" title="Apellido" type="java.lang.String"/>
+                            <Column editable="false" title="Codigo" type="java.lang.String"/>
+                            <Column editable="false" title="Libro" type="java.lang.String"/>
+                            <Column editable="false" title="Fecha de adquisici&#xf3;n" type="java.lang.String"/>
+                            <Column editable="false" title="Fecha de devoluci&#xf3;n" type="java.lang.String"/>
+                            <Column editable="false" title="Acciones" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -165,7 +165,7 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="300" minWidth="150" prefWidth="200" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -331,7 +331,7 @@
                       <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="66" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="textField2" min="-2" pref="580" max="-2" attributes="0"/>
+                      <Component id="FilterTextField" min="-2" pref="580" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace pref="498" max="32767" attributes="0"/>
@@ -345,7 +345,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="textField2" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Component id="FilterTextField" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -360,9 +360,9 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="Components.TextField" name="textField2">
+            <Component class="Components.TextField" name="FilterTextField">
               <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textField2KeyReleased"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FilterTextFieldKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">

@@ -2,10 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package view.FrmUserNew2;
 
 import Controller.CtrUser;
 import java.awt.Color;
+import view.Background;
+import view.FrmMenuOptions;
+import view.ScrollBar;
 
 /**
  *
@@ -51,7 +54,7 @@ public class FrmUserNew2 extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        textField2 = new Components.TextField();
+        FilterTextField = new Components.TextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -79,15 +82,27 @@ public class FrmUserNew2 extends javax.swing.JFrame {
                 "Cedula", "Nombre", "Apellido", "Codigo", "Libro", "Fecha de adquisición", "Fecha de devolución", "Acciones"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         JSCROLL_tableUser.setViewportView(JTableLoan);
+        if (JTableLoan.getColumnModel().getColumnCount() > 0) {
+            JTableLoan.getColumnModel().getColumn(7).setMinWidth(150);
+            JTableLoan.getColumnModel().getColumn(7).setPreferredWidth(200);
+            JTableLoan.getColumnModel().getColumn(7).setMaxWidth(300);
+        }
 
         javax.swing.GroupLayout panelBorder3Layout = new javax.swing.GroupLayout(panelBorder3);
         panelBorder3.setLayout(panelBorder3Layout);
@@ -205,9 +220,9 @@ public class FrmUserNew2 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
-        textField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        FilterTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textField2KeyReleased(evt);
+                FilterTextFieldKeyReleased(evt);
             }
         });
 
@@ -224,7 +239,7 @@ public class FrmUserNew2 extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(498, Short.MAX_VALUE))
@@ -236,7 +251,7 @@ public class FrmUserNew2 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -271,9 +286,9 @@ public class FrmUserNew2 extends javax.swing.JFrame {
         ctrUser.menu();
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 
-    private void textField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField2KeyReleased
+    private void FilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FilterTextFieldKeyReleased
+        ctrUser.DataFiltter(FilterTextField);
+    }//GEN-LAST:event_FilterTextFieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -568,6 +583,7 @@ public class FrmUserNew2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_nexUser;
+    private Components.TextField FilterTextField;
     private javax.swing.JScrollPane JSCROLL_tableUser;
     private view.TableUser JTableLoan;
     private javax.swing.JLabel jLabel3;
@@ -579,6 +595,5 @@ public class FrmUserNew2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private view.PanelBorder panelBorder2;
     private view.PanelBorder panelBorder3;
-    private Components.TextField textField2;
     // End of variables declaration//GEN-END:variables
 }

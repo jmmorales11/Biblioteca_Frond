@@ -4,6 +4,7 @@
 
 package main.biblioteca;
 
+import Controller.CtrUser;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -25,5 +26,6 @@ public class Biblioteca {
         FrmLogIn login= new FrmLogIn();
         // Hacer visible la ventana
         login.setVisible(true);
+      
     }
 }

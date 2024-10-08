@@ -29,7 +29,6 @@ public class FrmPurchaseBook extends javax.swing.JFrame {
         ctrbook= new CtrBook();
         ctrbook.loadBooks(JTableBook);
         
-        
     }
 
     /**
