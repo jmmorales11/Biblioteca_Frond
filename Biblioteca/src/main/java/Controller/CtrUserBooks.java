@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import view.FrmPurchaseBook;
+import view.FrmBook;
 import view.FrmUserBook;
 
 /**
@@ -113,7 +113,7 @@ public class CtrUserBooks {
         frmuserbook.setMailUser(mail);
     }
     public void backpurchaseBook(CtrUserBooks ctrUserBooks, FrmUserBook frmuserbook){
-        FrmPurchaseBook frmBooks= new FrmPurchaseBook(ctrUserBooks);
+        FrmBook frmBooks= new FrmBook(ctrUserBooks);
         frmBooks.setVisible(true);
         frmuserbook.setVisible(false);
     }

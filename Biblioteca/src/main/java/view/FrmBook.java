@@ -14,14 +14,14 @@ import javax.swing.JTable;
  *
  * @author ASUS TUF A15
  */
-public class FrmPurchaseBook extends javax.swing.JFrame {
+public class FrmBook extends javax.swing.JFrame {
     Background back = new Background();
     /**
      * Creates new form FrmPurchaseBook
      */
     CtrBook ctrbook;
     private CtrUserBooks ctrUserBooks;
-    public FrmPurchaseBook(CtrUserBooks ctrUserBooks) {
+    public FrmBook(CtrUserBooks ctrUserBooks) {
         this.setContentPane(back);
         initComponents();
         ctrbook= new CtrBook(this);

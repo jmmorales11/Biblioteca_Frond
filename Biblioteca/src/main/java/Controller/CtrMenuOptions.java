@@ -5,8 +5,8 @@
 package Controller;
 
 import view.FrmMenuOptions;
-import view.FrmPurchaseBook;
-import view.FrmUserNew;
+import view.FrmBook;
+import view.FrmUser;
 
 /**
  *
@@ -20,7 +20,7 @@ public class CtrMenuOptions {
     }
     
     public void purchaseUser(){
-        FrmUserNew frmUserNew = new FrmUserNew() ;
+        FrmUser frmUserNew = new FrmUser() ;
         frmMenu.setVisible(false);
         frmUserNew.setVisible(true);
     }

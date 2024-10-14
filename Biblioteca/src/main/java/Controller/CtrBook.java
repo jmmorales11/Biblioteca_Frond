@@ -12,9 +12,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import view.FrmPurchaseBook;
+import view.FrmBook;
 import view.FrmUserBook;
-import view.FrmUserNew;
+import view.FrmUser;
 
 /**
  *
@@ -25,10 +25,10 @@ public class CtrBook {
     private Book book;
     TableRowSorter<DefaultTableModel> sorter;
 
-    private FrmPurchaseBook frmBooks;
+    private FrmBook frmBooks;
 
 
-    public CtrBook(FrmPurchaseBook frmBooks) {
+    public CtrBook(FrmBook frmBooks) {
         this.frmBooks = frmBooks;
     }
     
@@ -93,7 +93,7 @@ public class CtrBook {
     
     
     public void backUser(){
-        FrmUserNew frmUserNew= new FrmUserNew ();
+        FrmUser frmUserNew= new FrmUser ();
         frmBooks.setVisible(false);
         frmUserNew.setVisible(true);
     }
@@ -102,8 +102,8 @@ public class CtrBook {
         
         frmBooks.setVisible(false);
         frmUserBook.setVisible(true);
-        DefaultTableModel modelo1 = new DefaultTableModel() ;
-        frmUserBook.getJTableBook().setModel(modelo1);
+//        DefaultTableModel modelo1 = new DefaultTableModel() ;
+//        frmUserBook.getJTableBook().setModel(modelo1);
 
         
     }

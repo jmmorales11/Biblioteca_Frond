@@ -17,9 +17,9 @@ import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import view.FrmMenuOptions;
-import view.FrmPurchaseBook;
+import view.FrmBook;
 import view.FrmUserBook;
-import view.FrmUserNew;
+import view.FrmUser;
 
 /**
  *
@@ -30,9 +30,9 @@ public class CtrUser {
     private User user;
     TableRowSorter<DefaultTableModel> sorter;
     
-    private FrmUserNew frmUserNew;
+    private FrmUser frmUserNew;
 
-    public CtrUser(FrmUserNew frmUserNew) {
+    public CtrUser(FrmUser frmUserNew) {
         this.frmUserNew = frmUserNew;
         
     }
@@ -120,7 +120,7 @@ public class CtrUser {
     }
             
     public void purchaseBook(CtrUserBooks ctrUserBooks){
-        FrmPurchaseBook frmBooks= new FrmPurchaseBook(ctrUserBooks);
+        FrmBook frmBooks= new FrmBook(ctrUserBooks);
         frmBooks.setVisible(true);
         frmUserNew.setVisible(false);
     }
