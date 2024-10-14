@@ -5,7 +5,10 @@
 package view;
 
 import Controller.CtrBook;
+import Controller.CtrUserBooks;
+import Modelo.UserBook;
 import java.awt.Color;
+import javax.swing.JTable;
 
 /**
  *
@@ -17,20 +20,22 @@ public class FrmPurchaseBook extends javax.swing.JFrame {
      * Creates new form FrmPurchaseBook
      */
     CtrBook ctrbook;
-    public FrmPurchaseBook() {
+    private CtrUserBooks ctrUserBooks;
+    public FrmPurchaseBook(CtrUserBooks ctrUserBooks) {
         this.setContentPane(back);
         initComponents();
-        
+        ctrbook= new CtrBook(this);
+        ctrbook.loadBooks(JTableBook);
+        this.ctrUserBooks= ctrUserBooks;
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
         this.getContentPane().setBackground(Color.white);
         JSCROLL_books.getViewport().setBackground(Color.WHITE);
         JSCROLL_books.setVerticalScrollBar(new ScrollBar());
-
-        ctrbook= new CtrBook();
-        ctrbook.loadBooks(JTableBook);
+        
         
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,8 +62,6 @@ public class FrmPurchaseBook extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1350, 600));
-        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         panelBorder2.setBackground(new java.awt.Color(217, 217, 217));
@@ -223,6 +226,10 @@ public class FrmPurchaseBook extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        ctrUserBooks.cargar(JTableBook);
+        ctrbook.nextUserBook(this.ctrUserBooks);
+        
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void BTN_back_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_userActionPerformed
@@ -234,37 +241,48 @@ public class FrmPurchaseBook extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmPurchaseBook().setVisible(true);
-            }
-        });
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FrmPurchaseBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                UserBook userbook = new UserBook();
+//                CtrUserBooks ctrUserBooks = new CtrUserBooks(userbook);
+//                new FrmPurchaseBook(ctrUserBooks).setVisible(true);
+//            }
+//        });
+//    }
+    public JTable getJTableBook() {
+        return JTableBook;
     }
+
+    public void setJTableBook(JTable table) {
+        this.JTableBook = (Table) table;
+        JSCROLL_books.setViewportView(table); // Actualizar el JScrollPane
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_user;

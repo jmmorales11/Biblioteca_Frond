@@ -13,6 +13,7 @@ import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import view.FrmPurchaseBook;
+import view.FrmUserBook;
 import view.FrmUserNew;
 
 /**
@@ -23,11 +24,11 @@ public class CtrBook {
     
     private Book book;
     TableRowSorter<DefaultTableModel> sorter;
-    private FrmUserNew frmUserNew;
+
     private FrmPurchaseBook frmBooks;
 
-    public CtrBook(FrmUserNew frmUserNew, FrmPurchaseBook frmBooks) {
-        this.frmUserNew = frmUserNew;
+
+    public CtrBook(FrmPurchaseBook frmBooks) {
         this.frmBooks = frmBooks;
     }
     
@@ -35,9 +36,6 @@ public class CtrBook {
         this.book = new Book();
     }
 
-    public CtrBook(FrmUserNew frmUserNew) {
-        this.frmUserNew = frmUserNew;
-    }
     
     
     public List<String[]> getBook() {
@@ -88,8 +86,25 @@ public class CtrBook {
         sorter = new TableRowSorter<>(tableModel);
         JTableBook.setRowSorter(sorter);  
     }
+    
+    
+
+    
+    
+    
     public void backUser(){
+        FrmUserNew frmUserNew= new FrmUserNew ();
         frmBooks.setVisible(false);
         frmUserNew.setVisible(true);
+    }
+    public void nextUserBook(CtrUserBooks ctrUserBooks){
+        FrmUserBook frmUserBook= new FrmUserBook(ctrUserBooks);
+        
+        frmBooks.setVisible(false);
+        frmUserBook.setVisible(true);
+        DefaultTableModel modelo1 = new DefaultTableModel() ;
+        frmUserBook.getJTableBook().setModel(modelo1);
+
+        
     }
 }

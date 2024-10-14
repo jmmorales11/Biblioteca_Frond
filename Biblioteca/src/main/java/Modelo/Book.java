@@ -35,7 +35,7 @@ public class Book {
                     information.append(scanner.nextLine());
                 }
                 scanner.close();
-                System.out.println(information);
+                //System.out.println(information);
                 
             }
         } catch (Exception e) {

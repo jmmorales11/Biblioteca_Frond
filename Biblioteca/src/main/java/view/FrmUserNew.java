@@ -5,7 +5,10 @@
 package view;
 
 import Controller.CtrUser;
+import Controller.CtrUserBooks;
+import Modelo.UserBook;
 import java.awt.Color;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -18,16 +21,20 @@ public class FrmUserNew extends javax.swing.JFrame {
      */
     Background back = new Background();
     CtrUser ctrUser;
+    private CtrUserBooks ctrUserBooks;
     public FrmUserNew() {
         this.setContentPane(back);
         initComponents();
+        UserBook userbook = new UserBook();
+        this.ctrUserBooks = new CtrUserBooks(userbook);
+        
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUserNew.MAXIMIZED_BOTH);
-        FrmPurchaseBook frmBooks= new FrmPurchaseBook();
-        ctrUser = new CtrUser(this,frmBooks);
+        ctrUser = new CtrUser(this);
         ctrUser.loadUsers(JTableUser);
         JSCROLL_tableUser.setVerticalScrollBar(new ScrollBar());
         JSCROLL_tableUser.getViewport().setBackground(Color.WHITE);
+       // this.JTableUser.setSelectionModel(ListSelectionModel.SINGLE_SELECTION);
     }
 
     /**
@@ -51,7 +58,7 @@ public class FrmUserNew extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        textField2 = new Components.TextField();
+        TF_search_user = new Components.TextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -205,9 +212,14 @@ public class FrmUserNew extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
-        textField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        TF_search_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TF_search_userActionPerformed(evt);
+            }
+        });
+        TF_search_user.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textField2KeyReleased(evt);
+                TF_search_userKeyReleased(evt);
             }
         });
 
@@ -224,7 +236,7 @@ public class FrmUserNew extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TF_search_user, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(498, Short.MAX_VALUE))
@@ -236,7 +248,7 @@ public class FrmUserNew extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_search_user, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -252,7 +264,6 @@ public class FrmUserNew extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 1350;
         gridBagConstraints.ipady = 600;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(17, 16, 6, 6);
         getContentPane().add(panelBorder2, gridBagConstraints);
 
@@ -260,175 +271,29 @@ public class FrmUserNew extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_nexUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nexUserActionPerformed
-        // TODO add your handling code here:
-        ctrUser.purchaseBook();
+        
+        ctrUser.purchaseBook(this.ctrUserBooks);
+        ctrUserBooks.selectUser(JTableUser);
     }//GEN-LAST:event_BTN_nexUserActionPerformed
 
     private void BTN_back_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menuActionPerformed
         // TODO add your handling code here:
-        FrmMenuOptions frmMenu = new FrmMenuOptions();
-        ctrUser = new CtrUser(frmMenu);
         ctrUser.menu();
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 
-    private void textField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField2KeyReleased
+    private void TF_search_userKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_search_userKeyReleased
+        ctrUser.DataFiltter(TF_search_user);
+    }//GEN-LAST:event_TF_search_userKeyReleased
+
+    private void TF_search_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_search_userActionPerformed
+       
+    }//GEN-LAST:event_TF_search_userActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmUserNew.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -442,6 +307,7 @@ public class FrmUserNew extends javax.swing.JFrame {
     private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;
     private view.TableUser JTableUser;
+    private Components.TextField TF_search_user;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -451,6 +317,5 @@ public class FrmUserNew extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private view.PanelBorder panelBorder2;
     private view.PanelBorder panelBorder3;
-    private Components.TextField textField2;
     // End of variables declaration//GEN-END:variables
 }

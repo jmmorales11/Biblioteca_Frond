@@ -26,8 +26,7 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         bgt.BackgroundTrasparent(BTN_deliver);
         bgt.BackgroundTrasparent(BTN_purchase);
         bgt.BackgroundTrasparent(BTN_manage);
-        FrmUserNew frmUserNew = new FrmUserNew();
-        ctrM= new CtrMenuOptions(this,frmUserNew);
+        ctrM= new CtrMenuOptions(this);
         
         
         

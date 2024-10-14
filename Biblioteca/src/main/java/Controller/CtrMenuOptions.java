@@ -14,16 +14,13 @@ import view.FrmUserNew;
  */
 public class CtrMenuOptions {
     private FrmMenuOptions frmMenu;
-    private FrmUserNew frmUserNew;
 
-    public CtrMenuOptions(FrmMenuOptions frmMenu,FrmUserNew frmUserNew) {
+    public CtrMenuOptions(FrmMenuOptions frmMenu) {
         this.frmMenu = frmMenu;
-        this.frmUserNew = frmUserNew;
     }
     
-    
-    
     public void purchaseUser(){
+        FrmUserNew frmUserNew = new FrmUserNew() ;
         frmMenu.setVisible(false);
         frmUserNew.setVisible(true);
     }

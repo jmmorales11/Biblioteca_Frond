@@ -23,11 +23,11 @@ public class Biblioteca {
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
 
-//        FrmLogIn login= new FrmLogIn();
-//        // Hacer visible la ventana
-//        login.setVisible(true);
+        FrmLogIn login= new FrmLogIn();
+        // Hacer visible la ventana
+        login.setVisible(true);
 
-          Book book= new Book();
-          book.getBook();
+//          Book book= new Book();
+//          book.getBook();
     }
 }

@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import view.FrmMenuOptions;
 import view.FrmPurchaseBook;
+import view.FrmUserBook;
 import view.FrmUserNew;
 
 /**
@@ -29,25 +30,18 @@ public class CtrUser {
     private User user;
     TableRowSorter<DefaultTableModel> sorter;
     
-    private FrmPurchaseBook frmBooks;
     private FrmUserNew frmUserNew;
-    private FrmMenuOptions frmMenu;
-    
-    public CtrUser(FrmUserNew frmUserNew, FrmPurchaseBook frmBooks) {
-        this.frmBooks = frmBooks;
+
+    public CtrUser(FrmUserNew frmUserNew) {
         this.frmUserNew = frmUserNew;
-        this.user = new User();
-    }
-
-    public CtrUser(FrmMenuOptions frmMenu) {
-        this.frmMenu = frmMenu;
+        
     }
     
-
+    
     public CtrUser() {
         this.user = new User();
     }
-
+    
     // This function will return the users as a list of arrays
     public List<String[]> getUsers() {
         List<String[]> usersList = new ArrayList<>();
@@ -58,14 +52,14 @@ public class CtrUser {
 
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject userObject = usersArray.getJSONObject(i);
-                String[] userData = new String[6];  // Array of size 6 for each column
-
-                userData[0] = userObject.optString("code", "N/A");
-                userData[1] = userObject.optString("role", "N/A");
-                userData[2] = userObject.optString("user_name", "N/A");
-                userData[3] = userObject.optString("user_last_name", "N/A");
-                userData[4] = userObject.optString("grade", "N/A");
-                userData[5] = userObject.optString("mail", "N/A");
+                String[] userData = new String[7];  // Array of size 6 for each column
+                userData[0] = userObject.optString("id_user", "N/A");
+                userData[1] = userObject.optString("code", "N/A");
+                userData[2] = userObject.optString("role", "N/A");
+                userData[3] = userObject.optString("user_name", "N/A");
+                userData[4] = userObject.optString("user_last_name", "N/A");
+                userData[5] = userObject.optString("grade", "N/A");
+                userData[6] = userObject.optString("mail", "N/A");
 
                 usersList.add(userData);
             }
@@ -79,7 +73,7 @@ public class CtrUser {
     public void loadUsers(JTable JTableUser) {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new Object[][]{}, 
-                new String[]{"Código", "Tipo de usuario", "Nombre", "Apellido", "Grado", "Correo"} // Nombres de las columnas
+                new String[]{"ID","Código", "Tipo de usuario", "Nombre", "Apellido", "Grado", "Correo"} // Nombres de las columnas
         );
 
         JTableUser.setModel(tableModel);
@@ -115,12 +109,23 @@ public class CtrUser {
         String formattedDate = actualDate.format(formatter); 
         DateTextField.setText(formattedDate); 
     }
+    //Seleccionar usuario
     
-    public void purchaseBook(){
+    
+    
+    public void mostrarDatos(FrmUserBook frmuserbook){
+        frmuserbook.setName("");
+        frmuserbook.setLastNameUser(" ");
+        frmuserbook.setMailUser("");
+    }
+            
+    public void purchaseBook(CtrUserBooks ctrUserBooks){
+        FrmPurchaseBook frmBooks= new FrmPurchaseBook(ctrUserBooks);
         frmBooks.setVisible(true);
         frmUserNew.setVisible(false);
     }
     public void menu(){
+        FrmMenuOptions frmMenu= new FrmMenuOptions();
         frmMenu.setVisible(true);
         frmUserNew.setVisible(false);
     }

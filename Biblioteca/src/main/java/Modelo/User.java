@@ -41,7 +41,7 @@ public class User {
                 scanner.close();
 
                 //Mostrar la informacion ontenida
-                System.out.println(information);
+                //System.out.println(information);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +105,7 @@ public class User {
                 scanner.close();
 
                 // Mostrar la respuesta
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
                 return true;
             }
         } catch (Exception e) {
