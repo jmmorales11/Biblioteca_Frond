@@ -124,6 +124,8 @@ public class FrmUserBook extends javax.swing.JFrame {
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
 
+        JSCROLL_user_book.setBorder(null);
+
         JTable_User_book.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"fdfdf", null, null, null},

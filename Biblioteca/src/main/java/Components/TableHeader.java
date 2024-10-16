@@ -23,7 +23,7 @@ public class TableHeader extends JLabel {
         setBackground(Color.WHITE);
         setFont(new Font("sansserif",1,15));
         setForeground(new Color(102,102,102));
-        setBorder(new EmptyBorder(0,0,0,0));
+        setBorder(new EmptyBorder(10,10,10,10));
     }
     
     @Override

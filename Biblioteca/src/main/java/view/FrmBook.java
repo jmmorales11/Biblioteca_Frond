@@ -27,10 +27,11 @@ public class FrmBook extends javax.swing.JFrame {
     public FrmBook(CtrUserBooks ctrUserBooks) {
         this.setContentPane(back);
         initComponents();
+        this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
         ctrbook= new CtrBook(this);
         ctrbook.loadBooks(JTableBook);
         this.ctrUserBooks= ctrUserBooks;
-        this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
+        
         this.getContentPane().setBackground(Color.white);
         JSCROLL_books.getViewport().setBackground(Color.WHITE);
         JSCROLL_books.setVerticalScrollBar(new ScrollBar());
@@ -273,7 +274,7 @@ public class FrmBook extends javax.swing.JFrame {
 //            public void run() {
 //                UserBook userbook = new UserBook();
 //                CtrUserBooks ctrUserBooks = new CtrUserBooks(userbook);
-//                new FrmPurchaseBook(ctrUserBooks).setVisible(true);
+//                new FrmBook(ctrUserBooks).setVisible(true);
 //            }
 //        });
 //    }
