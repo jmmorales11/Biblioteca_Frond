@@ -5,6 +5,7 @@
 package view;
 
 import Components.Background;
+import java.awt.Color;
 
 /**
  *
@@ -20,7 +21,7 @@ public class FrmReport extends javax.swing.JFrame {
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
-        
+        JSCROLL_Report.getViewport().setBackground(Color.WHITE);
     }
 
     /**
@@ -44,7 +45,7 @@ public class FrmReport extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         panelBorder2 = new Components.PanelBorder();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        JSCROLL_Report = new javax.swing.JScrollPane();
         tableModel1 = new Components.TableModel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,8 +108,8 @@ public class FrmReport extends javax.swing.JFrame {
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(null);
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setOpaque(false);
+        JSCROLL_Report.setBorder(null);
+        JSCROLL_Report.setOpaque(false);
 
         tableModel1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,10 +122,10 @@ public class FrmReport extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tableModel1);
+        JSCROLL_Report.setViewportView(tableModel1);
 
-        panelBorder2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 0, 980, 350);
+        panelBorder2.add(JSCROLL_Report);
+        JSCROLL_Report.setBounds(10, 0, 980, 350);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -192,6 +193,7 @@ public class FrmReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JSCROLL_Report;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -200,7 +202,6 @@ public class FrmReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private Components.PanelBorder panelBorder1;
     private Components.PanelBorder panelBorder2;
     private Components.TableModel tableModel1;
