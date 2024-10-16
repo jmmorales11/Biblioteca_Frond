@@ -4,6 +4,7 @@
  */
 package Components;
 
+import Components.*;
 import view.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

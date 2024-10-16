@@ -26,9 +26,9 @@ public class boorador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBorder1 = new view.PanelBorder();
+        panelBorder1 = new Components.PanelBorder();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new view.Table();
+        table = new Components.Table();
         textField1 = new Components.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -153,8 +153,8 @@ public class boorador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private view.PanelBorder panelBorder1;
-    private view.Table table;
+    private Components.PanelBorder panelBorder1;
+    private Components.Table table;
     private Components.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,6 @@
  */
 package Components;
 
-import view.*;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
@@ -12,12 +11,16 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import Components.TableHeader;
 
 /**
  *
  * @author ASUS TUF A15
  */
+
 public class TableUser extends JTable {
+
+    
     public TableUser(){
         setShowHorizontalLines(true);
         setGridColor(new Color(230,230,230));

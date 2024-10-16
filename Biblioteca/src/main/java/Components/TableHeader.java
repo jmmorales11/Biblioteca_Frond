@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
  *
  * @author ASUS TUF A15
  */
-class TableHeader extends JLabel {
+public class TableHeader extends JLabel {
 
     public TableHeader(String text) {
         super(text);

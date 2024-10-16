@@ -4,7 +4,9 @@
  */
 package view;
 
+import Components.Table;
 import Components.Background;
+import Components.ScrollBar;
 import Controller.CtrBook;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
@@ -48,7 +50,7 @@ public class FrmBook extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panelBorder2 = new view.PanelBorder();
+        panelBorder2 = new Components.PanelBorder();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         textField2 = new Components.TextField();
@@ -56,9 +58,9 @@ public class FrmBook extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         BTN_back_user = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        panelBorder3 = new view.PanelBorder();
+        panelBorder3 = new Components.PanelBorder();
         JSCROLL_books = new javax.swing.JScrollPane();
-        JTableBook = new view.Table();
+        JTableBook = new Components.Table();
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -288,7 +290,7 @@ public class FrmBook extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_user;
     private javax.swing.JScrollPane JSCROLL_books;
-    private view.Table JTableBook;
+    private Components.Table JTableBook;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -296,8 +298,8 @@ public class FrmBook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private view.PanelBorder panelBorder2;
-    private view.PanelBorder panelBorder3;
+    private Components.PanelBorder panelBorder2;
+    private Components.PanelBorder panelBorder3;
     private Components.TextField textField2;
     // End of variables declaration//GEN-END:variables
 }

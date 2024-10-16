@@ -5,6 +5,7 @@
 package view;
 
 import Components.Background;
+import Components.ScrollBar;
 import Controller.CtrUser;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
@@ -48,11 +49,11 @@ public class FrmUser extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panelBorder2 = new view.PanelBorder();
+        panelBorder2 = new Components.PanelBorder();
         jPanel5 = new javax.swing.JPanel();
-        panelBorder3 = new view.PanelBorder();
+        panelBorder3 = new Components.PanelBorder();
         JSCROLL_tableUser = new javax.swing.JScrollPane();
-        JTableUser = new view.TableUser();
+        JTableUser = new Components.TableUser();
         jPanel6 = new javax.swing.JPanel();
         BTN_nexUser = new javax.swing.JButton();
         BTN_back_menu = new javax.swing.JButton();
@@ -307,7 +308,7 @@ public class FrmUser extends javax.swing.JFrame {
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;
-    private view.TableUser JTableUser;
+    private Components.TableUser JTableUser;
     private Components.TextField TF_search_user;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -316,7 +317,7 @@ public class FrmUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private view.PanelBorder panelBorder2;
-    private view.PanelBorder panelBorder3;
+    private Components.PanelBorder panelBorder2;
+    private Components.PanelBorder panelBorder3;
     // End of variables declaration//GEN-END:variables
 }

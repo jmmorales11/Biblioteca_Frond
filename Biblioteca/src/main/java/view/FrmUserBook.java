@@ -4,6 +4,7 @@
  */
 package view;
 
+import Components.ScrollBar;
 import Controller.CtrUser;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
@@ -45,7 +46,7 @@ public class FrmUserBook extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panelBorder1 = new view.PanelBorder();
+        panelBorder1 = new Components.PanelBorder();
         jPanel1 = new javax.swing.JPanel();
         BTN_loan = new javax.swing.JButton();
         BTN_back_book = new javax.swing.JButton();
@@ -55,7 +56,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         TF_last_name_user = new Components.TextField();
         TF_mail_user = new Components.TextField();
         textField5 = new Components.TextField();
-        panelBorder2 = new view.PanelBorder();
+        panelBorder2 = new Components.PanelBorder();
         JSCROLL_user_book = new javax.swing.JScrollPane();
         JTable_User_book = new Components.TableModel();
         jLabel1 = new javax.swing.JLabel();
@@ -288,8 +289,8 @@ public class FrmUserBook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private view.PanelBorder panelBorder1;
-    private view.PanelBorder panelBorder2;
+    private Components.PanelBorder panelBorder1;
+    private Components.PanelBorder panelBorder2;
     private Components.TextField textField5;
     // End of variables declaration//GEN-END:variables
 }
