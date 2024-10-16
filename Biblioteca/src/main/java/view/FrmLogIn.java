@@ -4,6 +4,7 @@
  */
 package view;
 
+import Components.Background;
 import Controller.Ctrlogin;
 import Modelo.User;
 import java.awt.Dimension;

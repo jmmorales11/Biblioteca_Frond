@@ -4,6 +4,7 @@
  */
 package view;
 
+import Components.Background;
 import Controller.CtrBook;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;

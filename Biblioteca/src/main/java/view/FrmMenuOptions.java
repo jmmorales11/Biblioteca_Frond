@@ -4,6 +4,7 @@
  */
 package view;
 
+import Components.Background;
 import Controller.CtrMenuOptions;
 import java.awt.Color;
 import javax.swing.JButton;
