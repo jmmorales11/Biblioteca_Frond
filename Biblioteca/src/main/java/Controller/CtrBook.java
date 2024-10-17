@@ -30,6 +30,7 @@ public class CtrBook {
 
     public CtrBook(FrmBook frmBooks) {
         this.frmBooks = frmBooks;
+        this.book = new Book();
     }
     
     public CtrBook() {
@@ -73,8 +74,8 @@ public class CtrBook {
 
         JTableBook.setModel(tableModel);
 
-        CtrBook controller = new CtrBook();
-        List<String[]> book = controller.getBook();
+        
+        List<String[]> book = this.getBook();
 
         // Limpia las celdas (en caso que se use la misma tabla pa otra cosa)
         tableModel.setRowCount(0);

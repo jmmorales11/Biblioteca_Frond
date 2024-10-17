@@ -5,6 +5,7 @@
 package view;
 
 import Components.Background;
+import Components.ScrollBar;
 
 /**
  *
@@ -20,6 +21,7 @@ public class FrmAddBook extends javax.swing.JFrame {
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
+        jScroll_TextArea_Book.setVerticalScrollBar(new ScrollBar());
     }
 
     /**
@@ -48,9 +50,9 @@ public class FrmAddBook extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScroll_TextArea_Book = new javax.swing.JScrollPane();
         textArea2 = new Components.TextArea();
-        select1 = new Components.Select();
+        select2 = new Components.Select();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,9 +87,10 @@ public class FrmAddBook extends javax.swing.JFrame {
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(0, 0, 1300, 100);
 
+        jPanel2.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(null);
 
-        textField1.setText("textField1");
         textField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField1ActionPerformed(evt);
@@ -95,20 +98,19 @@ public class FrmAddBook extends javax.swing.JFrame {
         });
         jPanel2.add(textField1);
         textField1.setBounds(170, 35, 450, 55);
-
-        textField2.setText("textField2");
         jPanel2.add(textField2);
         textField2.setBounds(697, 35, 450, 55);
-
-        textField4.setText("textField4");
         jPanel2.add(textField4);
         textField4.setBounds(697, 108, 450, 52);
-
-        textField5.setText("textField5");
         jPanel2.add(textField5);
         textField5.setBounds(170, 184, 450, 53);
 
         textField6.setText("textField6");
+        textField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField6ActionPerformed(evt);
+            }
+        });
         jPanel2.add(textField6);
         textField6.setBounds(697, 184, 450, 53);
 
@@ -140,16 +142,21 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel2.add(jLabel7);
         jLabel7.setBounds(703, 162, 57, 16);
 
-        jScrollPane2.setBorder(null);
+        jScroll_TextArea_Book.setBackground(new java.awt.Color(255, 255, 255));
+        jScroll_TextArea_Book.setBorder(null);
+        jScroll_TextArea_Book.setOpaque(false);
 
         textArea2.setColumns(20);
         textArea2.setRows(5);
-        jScrollPane2.setViewportView(textArea2);
+        jScroll_TextArea_Book.setViewportView(textArea2);
 
-        jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(170, 277, 977, 116);
-        jPanel2.add(select1);
-        select1.setBounds(170, 110, 450, 50);
+        jPanel2.add(jScroll_TextArea_Book);
+        jScroll_TextArea_Book.setBounds(170, 277, 977, 116);
+
+        select2.setBorder(null);
+        select2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "p", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jPanel2.add(select2);
+        select2.setBounds(174, 110, 440, 50);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 100, 1300, 450);
@@ -181,6 +188,10 @@ public class FrmAddBook extends javax.swing.JFrame {
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
+
+    private void textField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,9 +240,9 @@ public class FrmAddBook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScroll_TextArea_Book;
     private Components.PanelBorder panelBorder1;
-    private Components.Select select1;
+    private Components.Select select2;
     private Components.TextArea textArea2;
     private Components.TextField textField1;
     private Components.TextField textField2;

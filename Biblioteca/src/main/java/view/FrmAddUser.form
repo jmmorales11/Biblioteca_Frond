@@ -60,13 +60,6 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="Components.TextField" name="textField2">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="110" y="280" width="1090" height="50"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Component class="Components.TextField" name="textField4">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -169,7 +162,14 @@
             <Component class="Components.TextField" name="textField3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="110" y="350" width="1090" height="50"/>
+                  <AbsoluteConstraints x="110" y="350" width="1100" height="50"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="Components.Select" name="select1">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="115" y="280" width="1090" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>

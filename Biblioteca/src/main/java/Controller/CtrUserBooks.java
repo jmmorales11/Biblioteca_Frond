@@ -5,9 +5,12 @@
 package Controller;
 
 import Modelo.UserBook;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import view.FrmBook;
@@ -116,5 +119,12 @@ public class CtrUserBooks {
         FrmBook frmBooks= new FrmBook(ctrUserBooks);
         frmBooks.setVisible(true);
         frmuserbook.setVisible(false);
+    }
+    //obtener la fecha actual
+    public void getDate(JTextField DateTextField) {
+        LocalDate actualDate = LocalDate.now(); 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+        String formattedDate = actualDate.format(formatter); 
+        DateTextField.setText(formattedDate); 
     }
 }

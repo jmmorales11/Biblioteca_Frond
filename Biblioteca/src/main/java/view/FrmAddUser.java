@@ -34,7 +34,6 @@ public class FrmAddUser extends javax.swing.JFrame {
         panelBorder1 = new Components.PanelBorder();
         jPanel1 = new javax.swing.JPanel();
         textField1 = new Components.TextField();
-        textField2 = new Components.TextField();
         textField4 = new Components.TextField();
         textField5 = new Components.TextField();
         textField6 = new Components.TextField();
@@ -45,6 +44,7 @@ public class FrmAddUser extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         textField3 = new Components.TextField();
+        select1 = new Components.Select();
         jPanel2 = new javax.swing.JPanel();
         BTN_back_menu = new javax.swing.JButton();
         BTN_back_menu1 = new javax.swing.JButton();
@@ -61,8 +61,6 @@ public class FrmAddUser extends javax.swing.JFrame {
         jPanel1.setLayout(null);
         jPanel1.add(textField1);
         textField1.setBounds(700, 200, 500, 50);
-        jPanel1.add(textField2);
-        textField2.setBounds(110, 280, 1090, 50);
         jPanel1.add(textField4);
         textField4.setBounds(110, 120, 1090, 50);
         jPanel1.add(textField5);
@@ -100,7 +98,9 @@ public class FrmAddUser extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(120, 260, 110, 16);
         jPanel1.add(textField3);
-        textField3.setBounds(110, 350, 1090, 50);
+        textField3.setBounds(110, 350, 1100, 50);
+        jPanel1.add(select1);
+        select1.setBounds(115, 280, 1090, 40);
 
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(0, 100, 1300, 420);
@@ -253,8 +253,8 @@ public class FrmAddUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private Components.PanelBorder panelBorder1;
+    private Components.Select select1;
     private Components.TextField textField1;
-    private Components.TextField textField2;
     private Components.TextField textField3;
     private Components.TextField textField4;
     private Components.TextField textField5;

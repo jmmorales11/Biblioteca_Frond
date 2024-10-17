@@ -23,10 +23,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
-              <Component id="select1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="767" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
+                      <Component id="select1" min="-2" pref="364" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="366" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" pref="257" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="442" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -34,14 +42,76 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-              <Component id="select1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="361" max="32767" attributes="0"/>
+              <Component id="select1" min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+              <Component id="jComboBox1" min="-2" pref="101" max="-2" attributes="0"/>
+              <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="Components.Select" name="select1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="36">
+            <StringItem index="0" value="primer"/>
+            <StringItem index="1" value="segundo"/>
+            <StringItem index="2" value="tercer"/>
+            <StringItem index="3" value="cuarto"/>
+            <StringItem index="4" value="administrador"/>
+            <StringItem index="5" value="otros"/>
+            <StringItem index="6" value=" "/>
+            <StringItem index="7" value="0"/>
+            <StringItem index="8" value="{"/>
+            <StringItem index="9" value="9"/>
+            <StringItem index="10" value="9"/>
+            <StringItem index="11" value="9"/>
+            <StringItem index="12" value="9"/>
+            <StringItem index="13" value="9"/>
+            <StringItem index="14" value="9"/>
+            <StringItem index="15" value=" "/>
+            <StringItem index="16" value="9"/>
+            <StringItem index="17" value="99"/>
+            <StringItem index="18" value=" "/>
+            <StringItem index="19" value="9"/>
+            <StringItem index="20" value="9"/>
+            <StringItem index="21" value="9"/>
+            <StringItem index="22" value="9"/>
+            <StringItem index="23" value="9"/>
+            <StringItem index="24" value="9"/>
+            <StringItem index="25" value=" "/>
+            <StringItem index="26" value=" "/>
+            <StringItem index="27" value="9"/>
+            <StringItem index="28" value="9"/>
+            <StringItem index="29" value="9"/>
+            <StringItem index="30" value="99"/>
+            <StringItem index="31" value="9"/>
+            <StringItem index="32" value=" "/>
+            <StringItem index="33" value="9"/>
+            <StringItem index="34" value="9"/>
+            <StringItem index="35" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
