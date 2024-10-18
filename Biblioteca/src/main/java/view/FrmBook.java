@@ -54,7 +54,7 @@ public class FrmBook extends javax.swing.JFrame {
         panelBorder2 = new Components.PanelBorder();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        textField2 = new Components.TextField();
+        TF_search_book = new Components.TextField();
         jPanel7 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         BTN_back_user = new javax.swing.JButton();
@@ -76,6 +76,12 @@ public class FrmBook extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel3.setText("Buscar :");
 
+        TF_search_book.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TF_search_bookKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -84,7 +90,7 @@ public class FrmBook extends javax.swing.JFrame {
                 .addGap(129, 129, 129)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TF_search_book, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(382, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -92,7 +98,7 @@ public class FrmBook extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TF_search_book, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)))
         );
 
@@ -242,6 +248,10 @@ public class FrmBook extends javax.swing.JFrame {
         ctrbook.backUser();
     }//GEN-LAST:event_BTN_back_userActionPerformed
 
+    private void TF_search_bookKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_search_bookKeyReleased
+        ctrbook.DataFiltter(TF_search_book);
+    }//GEN-LAST:event_TF_search_bookKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -292,6 +302,7 @@ public class FrmBook extends javax.swing.JFrame {
     private javax.swing.JButton BTN_back_user;
     private javax.swing.JScrollPane JSCROLL_books;
     private Components.Table JTableBook;
+    private Components.TextField TF_search_book;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -301,6 +312,5 @@ public class FrmBook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private Components.PanelBorder panelBorder2;
     private Components.PanelBorder panelBorder3;
-    private Components.TextField textField2;
     // End of variables declaration//GEN-END:variables
 }

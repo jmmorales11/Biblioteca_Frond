@@ -8,6 +8,8 @@ import Modelo.Book;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
@@ -88,7 +90,14 @@ public class CtrBook {
         JTableBook.setRowSorter(sorter);  
     }
     
-    
+    //Filtrar busqueda de tabla
+    public void DataFiltter(JTextField FiltterTextField){
+        try{
+            sorter.setRowFilter(RowFilter.regexFilter(FiltterTextField.getText()));
+        }catch(Exception e){
+            throw new RuntimeException("Error internal");
+        }
+    }
 
     
     

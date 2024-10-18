@@ -6,6 +6,7 @@ package view;
 
 import Components.Background;
 import Components.ScrollBar;
+import Controller.CtrLoan;
 import Controller.CtrUser;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
@@ -21,15 +22,15 @@ public class FrmLoan extends javax.swing.JFrame {
      * Creates new form MenuOptions
      */
     Background back = new Background();
-    CtrUser ctrUser;
+    CtrLoan ctrLoan;
     private CtrUserBooks ctrUserBooks;
     public FrmLoan() {
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmLoan.MAXIMIZED_BOTH);
-        ctrUser = new CtrUser();
-        ctrUser.loadLoan(JTableLoan);
+        ctrLoan = new CtrLoan();
+        ctrLoan.loadLoan(JTableLoan);
         JSCROLL_tableUser.setVerticalScrollBar(new ScrollBar());
         JSCROLL_tableUser.getViewport().setBackground(Color.WHITE);
 
@@ -56,7 +57,7 @@ public class FrmLoan extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        TF_search_user = new Components.TextField();
+        TF_search_user_loan = new Components.TextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -210,14 +211,14 @@ public class FrmLoan extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
-        TF_search_user.addActionListener(new java.awt.event.ActionListener() {
+        TF_search_user_loan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TF_search_userActionPerformed(evt);
+                TF_search_user_loanActionPerformed(evt);
             }
         });
-        TF_search_user.addKeyListener(new java.awt.event.KeyAdapter() {
+        TF_search_user_loan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                TF_search_userKeyReleased(evt);
+                TF_search_user_loanKeyReleased(evt);
             }
         });
 
@@ -234,7 +235,7 @@ public class FrmLoan extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TF_search_user, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TF_search_user_loan, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(498, Short.MAX_VALUE))
@@ -246,7 +247,7 @@ public class FrmLoan extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TF_search_user, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_search_user_loan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -270,22 +271,21 @@ public class FrmLoan extends javax.swing.JFrame {
 
     private void BTN_nexUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nexUserActionPerformed
         
-        ctrUser.purchaseBook(this.ctrUserBooks);
-        ctrUserBooks.selectUser(JTableLoan);
+        
     }//GEN-LAST:event_BTN_nexUserActionPerformed
 
     private void BTN_back_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menuActionPerformed
         // TODO add your handling code here:
-        ctrUser.menu();
+        
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 
-    private void TF_search_userKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_search_userKeyReleased
-        ctrUser.DataFiltter(TF_search_user);
-    }//GEN-LAST:event_TF_search_userKeyReleased
+    private void TF_search_user_loanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_search_user_loanKeyReleased
+            ctrLoan.DataFiltter(TF_search_user_loan);
+    }//GEN-LAST:event_TF_search_user_loanKeyReleased
 
-    private void TF_search_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_search_userActionPerformed
+    private void TF_search_user_loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_search_user_loanActionPerformed
        
-    }//GEN-LAST:event_TF_search_userActionPerformed
+    }//GEN-LAST:event_TF_search_user_loanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +305,7 @@ public class FrmLoan extends javax.swing.JFrame {
     private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;
     private Components.TableUser JTableLoan;
-    private Components.TextField TF_search_user;
+    private Components.TextField TF_search_user_loan;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
