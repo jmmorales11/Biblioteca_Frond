@@ -5,6 +5,7 @@
 package view;
 
 import Components.Background;
+import Controller.CtrBinnacle;
 import java.awt.Color;
 
 /**
@@ -17,11 +18,15 @@ public class FrmReport extends javax.swing.JFrame {
      * Creates new form FrmReport
      */
     Background back = new Background();
+    CtrBinnacle ctrbinnacle;
     public FrmReport() {
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
         JSCROLL_Report.getViewport().setBackground(Color.WHITE);
+        ctrbinnacle=  new CtrBinnacle();
+        ctrbinnacle.loadBooks(tableModel1);
+        
     }
 
     /**
@@ -92,6 +97,12 @@ public class FrmReport extends javax.swing.JFrame {
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(null);
+
+        textField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textField1KeyReleased(evt);
+            }
+        });
         jPanel3.add(textField1);
         textField1.setBounds(300, 0, 770, 50);
 
@@ -125,15 +136,15 @@ public class FrmReport extends javax.swing.JFrame {
         JSCROLL_Report.setViewportView(tableModel1);
 
         panelBorder2.add(JSCROLL_Report);
-        JSCROLL_Report.setBounds(10, 0, 980, 350);
+        JSCROLL_Report.setBounds(10, 0, 1180, 350);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, 1201, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,6 +167,10 @@ public class FrmReport extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField1KeyReleased
+        ctrbinnacle.DataFiltter(textField1);
+    }//GEN-LAST:event_textField1KeyReleased
 
     /**
      * @param args the command line arguments

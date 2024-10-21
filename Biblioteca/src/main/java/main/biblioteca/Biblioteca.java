@@ -4,6 +4,7 @@
 
 package main.biblioteca;
 
+import Modelo.Binnacle;
 import Modelo.Book;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.SwingUtilities;
@@ -23,11 +24,13 @@ public class Biblioteca {
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
 
-        FrmLogIn login= new FrmLogIn();
-        // Hacer visible la ventana
-        login.setVisible(true);
+//        FrmLogIn login= new FrmLogIn();
+//        // Hacer visible la ventana
+//        login.setVisible(true);
 
 //          Book book= new Book();
 //          book.getBook();
+            Binnacle bn= new Binnacle();
+            bn.getReport();
     }
 }
