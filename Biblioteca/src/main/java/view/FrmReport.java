@@ -43,8 +43,7 @@ public class FrmReport extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Regresar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         textField1 = new Components.TextField();
         jLabel1 = new javax.swing.JLabel();
@@ -73,24 +72,17 @@ public class FrmReport extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(9, 57, 134));
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Regresar.setBackground(new java.awt.Color(9, 57, 134));
+        Regresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                RegresarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(48, 6, 86, 38);
-
-        jButton2.setBackground(new java.awt.Color(9, 57, 134));
-        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("jButton2");
-        jPanel2.add(jButton2);
-        jButton2.setBounds(1166, 3, 86, 40);
+        jPanel2.add(Regresar);
+        Regresar.setBounds(48, 6, 86, 38);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 550, 1300, 50);
@@ -164,9 +156,9 @@ public class FrmReport extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_RegresarActionPerformed
 
     private void textField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField1KeyReleased
         ctrbinnacle.DataFiltter(textField1);
@@ -209,8 +201,7 @@ public class FrmReport extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JSCROLL_Report;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Regresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

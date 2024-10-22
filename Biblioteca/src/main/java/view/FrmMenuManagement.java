@@ -4,6 +4,7 @@
  */
 package view;
 
+import Controller.CtrMenuOptions;
 import java.awt.Color;
 
 /**
@@ -15,10 +16,12 @@ public class FrmMenuManagement extends javax.swing.JFrame {
     /**
      * Creates new form FrmMenuManagement
      */
+    CtrMenuOptions ctrM ;
     public FrmMenuManagement() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUserBook.MAXIMIZED_BOTH);
+        ctrM= new CtrMenuOptions(this);
     }
 
     /**
@@ -242,7 +245,7 @@ public class FrmMenuManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_back_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menuActionPerformed
-        
+        ctrM.backmenuManagement();
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 
     /**

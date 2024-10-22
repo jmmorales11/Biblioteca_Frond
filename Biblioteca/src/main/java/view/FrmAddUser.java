@@ -4,6 +4,8 @@
  */
 package view;
 
+import Components.Background;
+import Controller.CtrUser;
 import java.awt.Color;
 
 /**
@@ -15,10 +17,19 @@ public class FrmAddUser extends javax.swing.JFrame {
     /**
      * Creates new form FrmAddUser
      */
+    Background back = new Background();
+    CtrUser ctrUser;
     public FrmAddUser() {
+        this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUserBook.MAXIMIZED_BOTH);
+        ctrUser = new CtrUser();
+        
+        
+        
+        
+        
     }
 
     /**
@@ -33,18 +44,18 @@ public class FrmAddUser extends javax.swing.JFrame {
 
         panelBorder1 = new Components.PanelBorder();
         jPanel1 = new javax.swing.JPanel();
-        textField1 = new Components.TextField();
-        textField4 = new Components.TextField();
-        textField5 = new Components.TextField();
-        textField6 = new Components.TextField();
+        TXT_name = new Components.TextField();
+        TXT_TypeUser = new Components.TextField();
+        TXT_codeUser = new Components.TextField();
+        TXT_last_name = new Components.TextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        textField3 = new Components.TextField();
-        select1 = new Components.Select();
+        TXT_email = new Components.TextField();
+        TXT_grade = new Components.Select();
         jPanel2 = new javax.swing.JPanel();
         BTN_back_menu = new javax.swing.JButton();
         BTN_back_menu1 = new javax.swing.JButton();
@@ -59,14 +70,14 @@ public class FrmAddUser extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
-        jPanel1.add(textField1);
-        textField1.setBounds(700, 200, 500, 50);
-        jPanel1.add(textField4);
-        textField4.setBounds(110, 120, 1090, 50);
-        jPanel1.add(textField5);
-        textField5.setBounds(110, 41, 500, 50);
-        jPanel1.add(textField6);
-        textField6.setBounds(110, 200, 550, 50);
+        jPanel1.add(TXT_name);
+        TXT_name.setBounds(700, 200, 500, 50);
+        jPanel1.add(TXT_TypeUser);
+        TXT_TypeUser.setBounds(110, 120, 1090, 50);
+        jPanel1.add(TXT_codeUser);
+        TXT_codeUser.setBounds(110, 41, 500, 50);
+        jPanel1.add(TXT_last_name);
+        TXT_last_name.setBounds(110, 200, 550, 50);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel3.setText("Codigo Usuario");
@@ -97,10 +108,12 @@ public class FrmAddUser extends javax.swing.JFrame {
         jLabel8.setText("Grado");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(120, 260, 110, 16);
-        jPanel1.add(textField3);
-        textField3.setBounds(110, 350, 1100, 50);
-        jPanel1.add(select1);
-        select1.setBounds(115, 280, 1090, 40);
+        jPanel1.add(TXT_email);
+        TXT_email.setBounds(110, 350, 1100, 50);
+
+        TXT_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria", "bachillerato", " " }));
+        jPanel1.add(TXT_grade);
+        TXT_grade.setBounds(115, 280, 1090, 40);
 
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(0, 100, 1300, 420);
@@ -196,13 +209,38 @@ public class FrmAddUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_back_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menuActionPerformed
-
+        ctrUser.addUser(this);
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 
     private void BTN_back_menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menu1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_back_menu1ActionPerformed
-
+    /*Metodos get y set*/
+    public String getTypeUser() {
+            return TXT_TypeUser.getText();
+        }
+    
+    public String getCodeUser() {
+        return TXT_codeUser.getText();
+    }
+    
+    public String getEmail() {
+        return TXT_email.getText();
+    }
+    
+    public String getGrade() {
+        return TXT_grade.getSelectedItem().toString();  // Supone que Select tiene este método
+    }
+    
+    public String getLastName() {
+        return TXT_last_name.getText();
+    }
+    
+    public String getName() {
+        return TXT_name.getText();
+    }
+    
+    /*Metodos get y set*/
     /**
      * @param args the command line arguments
      */
@@ -237,11 +275,20 @@ public class FrmAddUser extends javax.swing.JFrame {
                 new FrmAddUser().setVisible(true);
             }
         });
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_back_menu1;
+    private Components.TextField TXT_TypeUser;
+    private Components.TextField TXT_codeUser;
+    private Components.TextField TXT_email;
+    private Components.Select TXT_grade;
+    private Components.TextField TXT_last_name;
+    private Components.TextField TXT_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -253,11 +300,5 @@ public class FrmAddUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private Components.PanelBorder panelBorder1;
-    private Components.Select select1;
-    private Components.TextField textField1;
-    private Components.TextField textField3;
-    private Components.TextField textField4;
-    private Components.TextField textField5;
-    private Components.TextField textField6;
     // End of variables declaration//GEN-END:variables
 }

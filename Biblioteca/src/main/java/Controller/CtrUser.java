@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -22,8 +23,10 @@ import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import view.FrmAddUser;
 import view.FrmMenuOptions;
 import view.FrmBook;
+import view.FrmMenuManagement;
 import view.FrmUserBook;
 import view.FrmUser;
 
@@ -115,7 +118,57 @@ public class CtrUser {
         String formattedDate = actualDate.format(formatter); 
         DateTextField.setText(formattedDate); 
     }
-    //Seleccionar usuario
+    //Agregar Usuario
+    
+    public void addUser(FrmAddUser frmaddUser) {
+        FrmMenuManagement frmenuMana = new FrmMenuManagement();
+        String code = frmaddUser.getCodeUser();
+        String name = frmaddUser.getName();
+        String lastName = frmaddUser.getLastName();
+        String grade = frmaddUser.getGrade();
+        String mail = frmaddUser.getEmail();
+        String typeUser = frmaddUser.getTypeUser();
+        // Confirmar si se desea agregar el usuario
+        int confirm = JOptionPane.showConfirmDialog(
+            null,
+            "¿Estás seguro de que deseas agregar este usuario?",
+            "Confirmación",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        // Si el usuario confirma
+        if (confirm == JOptionPane.YES_OPTION) {
+            String resultMessage = user.addUser(code, typeUser, name, lastName, mail, grade);
+
+            // Mostrar mensaje según el resultado
+            if (resultMessage.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Usuario agregado con éxito.",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                frmaddUser.setVisible(false);
+                frmenuMana.setVisible(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Error al agregar el usuario: " + resultMessage,
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } else {
+            JOptionPane.showMessageDialog(
+                null,
+                "Operación cancelada.",
+                "Cancelado",
+                JOptionPane.WARNING_MESSAGE
+            );
+        }
+    }
+
     
     
     

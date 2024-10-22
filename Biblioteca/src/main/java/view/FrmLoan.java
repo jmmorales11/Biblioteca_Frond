@@ -275,7 +275,7 @@ public class FrmLoan extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_nexUserActionPerformed
 
     private void BTN_back_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menuActionPerformed
-        // TODO add your handling code here:
+        ctrLoan.backmenu(this);
         
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 

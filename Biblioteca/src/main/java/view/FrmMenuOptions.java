@@ -94,6 +94,11 @@ public class FrmMenuOptions extends javax.swing.JFrame {
 
         BTN_deliver.setBackground(new java.awt.Color(242, 242, 242));
         BTN_deliver.setOpaque(isVisible());
+        BTN_deliver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_deliverActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 150;
@@ -102,6 +107,11 @@ public class FrmMenuOptions extends javax.swing.JFrame {
 
         BTN_manage.setBackground(new java.awt.Color(242, 242, 242));
         BTN_manage.setOpaque(isVisible());
+        BTN_manage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_manageActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 150;
@@ -212,6 +222,14 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         
         ctrM.purchaseUser();
     }//GEN-LAST:event_BTN_purchaseActionPerformed
+
+    private void BTN_manageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_manageActionPerformed
+        ctrM.menuManagement();
+    }//GEN-LAST:event_BTN_manageActionPerformed
+
+    private void BTN_deliverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deliverActionPerformed
+        ctrM.loan();
+    }//GEN-LAST:event_BTN_deliverActionPerformed
 
     /**
      * @param args the command line arguments

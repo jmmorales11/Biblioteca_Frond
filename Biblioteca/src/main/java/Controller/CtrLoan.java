@@ -21,6 +21,8 @@ import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import view.FrmLoan;
+import view.FrmMenuOptions;
 
 /**
  *
@@ -123,5 +125,12 @@ public class CtrLoan {
         }catch(Exception e){
             throw new RuntimeException("Error internal");
         }
+    }
+    
+    
+    public void backmenu(FrmLoan frmloan){
+        FrmMenuOptions frmMenu = new FrmMenuOptions() ;
+        frmMenu.setVisible(true);
+        frmloan.setVisible(false);
     }
 }

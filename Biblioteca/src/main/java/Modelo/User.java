@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+import org.json.JSONObject;
 
 /**
  *
@@ -113,6 +115,110 @@ public class User {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    //Agregar usuarios
+//    public boolean addUser(String code,String typeUser ,String name, String lastName, String mail, String grade ) {
+//        try {
+//            System.out.println("Inicio");
+//            URL url = new URL("http://localhost:8080/user/without-password");
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//            connection.setRequestMethod("POST");
+//            connection.setDoOutput(true);
+//            connection.setRequestProperty("Content-Type", "application/json; utf-8");
+//            connection.setRequestProperty("Accept", "application/json");
+//                        System.out.println("Inicio  3");
+//
+//            String jsonInputString = "{\"user_name\": \"" + name + 
+//                    "\", \"user_last_name\": \"" + lastName + 
+//                    "\", \"mail\": \"" + mail + 
+//                    "\", \"role\": \"" + typeUser + 
+//                    "\", \"grade\": \"" + grade + 
+//                    "\" , \"code\": \"" + code + "\"}";
+//            System.out.println(jsonInputString);
+//            try (OutputStream os = connection.getOutputStream()) {
+//                byte[] input = jsonInputString.getBytes("utf-8");
+//                os.write(input, 0, input.length);
+//            }
+//            int responseCode = connection.getResponseCode();
+//            if (responseCode != 200) {
+//                throw new RuntimeException("Error: " + responseCode);
+//            } else {
+//                StringBuilder response = new StringBuilder();
+//                Scanner scanner = new Scanner(connection.getInputStream());
+//                while (scanner.hasNext()) {
+//                    response.append(scanner.nextLine());
+//                }
+//                scanner.close();
+//
+//                // Mostrar la respuesta
+//                System.out.println(response.toString());
+//                return true;
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Ocurrió un error: " + e.getMessage());
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
+
+    
+    public String addUser(String code, String typeUser, String name, String lastName, String mail, String grade) {
+        try {
+            System.out.println("Inicio");
+            URL url = new URL("http://localhost:8080/user/without-password");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/json; utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            System.out.println("Inicio 3");
+
+            String jsonInputString = "{\"user_name\": \"" + name + 
+                    "\", \"user_last_name\": \"" + lastName + 
+                    "\", \"mail\": \"" + mail + 
+                    "\", \"role\": \"" + typeUser + 
+                    "\", \"grade\": \"" + grade + 
+                    "\" , \"code\": \"" + code + "\"}";
+            System.out.println(jsonInputString);
+
+            // Enviar datos al backend
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = connection.getResponseCode();
+            System.out.println("Código de respuesta: " + responseCode);
+
+            if (responseCode == 200) {
+                // Leer la respuesta exitosa
+                StringBuilder response = new StringBuilder();
+                try (Scanner scanner = new Scanner(connection.getInputStream())) {
+                    while (scanner.hasNext()) {
+                        response.append(scanner.nextLine());
+                    }
+                }
+                System.out.println("Respuesta: " + response.toString());
+                return ""; // Indica que no hay error, se insertaron los datos
+            } else {
+                // Leer la respuesta de error como JSON
+                StringBuilder errorResponse = new StringBuilder();
+                try (Scanner scanner = new Scanner(connection.getErrorStream())) {
+                    while (scanner.hasNext()) {
+                        errorResponse.append(scanner.nextLine());
+                    }
+                }
+                // Parsear el JSON de error
+                JSONObject json = new JSONObject(errorResponse.toString());
+                String errorMessage = json.getString("message");
+                System.err.println("Error del backend: " + errorMessage); // Mostrar solo el mensaje
+                return errorMessage; // Devuelve el mensaje de error
+            }
+        } catch (Exception e) {
+            System.err.println("Ocurrió un error: " + e.getMessage());
+            return "Ocurrió un error inesperado: " + e.getMessage(); // Devuelve el mensaje de error
         }
     }
 

@@ -6,6 +6,7 @@ package main.biblioteca;
 
 import Modelo.Binnacle;
 import Modelo.Book;
+import Modelo.User;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -30,7 +31,7 @@ public class Biblioteca {
 
 //          Book book= new Book();
 //          book.getBook();
-            Binnacle bn= new Binnacle();
-            bn.getReport();
+//            User user =  new User();
+//            user.addUser("1754146676", "Estudiante", "Jeimy", "Morales", "jeimym@gmail.com", "segundaria");
     }
 }
