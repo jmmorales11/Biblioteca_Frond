@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import view.FrmMenuManagement;
+import view.FrmReport;
 
 /**
  *
@@ -89,6 +91,11 @@ public class CtrBinnacle {
             throw new RuntimeException("Error internal");
         }
     }
-
+    
+    public void returnMenuManagement(FrmReport frmreport){
+        FrmMenuManagement frmMenumana = new FrmMenuManagement();
+        frmreport.setVisible(false);
+        frmMenumana.setVisible(true);
+    }
     
 }

@@ -157,7 +157,7 @@ public class FrmReport extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
-        // TODO add your handling code here:
+        ctrbinnacle.returnMenuManagement(this);
     }//GEN-LAST:event_RegresarActionPerformed
 
     private void textField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField1KeyReleased

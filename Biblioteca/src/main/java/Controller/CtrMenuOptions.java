@@ -4,12 +4,17 @@
  */
 package Controller;
 
+import view.FrmAddBook;
 import view.FrmAddUser;
 import view.FrmMenuOptions;
 import view.FrmBook;
 import view.FrmLoan;
 import view.FrmMenuManagement;
+import view.FrmQuantityBooksLent;
+import view.FrmReport;
 import view.FrmUser;
+import view.FrmViewBooks;
+import view.FrmViewUser;
 
 /**
  *
@@ -54,4 +59,35 @@ public class CtrMenuOptions {
         frmMenuManagement.setVisible(false);
         frmadduser.setVisible(true);
     }
+    
+    public void viewUser(){
+        FrmViewUser frmviewuser = new FrmViewUser();
+        frmMenuManagement.setVisible(false);
+        frmviewuser.setVisible(true);
+    }
+    
+    public void addBook(){
+        FrmAddBook frmaddbook = new FrmAddBook();
+        frmMenuManagement.setVisible(false);
+        frmaddbook.setVisible(true);
+    }
+    
+    public void viewBook(){
+        FrmViewBooks frmviewbook = new FrmViewBooks();
+        frmMenuManagement.setVisible(false);
+        frmviewbook.setVisible(true);
+    }
+    public void viewReport(){
+        FrmReport frmreport = new FrmReport();
+        frmMenuManagement.setVisible(false);
+        frmreport.setVisible(true);
+    }
+    public void viewQuantity(){
+        
+        FrmQuantityBooksLent frmQuantity = new FrmQuantityBooksLent();
+        frmMenuManagement.setVisible(false);
+        frmQuantity.setVisible(true);
+    }
+    
+   
 }

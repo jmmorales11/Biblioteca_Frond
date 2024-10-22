@@ -29,7 +29,7 @@ public class FrmUser extends javax.swing.JFrame {
         initComponents();
         UserBook userbook = new UserBook();
         this.ctrUserBooks = new CtrUserBooks(userbook);
-        
+        back.BackgroundTrasparent(BTN_addUser);
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUser.MAXIMIZED_BOTH);
         ctrUser = new CtrUser(this);
@@ -63,6 +63,7 @@ public class FrmUser extends javax.swing.JFrame {
         TF_search_user = new Components.TextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        BTN_addUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -213,6 +214,7 @@ public class FrmUser extends javax.swing.JFrame {
         jPanel7.setBounds(0, 10, 1350, 70);
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel1.setLayout(null);
 
         TF_search_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,39 +226,25 @@ public class FrmUser extends javax.swing.JFrame {
                 TF_search_userKeyReleased(evt);
             }
         });
+        jPanel1.add(TF_search_user);
+        TF_search_user.setBounds(204, 8, 580, 48);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel3.setText("Buscar :");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(120, 6, 66, 50);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconmas3.png"))); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(810, 20, 28, 19);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(TF_search_user, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(498, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TF_search_user, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(43, 43, 43))))
-        );
+        BTN_addUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_addUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_addUser);
+        BTN_addUser.setBounds(800, 13, 40, 30);
 
         panelBorder2.add(jPanel1);
         jPanel1.setBounds(0, 70, 1350, 75);
@@ -291,6 +279,10 @@ public class FrmUser extends javax.swing.JFrame {
        
     }//GEN-LAST:event_TF_search_userActionPerformed
 
+    private void BTN_addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addUserActionPerformed
+        ctrUser.axilarAddUser();
+    }//GEN-LAST:event_BTN_addUserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +297,7 @@ public class FrmUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_addUser;
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;

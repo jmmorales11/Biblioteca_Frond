@@ -213,7 +213,7 @@ public class FrmAddUser extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_back_menuActionPerformed
 
     private void BTN_back_menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menu1ActionPerformed
-        // TODO add your handling code here:
+        ctrUser.returnManagement(this);
     }//GEN-LAST:event_BTN_back_menu1ActionPerformed
     /*Metodos get y set*/
     public String getTypeUser() {

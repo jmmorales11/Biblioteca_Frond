@@ -19,14 +19,16 @@ public class FrmMenuOptions extends javax.swing.JFrame {
      * Creates new form MenuOptions
      */
     CtrMenuOptions ctrM ;
+    Background back= new Background();
     public FrmMenuOptions() {
+        this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
-        Background bgt= new Background();
-        bgt.BackgroundTrasparent(BTN_deliver);
-        bgt.BackgroundTrasparent(BTN_purchase);
-        bgt.BackgroundTrasparent(BTN_manage);
+        
+        back.BackgroundTrasparent(BTN_deliver);
+        back.BackgroundTrasparent(BTN_purchase);
+        back.BackgroundTrasparent(BTN_manage);
         ctrM= new CtrMenuOptions(this);
         
         

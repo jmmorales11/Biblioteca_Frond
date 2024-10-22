@@ -5,6 +5,8 @@
 package view;
 
 import Components.Background;
+import Components.ScrollBar;
+import Controller.CtrUser;
 import java.awt.Color;
 
 /**
@@ -17,11 +19,15 @@ public class FrmViewUser extends javax.swing.JFrame {
      * Creates new form FrmViewUser
      */
     Background back = new Background();
+    CtrUser ctruser;
     public FrmViewUser() {
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
         jScroll_View_User.getViewport().setBackground(Color.WHITE);
+        jScroll_View_User.setVerticalScrollBar(new ScrollBar());
+        ctruser= new CtrUser();
+        ctruser.loadUsers(tableModel1);
     }
 
     /**
@@ -73,7 +79,11 @@ public class FrmViewUser extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(150, 0, 60, 50);
 
-        textField1.setText("textField1");
+        textField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textField1KeyReleased(evt);
+            }
+        });
         jPanel2.add(textField1);
         textField1.setBounds(230, 0, 720, 50);
 
@@ -140,7 +150,12 @@ public class FrmViewUser extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(9, 57, 134));
         jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("jButton1");
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton1);
         jButton1.setBounds(40, 0, 100, 40);
 
@@ -161,6 +176,14 @@ public class FrmViewUser extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField1KeyReleased
+        ctruser.DataFiltter(textField1);
+    }//GEN-LAST:event_textField1KeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ctruser.returnManagementview(this);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

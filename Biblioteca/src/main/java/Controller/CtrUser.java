@@ -29,6 +29,7 @@ import view.FrmBook;
 import view.FrmMenuManagement;
 import view.FrmUserBook;
 import view.FrmUser;
+import view.FrmViewUser;
 
 /**
  *
@@ -187,6 +188,23 @@ public class CtrUser {
         FrmMenuOptions frmMenu= new FrmMenuOptions();
         frmMenu.setVisible(true);
         frmUserNew.setVisible(false);
+    }
+    public void axilarAddUser(){
+        FrmAddUser frmAddUser= new FrmAddUser();
+        frmAddUser.setVisible(true);
+        frmUserNew.setVisible(false);
+    }
+    
+    public void returnManagement(FrmAddUser frmadduser){
+        FrmMenuManagement frmMenumana = new FrmMenuManagement();
+        frmadduser.setVisible(false);
+        frmMenumana.setVisible(true);
+    }
+    
+    public void returnManagementview(FrmViewUser frmviewuser){
+        FrmMenuManagement frmMenumana = new FrmMenuManagement();
+        frmviewuser.setVisible(false);
+        frmMenumana.setVisible(true);
     }
     
     

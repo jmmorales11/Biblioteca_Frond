@@ -5,6 +5,7 @@
 package view;
 
 import Components.Background;
+import Controller.CtrBook;
 
 /**
  *
@@ -16,10 +17,12 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
      * Creates new form FrmQuantityBooksLent
      */
     Background back = new Background();
+    CtrBook ctrbook;
     public FrmQuantityBooksLent() {
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
+        ctrbook= new CtrBook();
     }
 
     /**
@@ -83,7 +86,12 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(9, 57, 134));
         jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("jButton1");
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1);
         jButton1.setBounds(30, 0, 95, 44);
 
@@ -138,6 +146,10 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ctrbook.returnManagementQ(this);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
