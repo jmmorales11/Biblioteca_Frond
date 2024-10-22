@@ -7,6 +7,7 @@ package Controller;
 import Modelo.Book;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -14,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import view.FrmAddBook;
+import view.FrmAddUser;
 import view.FrmBook;
 import view.FrmMenuManagement;
 import view.FrmQuantityBooksLent;
@@ -165,11 +168,56 @@ public class CtrBook {
         FrmUserBook frmUserBook= new FrmUserBook(ctrUserBooks);
         
         frmBooks.setVisible(false);
-        frmUserBook.setVisible(true);
-//        DefaultTableModel modelo1 = new DefaultTableModel() ;
-//        frmUserBook.getJTableBook().setModel(modelo1);
-
-        
+        frmUserBook.setVisible(true); 
+    }
+    
+    public void addBooks(FrmAddBook frmaddbook) {
+//        FrmMenuManagement frmenuMana = new FrmMenuManagement();
+//        String code = frmaddUser.getCodeUser();
+//        String name = frmaddUser.getName();
+//        String lastName = frmaddUser.getLastName();
+//        String grade = frmaddUser.getGrade();
+//        String mail = frmaddUser.getEmail();
+//        String typeUser = frmaddUser.getTypeUser();
+//        // Confirmar si se desea agregar el usuario
+//        int confirm = JOptionPane.showConfirmDialog(
+//            null,
+//            "¿Estás seguro de que deseas agregar este usuario?",
+//            "Confirmación",
+//            JOptionPane.YES_NO_OPTION
+//        );
+//
+//        // Si el usuario confirma
+//        if (confirm == JOptionPane.YES_OPTION) {
+//            String resultMessage = book.addBook(title, author, language, code, grade, section, description, physical_state)
+//
+//            // Mostrar mensaje según el resultado
+//            if (resultMessage.isEmpty()) {
+//                JOptionPane.showMessageDialog(
+//                    null,
+//                    "Usuario agregado con éxito.",
+//                    "Éxito",
+//                    JOptionPane.INFORMATION_MESSAGE
+//                );
+//                frmaddUser.setVisible(false);
+//                frmenuMana.setVisible(true);
+//                
+//            } else {
+//                JOptionPane.showMessageDialog(
+//                    null,
+//                    "Error al agregar el usuario: " + resultMessage,
+//                    "Error",
+//                    JOptionPane.ERROR_MESSAGE
+//                );
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(
+//                null,
+//                "Operación cancelada.",
+//                "Cancelado",
+//                JOptionPane.WARNING_MESSAGE
+//            );
+//        }
     }
     
     public void returnManagement(FrmViewBooks frmviewBooks){
@@ -180,6 +228,12 @@ public class CtrBook {
     public void returnManagementQ(FrmQuantityBooksLent frmviewBooksLent){
         FrmMenuManagement frmMenumana = new FrmMenuManagement();
         frmviewBooksLent.setVisible(false);
+        frmMenumana.setVisible(true);
+    }
+    
+    public void returnManagementA(FrmAddBook frmaddbook){
+        FrmMenuManagement frmMenumana = new FrmMenuManagement();
+         frmaddbook.setVisible(false);
         frmMenumana.setVisible(true);
     }
     

@@ -4,9 +4,11 @@
  */
 package Modelo;
 
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
+import org.json.JSONObject;
 
 /**
  *
@@ -44,5 +46,63 @@ public class Book {
         }
 
         return information.toString(); 
+    }
+    
+    public String addBook(String title, String author, String language, String code, String grade, String section, String description, String physical_state) {
+        try {
+            System.out.println("Inicio");
+            URL url = new URL("http://localhost:8080/book");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/json; utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            System.out.println("Inicio 3");
+
+            String jsonInputString = "{\"title\": \"" + title + 
+                    "\", \"author\": \"" + author + 
+                    "\", \"language\": \"" + language + 
+                    "\", \"code\": \"" + code + 
+                    "\", \"grade\": \"" + grade + 
+                    "\" , \"section\": \"" + section +
+                    "\" , \"description\": \"" + description + 
+                    "\" , \"physical_state\": \"" + physical_state+ "\"}";
+            System.out.println(jsonInputString);
+
+            // Enviar datos al backend
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode == 200) {
+                // Leer la respuesta exitosa
+                StringBuilder response = new StringBuilder();
+                try (Scanner scanner = new Scanner(connection.getInputStream())) {
+                    while (scanner.hasNext()) {
+                        response.append(scanner.nextLine());
+                    }
+                }
+                System.out.println("Respuesta: " + response.toString());
+                return ""; 
+            } else {
+                // Leer la respuesta de error como JSON
+                StringBuilder errorResponse = new StringBuilder();
+                try (Scanner scanner = new Scanner(connection.getErrorStream())) {
+                    while (scanner.hasNext()) {
+                        errorResponse.append(scanner.nextLine());
+                    }
+                }
+                
+                JSONObject json = new JSONObject(errorResponse.toString());
+                String errorMessage = json.getString("message");
+                System.err.println("Error del backend: " + errorMessage); 
+                return errorMessage; 
+            }
+        } catch (Exception e) {
+            return "Ocurrió un error inesperado: " + e.getMessage();
+        }
     }
 }
