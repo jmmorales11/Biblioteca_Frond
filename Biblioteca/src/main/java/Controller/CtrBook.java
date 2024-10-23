@@ -172,52 +172,56 @@ public class CtrBook {
     }
     
     public void addBooks(FrmAddBook frmaddbook) {
-//        FrmMenuManagement frmenuMana = new FrmMenuManagement();
-//        String code = frmaddUser.getCodeUser();
-//        String name = frmaddUser.getName();
-//        String lastName = frmaddUser.getLastName();
-//        String grade = frmaddUser.getGrade();
-//        String mail = frmaddUser.getEmail();
-//        String typeUser = frmaddUser.getTypeUser();
-//        // Confirmar si se desea agregar el usuario
-//        int confirm = JOptionPane.showConfirmDialog(
-//            null,
-//            "¿Estás seguro de que deseas agregar este usuario?",
-//            "Confirmación",
-//            JOptionPane.YES_NO_OPTION
-//        );
-//
-//        // Si el usuario confirma
-//        if (confirm == JOptionPane.YES_OPTION) {
-//            String resultMessage = book.addBook(title, author, language, code, grade, section, description, physical_state)
-//
-//            // Mostrar mensaje según el resultado
-//            if (resultMessage.isEmpty()) {
-//                JOptionPane.showMessageDialog(
-//                    null,
-//                    "Usuario agregado con éxito.",
-//                    "Éxito",
-//                    JOptionPane.INFORMATION_MESSAGE
-//                );
-//                frmaddUser.setVisible(false);
-//                frmenuMana.setVisible(true);
-//                
-//            } else {
-//                JOptionPane.showMessageDialog(
-//                    null,
-//                    "Error al agregar el usuario: " + resultMessage,
-//                    "Error",
-//                    JOptionPane.ERROR_MESSAGE
-//                );
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(
-//                null,
-//                "Operación cancelada.",
-//                "Cancelado",
-//                JOptionPane.WARNING_MESSAGE
-//            );
-//        }
+        FrmMenuManagement frmenuMana = new FrmMenuManagement();
+        String title = frmaddbook.getTitleBook();
+        String author = frmaddbook.getAuthor();
+        String language = frmaddbook.getLanguage();
+        String code = frmaddbook.getCode();
+        String grade = frmaddbook.getGrade();
+        String section = frmaddbook.getSection();
+        String description =frmaddbook.getDescription();
+        String physical_state =frmaddbook.getPhysicalstate();
+        
+       
+        // Confirmar si se desea agregar el usuario
+        int confirm = JOptionPane.showConfirmDialog(
+            null,
+            "¿Estás seguro de que deseas agregar este usuario?",
+            "Confirmación",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        // Si el usuario confirma
+        if (confirm == JOptionPane.YES_OPTION) {
+            String resultMessage = book.addBook(title, author, language, code, grade, section, description, physical_state);
+
+            // Mostrar mensaje según el resultado
+            if (resultMessage.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Libro agregado con éxito.",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                frmaddbook.setVisible(false);
+                frmenuMana.setVisible(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Error al agregar el libro: " + resultMessage,
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } else {
+            JOptionPane.showMessageDialog(
+                null,
+                "Operación cancelada.",
+                "Cancelado",
+                JOptionPane.WARNING_MESSAGE
+            );
+        }
     }
     
     public void returnManagement(FrmViewBooks frmviewBooks){

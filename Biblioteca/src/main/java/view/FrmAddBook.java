@@ -41,11 +41,9 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        textField1 = new Components.TextField();
-        textField2 = new Components.TextField();
-        textField4 = new Components.TextField();
-        textField5 = new Components.TextField();
-        textField6 = new Components.TextField();
+        TXT_code = new Components.TextField();
+        TXT_author = new Components.TextField();
+        TXT_title = new Components.TextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,10 +52,15 @@ public class FrmAddBook extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScroll_TextArea_Book = new javax.swing.JScrollPane();
-        textArea2 = new Components.TextArea();
-        select2 = new Components.Select();
+        TA_description = new Components.TextArea();
+        SLC_grade = new Components.Select();
+        SLC_section = new Components.Select();
+        SLC_language = new Components.Select();
+        TXT_physicalState = new Components.TextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        BTN_addBook = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -95,72 +98,75 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(null);
 
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        TXT_code.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                TXT_codeActionPerformed(evt);
             }
         });
-        jPanel2.add(textField1);
-        textField1.setBounds(170, 35, 450, 55);
-        jPanel2.add(textField2);
-        textField2.setBounds(697, 35, 450, 55);
-        jPanel2.add(textField4);
-        textField4.setBounds(697, 108, 450, 52);
-        jPanel2.add(textField5);
-        textField5.setBounds(170, 184, 450, 53);
-
-        textField6.setText("textField6");
-        textField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField6ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(textField6);
-        textField6.setBounds(697, 184, 450, 53);
+        jPanel2.add(TXT_code);
+        TXT_code.setBounds(160, 30, 450, 55);
+        jPanel2.add(TXT_author);
+        TXT_author.setBounds(690, 110, 450, 55);
+        jPanel2.add(TXT_title);
+        TXT_title.setBounds(690, 180, 450, 52);
 
         jLabel1.setText("Codigo");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(178, 13, 69, 16);
+        jLabel1.setBounds(180, 10, 69, 16);
 
         jLabel2.setText("Grado");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(176, 91, 73, 16);
+        jLabel2.setBounds(170, 90, 73, 16);
 
         jLabel3.setText("Idioma");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(176, 162, 57, 16);
+        jLabel3.setBounds(170, 160, 57, 16);
 
         jLabel4.setText("Descripcion");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(176, 249, 80, 16);
+        jLabel4.setBounds(170, 310, 80, 16);
 
         jLabel5.setText("Autor");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(705, 13, 68, 16);
+        jLabel5.setBounds(700, 90, 68, 16);
 
         jLabel6.setText("Titulo de la Obra");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(703, 91, 140, 16);
+        jLabel6.setBounds(700, 160, 140, 16);
 
         jLabel7.setText("Seccion");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(703, 162, 57, 16);
+        jLabel7.setBounds(700, 230, 57, 16);
 
         jScroll_TextArea_Book.setBackground(new java.awt.Color(255, 255, 255));
         jScroll_TextArea_Book.setBorder(null);
         jScroll_TextArea_Book.setOpaque(false);
 
-        textArea2.setColumns(20);
-        textArea2.setRows(5);
-        jScroll_TextArea_Book.setViewportView(textArea2);
+        TA_description.setColumns(20);
+        TA_description.setRows(5);
+        jScroll_TextArea_Book.setViewportView(TA_description);
 
         jPanel2.add(jScroll_TextArea_Book);
-        jScroll_TextArea_Book.setBounds(170, 277, 977, 116);
+        jScroll_TextArea_Book.setBounds(170, 330, 977, 116);
 
-        select2.setBorder(null);
-        select2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "p", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        jPanel2.add(select2);
-        select2.setBounds(174, 110, 440, 50);
+        SLC_grade.setBorder(null);
+        SLC_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "p", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jPanel2.add(SLC_grade);
+        SLC_grade.setBounds(165, 110, 440, 45);
+
+        SLC_section.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LL", "GR", "FR", " " }));
+        jPanel2.add(SLC_section);
+        SLC_section.setBounds(695, 250, 440, 45);
+
+        SLC_language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Español", "Ingles" }));
+        jPanel2.add(SLC_language);
+        SLC_language.setBounds(165, 180, 440, 45);
+        jPanel2.add(TXT_physicalState);
+        TXT_physicalState.setBounds(160, 250, 450, 55);
+
+        jLabel9.setText("Estado Fisico");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(170, 230, 120, 16);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 100, 1300, 450);
@@ -174,6 +180,13 @@ public class FrmAddBook extends javax.swing.JFrame {
             }
         });
 
+        BTN_addBook.setText("Agregar");
+        BTN_addBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_addBookActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -181,13 +194,17 @@ public class FrmAddBook extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1182, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1069, Short.MAX_VALUE)
+                .addComponent(BTN_addBook)
+                .addGap(40, 40, 40))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(BTN_addBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -202,18 +219,47 @@ public class FrmAddBook extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void TXT_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_codeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
-
-    private void textField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField6ActionPerformed
+    }//GEN-LAST:event_TXT_codeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ctrbook.returnManagementA(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BTN_addBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addBookActionPerformed
+        ctrbook.addBooks(this);
+    }//GEN-LAST:event_BTN_addBookActionPerformed
+    //Get y Set
+    public String getGrade() {
+        return SLC_grade.getSelectedItem().toString();
+    }
+    
+    public String  getLanguage() {
+        return SLC_language.getSelectedItem().toString();
+    }
+    
+    public String getSection() {
+        return SLC_section.getSelectedItem().toString();
+    }
+    public String getDescription() {
+        return TA_description.getText();
+    }
+    
+    public String getAuthor() {
+        return TXT_author.getText();
+    }
+    
+    public String getCode() {
+        return TXT_code.getText();
+    }
+    public String getTitleBook() {
+        return TXT_title.getText();
+    }
+    
+    public String getPhysicalstate() {
+        return TXT_physicalState.getText();
+    }
     /**
      * @param args the command line arguments
      */
@@ -250,6 +296,15 @@ public class FrmAddBook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_addBook;
+    private Components.Select SLC_grade;
+    private Components.Select SLC_language;
+    private Components.Select SLC_section;
+    private Components.TextArea TA_description;
+    private Components.TextField TXT_author;
+    private Components.TextField TXT_code;
+    private Components.TextField TXT_physicalState;
+    private Components.TextField TXT_title;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -259,17 +314,11 @@ public class FrmAddBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScroll_TextArea_Book;
     private Components.PanelBorder panelBorder1;
-    private Components.Select select2;
-    private Components.TextArea textArea2;
-    private Components.TextField textField1;
-    private Components.TextField textField2;
-    private Components.TextField textField4;
-    private Components.TextField textField5;
-    private Components.TextField textField6;
     // End of variables declaration//GEN-END:variables
 }
