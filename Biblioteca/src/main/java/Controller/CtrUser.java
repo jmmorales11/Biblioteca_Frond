@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Components.ActiveStatusRenderer;
 import Components.ButtonEditor;
 import Components.ButtonRenderer;
 import Components.CenteredCellRenderer;
@@ -98,7 +99,12 @@ public class CtrUser {
         }
         
         sorter = new TableRowSorter<>(tableModel);
-        JTableUser.setRowSorter(sorter);  
+        JTableUser.setRowSorter(sorter);
+        TableColumn codigoColumn = JTableUser.getColumnModel().getColumn(0);
+        codigoColumn.setMinWidth(0);
+        codigoColumn.setMaxWidth(0);
+        codigoColumn.setPreferredWidth(0);
+        codigoColumn.setResizable(false);
     }
     
 

@@ -4,14 +4,29 @@
  */
 package Controller;
 
+import Components.ActiveStatusRenderer;
+import Components.CircularLabel;
 import Modelo.Book;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -56,15 +71,13 @@ public class CtrBook {
 
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject bookObject = usersArray.getJSONObject(i);
-                String[] userData = new String[5];  // Array of size 6 for each column
-
-                userData[0] = bookObject.optString("code", "N/A");
-                userData[1] = bookObject.optString("title", "N/A");
-                userData[2] = bookObject.optString("author", "N/A");
-                userData[3] = bookObject.optString("description", "N/A");
-                userData[4] = bookObject.optString("status", "N/A");
-                
-
+                String[] userData = new String[6];  // Array of size 6 for each column
+                userData[0] = bookObject.optString("id_book", "N/A");
+                userData[1] = bookObject.optString("code", "N/A");
+                userData[2] = bookObject.optString("title", "N/A");
+                userData[3] = bookObject.optString("author", "N/A");
+                userData[4] = bookObject.optString("description", "N/A");
+                userData[5] = bookObject.optString("status" );
                 booksList.add(userData);
             }
         } catch (Exception e) {
@@ -73,11 +86,11 @@ public class CtrBook {
 
         return booksList;
     }
-    
+        
     public void loadBooks(JTable JTableBook) {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new Object[][]{}, 
-                new String[]{"Código", "Libro", "Autor", "Descripcion", "Activo"} // Nombres de las columnas
+                new String[]{"id","Código", "Libro", "Autor", "Descripcion","Estado" } // Nombres de las columnas
         );
 
         JTableBook.setModel(tableModel);
@@ -94,7 +107,40 @@ public class CtrBook {
         
         sorter = new TableRowSorter<>(tableModel);
         JTableBook.setRowSorter(sorter);  
+
+        
+        TableColumn codigoColumn = JTableBook.getColumnModel().getColumn(0);
+        codigoColumn.setMinWidth(0);
+        codigoColumn.setMaxWidth(0);
+        codigoColumn.setPreferredWidth(0);
+        codigoColumn.setResizable(false);
+        
+        JTableBook.getColumnModel().getColumn(5).setCellRenderer(new ActiveStatusRenderer());
+        TableColumn activoColumn = JTableBook.getColumnModel().getColumn(5);
+        activoColumn.setCellRenderer(new ActiveStatusRenderer());
+        activoColumn.setPreferredWidth(75);  
+        activoColumn.setMaxWidth(75);        
+        activoColumn.setMinWidth(75);   
+        JTableBook.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        JTableBook.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        @Override
+        public void valueChanged(ListSelectionEvent event) {
+            if (!event.getValueIsAdjusting()) {
+                int[] selectedRows = JTableBook.getSelectedRows();
+                for (int row : selectedRows) {
+                    boolean isActive = Boolean.parseBoolean(
+                            JTableBook.getValueAt(row, 5).toString()
+                    );
+                    if (!isActive) {
+                        // Si la fila no está activa, se elimina de la selección
+                        JTableBook.removeRowSelectionInterval(row, row);
+                    }
+                }
+            }
+        }
+    });
     }
+      
     
     //Filtrar busqueda de tabla
     public void DataFiltter(JTextField FiltterTextField){
@@ -124,9 +170,7 @@ public class CtrBook {
                 userData[4] = bookObject.optString("language", "N/A");
                 userData[5] = bookObject.optString("section", "N/A");
                 userData[6] = bookObject.optString("description", "N/A");
-
                 
-
                 booksList.add(userData);
             }
         } catch (Exception e) {

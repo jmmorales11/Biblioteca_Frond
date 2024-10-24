@@ -61,7 +61,7 @@ public class FrmBook extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         panelBorder3 = new Components.PanelBorder();
         JSCROLL_books = new javax.swing.JScrollPane();
-        JTableBook = new Components.Table();
+        JTableBook = new Components.TableModel();
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -161,38 +161,24 @@ public class FrmBook extends javax.swing.JFrame {
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
 
-        JSCROLL_books.setBackground(new java.awt.Color(255, 255, 255));
-        JSCROLL_books.setBorder(null);
-
         JTableBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Código", "Libro", "Autor", "Descripcion", "Activo"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         JSCROLL_books.setViewportView(JTableBook);
-        if (JTableBook.getColumnModel().getColumnCount() > 0) {
-            JTableBook.getColumnModel().getColumn(0).setResizable(false);
-            JTableBook.getColumnModel().getColumn(1).setResizable(false);
-            JTableBook.getColumnModel().getColumn(2).setResizable(false);
-            JTableBook.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         javax.swing.GroupLayout panelBorder3Layout = new javax.swing.GroupLayout(panelBorder3);
         panelBorder3.setLayout(panelBorder3Layout);
         panelBorder3Layout.setHorizontalGroup(
             panelBorder3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder3Layout.createSequentialGroup()
+            .addGroup(panelBorder3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(JSCROLL_books, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
                 .addContainerGap())
@@ -272,16 +258,13 @@ public class FrmBook extends javax.swing.JFrame {
         return JTableBook;
     }
 
-    public void setJTableBook(JTable table) {
-        this.JTableBook = (Table) table;
-        JSCROLL_books.setViewportView(table); // Actualizar el JScrollPane
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_user;
     private javax.swing.JScrollPane JSCROLL_books;
-    private Components.Table JTableBook;
+    private Components.TableModel JTableBook;
     private Components.TextField TF_search_book;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel3;

@@ -7,6 +7,7 @@ package main.biblioteca;
 import Modelo.Binnacle;
 import Modelo.Book;
 import Modelo.User;
+import Modelo.UserBook;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -34,5 +35,7 @@ public class Biblioteca {
 //          book.getBook();
 //            User user =  new User();
 //            user.addUser("1754146676", "Estudiante", "Jeimy", "Morales", "jeimym@gmail.com", "segundaria");
+//            UserBook ub= new UserBook();
+//            ub.addLoan("2024-10-24 10:13:15", "2024-10-26 10:13:15", 11, 19);
     }
 }

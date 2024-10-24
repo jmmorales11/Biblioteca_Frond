@@ -4,6 +4,7 @@
  */
 package view;
 
+import Components.Background;
 import Components.ScrollBar;
 import Controller.CtrUser;
 import Controller.CtrUserBooks;
@@ -21,7 +22,9 @@ public class FrmUserBook extends javax.swing.JFrame {
      */
     private CtrUserBooks ctrUserBooks;
     CtrUser ctrUser;
+    Background back = new Background();
     public FrmUserBook(CtrUserBooks ctrUserBooks) {
+        this.setContentPane(back);
         initComponents();
         this.ctrUserBooks= ctrUserBooks;
         
@@ -31,7 +34,8 @@ public class FrmUserBook extends javax.swing.JFrame {
         JSCROLL_user_book.setVerticalScrollBar(new ScrollBar());
         this.ctrUserBooks.loadSelectedBooksTableInto(JTable_User_book);
         ctrUser = new CtrUser();
-        ctrUser.getDate(DateTextField);
+        this.ctrUserBooks.getDate(TXT_Date);
+        this.ctrUserBooks.getDateDelivery(TXT_dateDelivery);
         this.ctrUserBooks.mostrar(this);
         
     }
@@ -51,11 +55,11 @@ public class FrmUserBook extends javax.swing.JFrame {
         BTN_loan = new javax.swing.JButton();
         BTN_back_book = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        DateTextField = new Components.TextField();
+        TXT_Date = new Components.TextField();
         TF_name_user = new Components.TextField();
         TF_last_name_user = new Components.TextField();
         TF_mail_user = new Components.TextField();
-        textField5 = new Components.TextField();
+        TXT_dateDelivery = new Components.TextField();
         panelBorder2 = new Components.PanelBorder();
         JSCROLL_user_book = new javax.swing.JScrollPane();
         JTable_User_book = new Components.TableModel();
@@ -105,8 +109,14 @@ public class FrmUserBook extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(217, 217, 217));
         jPanel2.setLayout(null);
-        jPanel2.add(DateTextField);
-        DateTextField.setBounds(980, 30, 240, 41);
+
+        TXT_Date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXT_DateActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TXT_Date);
+        TXT_Date.setBounds(980, 30, 240, 41);
         jPanel2.add(TF_name_user);
         TF_name_user.setBounds(150, 100, 500, 41);
         jPanel2.add(TF_last_name_user);
@@ -119,8 +129,8 @@ public class FrmUserBook extends javax.swing.JFrame {
         });
         jPanel2.add(TF_mail_user);
         TF_mail_user.setBounds(150, 170, 500, 41);
-        jPanel2.add(textField5);
-        textField5.setBounds(720, 170, 500, 41);
+        jPanel2.add(TXT_dateDelivery);
+        TXT_dateDelivery.setBounds(720, 170, 500, 41);
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -176,7 +186,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel2.setText("Fecha de devolucion");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(730, 140, 120, 20);
+        jLabel2.setBounds(730, 140, 160, 20);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel3.setText("Nombre");
@@ -213,6 +223,7 @@ public class FrmUserBook extends javax.swing.JFrame {
 
     private void BTN_loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loanActionPerformed
         // TODO add your handling code here:
+        ctrUserBooks.insertloan(this);
         ctrUser.menu();
     }//GEN-LAST:event_BTN_loanActionPerformed
 
@@ -224,6 +235,19 @@ public class FrmUserBook extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TF_mail_userActionPerformed
 
+    private void TXT_DateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_DateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXT_DateActionPerformed
+
+    //Get y Set
+    public String getDateDelivery() {
+        return TXT_dateDelivery.getText();
+    }
+    
+    public String getDate() {
+        return TXT_Date.getText();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -277,12 +301,13 @@ public class FrmUserBook extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_book;
     private javax.swing.JButton BTN_loan;
-    private Components.TextField DateTextField;
     private javax.swing.JScrollPane JSCROLL_user_book;
     private Components.TableModel JTable_User_book;
     private Components.TextField TF_last_name_user;
     private Components.TextField TF_mail_user;
     private Components.TextField TF_name_user;
+    private Components.TextField TXT_Date;
+    private Components.TextField TXT_dateDelivery;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -293,6 +318,5 @@ public class FrmUserBook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private Components.PanelBorder panelBorder1;
     private Components.PanelBorder panelBorder2;
-    private Components.TextField textField5;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,13 +4,17 @@
  */
 package Controller;
 
+import Components.ActiveStatusRenderer;
 import Modelo.Binnacle;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -80,7 +84,16 @@ public class CtrBinnacle {
         }
 
         sorter = new TableRowSorter<>(tableModel);
-        JTableBook.setRowSorter(sorter);  
+        JTableBook.setRowSorter(sorter);
+        JTableBook.getColumnModel().getColumn(12).setCellRenderer(new ActiveStatusRenderer());
+        
+        TableColumn activoColumn = JTableBook.getColumnModel().getColumn(12);
+        activoColumn.setCellRenderer(new ActiveStatusRenderer());
+        activoColumn.setPreferredWidth(75);  
+        activoColumn.setMaxWidth(75);        
+        activoColumn.setMinWidth(75);   
+        
+        
     }
     
     //Filtrar busqueda de tabla
