@@ -38,8 +38,7 @@ public class Biblioteca {
 //            user.addUser("1754146676", "Estudiante", "Jeimy", "Morales", "jeimym@gmail.com", "segundaria");
 //            UserBook ub= new UserBook();
 //            ub.addLoan("2024-10-24 10:13:15", "2024-10-26 10:13:15", 11, 19);
-
-////           Loan lo= new Loan();
-////           lo.addLoan(14, "2024-12-24 10:13:15");
+//           Loan lo= new Loan();
+//           lo.addLoan(15, "2024-12-24 10:13:15");
     }
 }
