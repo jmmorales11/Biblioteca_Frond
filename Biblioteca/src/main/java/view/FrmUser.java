@@ -53,7 +53,7 @@ public class FrmUser extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         panelBorder3 = new Components.PanelBorder();
         JSCROLL_tableUser = new javax.swing.JScrollPane();
-        JTableUser = new Components.TableUser();
+        JTableUser = new Components.TableModel();
         jPanel6 = new javax.swing.JPanel();
         BTN_nexUser = new javax.swing.JButton();
         BTN_back_menu = new javax.swing.JButton();
@@ -80,23 +80,15 @@ public class FrmUser extends javax.swing.JFrame {
 
         JTableUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Tipo de Usuario", "Nombre", "Apellido", "Grado", "Correo"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         JSCROLL_tableUser.setViewportView(JTableUser);
 
         javax.swing.GroupLayout panelBorder3Layout = new javax.swing.GroupLayout(panelBorder3);
@@ -112,8 +104,8 @@ public class FrmUser extends javax.swing.JFrame {
             panelBorder3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -129,7 +121,7 @@ public class FrmUser extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         panelBorder2.add(jPanel5);
@@ -301,7 +293,7 @@ public class FrmUser extends javax.swing.JFrame {
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;
-    private Components.TableUser JTableUser;
+    private Components.TableModel JTableUser;
     private Components.TextField TF_search_user;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

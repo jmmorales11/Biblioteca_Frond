@@ -5,7 +5,9 @@
 package view;
 
 import Components.Background;
+import Components.ScrollBar;
 import Controller.CtrBook;
+import java.awt.Color;
 
 /**
  *
@@ -23,6 +25,9 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
         ctrbook= new CtrBook();
+        ctrbook.bookQuantity(tableModel1);
+        JSCROLL_book_quantity.getViewport().setBackground(Color.WHITE);
+        JSCROLL_book_quantity.setVerticalScrollBar(new ScrollBar());
     }
 
     /**
@@ -40,13 +45,15 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        textField1 = new Components.TextField();
+        TXT_book_quantity = new Components.TextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         panelBorder2 = new Components.PanelBorder();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        JSCROLL_book_quantity = new javax.swing.JScrollPane();
         tableModel1 = new Components.TableModel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,8 +80,30 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         jLabel2.setText("Buscar:");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(200, 0, 90, 50);
-        jPanel2.add(textField1);
-        textField1.setBounds(320, 0, 660, 50);
+
+        TXT_book_quantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TXT_book_quantityKeyReleased(evt);
+            }
+        });
+        jPanel2.add(TXT_book_quantity);
+        TXT_book_quantity.setBounds(320, 0, 660, 50);
+
+        jButton3.setBackground(new java.awt.Color(14, 190, 209));
+        jButton3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Libros");
+        jButton3.setBorder(null);
+        jPanel2.add(jButton3);
+        jButton3.setBounds(1030, 10, 70, 30);
+
+        jButton4.setBackground(new java.awt.Color(201, 153, 11));
+        jButton4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Usuario");
+        jButton4.setBorder(null);
+        jPanel2.add(jButton4);
+        jButton4.setBounds(1110, 10, 80, 30);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 100, 1300, 50);
@@ -111,8 +140,8 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(null);
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setOpaque(false);
+        JSCROLL_book_quantity.setBorder(null);
+        JSCROLL_book_quantity.setOpaque(false);
 
         tableModel1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,10 +154,10 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tableModel1);
+        JSCROLL_book_quantity.setViewportView(tableModel1);
 
-        panelBorder2.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 10, 1000, 330);
+        panelBorder2.add(JSCROLL_book_quantity);
+        JSCROLL_book_quantity.setBounds(10, 10, 980, 330);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 0;
@@ -150,6 +179,10 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ctrbook.returnManagementQ(this);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TXT_book_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_book_quantityKeyReleased
+        ctrbook.DataFiltter(TXT_book_quantity);
+    }//GEN-LAST:event_TXT_book_quantityKeyReleased
 
     /**
      * @param args the command line arguments
@@ -187,18 +220,20 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JSCROLL_book_quantity;
+    private Components.TextField TXT_book_quantity;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private Components.PanelBorder panelBorder1;
     private Components.PanelBorder panelBorder2;
     private Components.TableModel tableModel1;
-    private Components.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -202,6 +202,52 @@ public class CtrBook {
         JTableBook.setRowSorter(sorter);  
     }
     
+    //mostrar la cantidad de los libros mas leidos 
+    public List<String[]> getBookQuantity() {
+        List<String[]> booksList = new ArrayList<>();
+
+        try {
+            String jsonString = book.getBookQuantity();  // Assuming some_user returns JSON string
+            JSONArray usersArray = new JSONArray(jsonString);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject bookObject = usersArray.getJSONObject(i);
+                String[] userData = new String[6];  // Array of size 6 for each column
+                userData[0] = bookObject.optString("title", "N/A");
+                userData[1] = bookObject.optString("author", "N/A");
+                userData[2] = bookObject.optString("description", "N/A");
+                userData[3] = bookObject.optString("language", "N/A");
+                userData[4] = bookObject.optString("grade", "N/A");
+                userData[5] = bookObject.optString("loan_count","N/A" );
+                booksList.add(userData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return booksList;
+    }
+    public void bookQuantity(JTable JTableBook) {
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new Object[][]{}, 
+                new String[]{"Titulo","Autor","Descripción" ,"Idioma","Grade", "Cantidad"} 
+        );
+
+        JTableBook.setModel(tableModel);
+
+        
+        List<String[]> book = this.getBookQuantity();
+
+        // Limpia las celdas (en caso que se use la misma tabla pa otra cosa)
+        tableModel.setRowCount(0);
+
+        for (String[] bookData : book) {
+            tableModel.addRow(bookData); 
+        }
+        
+        sorter = new TableRowSorter<>(tableModel);
+        JTableBook.setRowSorter(sorter);  
+    }
     
     public void backUser(){
         FrmUser frmUserNew= new FrmUser ();

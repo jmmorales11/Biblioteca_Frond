@@ -105,6 +105,7 @@
           <SubComponents>
             <Component class="Components.TextField" name="textField1">
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textField1ActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textField1KeyReleased"/>
               </Events>
               <Constraints>

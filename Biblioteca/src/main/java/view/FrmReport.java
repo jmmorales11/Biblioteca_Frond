@@ -5,6 +5,7 @@
 package view;
 
 import Components.Background;
+import Components.ScrollBar;
 import Controller.CtrBinnacle;
 import java.awt.Color;
 
@@ -24,8 +25,10 @@ public class FrmReport extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
         JSCROLL_Report.getViewport().setBackground(Color.WHITE);
+        JSCROLL_Report.setVerticalScrollBar(new ScrollBar());
         ctrbinnacle=  new CtrBinnacle();
         ctrbinnacle.loadBooks(tableModel1);
+        
         
     }
 

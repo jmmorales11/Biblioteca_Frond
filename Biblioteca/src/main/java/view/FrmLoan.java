@@ -71,6 +71,8 @@ public class FrmLoan extends javax.swing.JFrame {
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
 
+        JSCROLL_tableUser.setBorder(null);
+
         JTableLoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

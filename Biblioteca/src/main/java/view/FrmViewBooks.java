@@ -94,6 +94,11 @@ public class FrmViewBooks extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(null);
 
+        textField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField1ActionPerformed(evt);
+            }
+        });
         textField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 textField1KeyReleased(evt);
@@ -204,6 +209,10 @@ public class FrmViewBooks extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ctrbook.returnManagement(this);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField1ActionPerformed
 
     /**
      * @param args the command line arguments
