@@ -1,13 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Controller;
-
-/**
- *
- * @author ASUS TUF A15
- */
 import Components.ActionCellEditor;
 import Components.ActionCellRenderer;
 import Modelo.Loan;
@@ -86,6 +76,7 @@ public class CtrLoan {
             rowData[loanData.length] = "";  // Columna "Acciones"
             tableModel.addRow(rowData);
         }
+
         // Asigna el renderer y el editor a la columna de devoluciones
         JTableLoan.getColumnModel().getColumn(7).setCellEditor(new DateChooserEditor());
         JTableLoan.getColumnModel().getColumn(8).setCellRenderer(new ActionCellRenderer());
@@ -109,63 +100,25 @@ public class CtrLoan {
         frmloan.setVisible(false);
     }
 
-class DateChooserEditor extends AbstractCellEditor implements TableCellEditor {
-    private RSDateChooser dateChooser = new RSDateChooser();
-    private int editingRow; // Variable para almacenar la fila en edición
+    // Editor de celda personalizado con RSDateChooser para la columna de fecha de devolución
+    class DateChooserEditor extends AbstractCellEditor implements TableCellEditor {
+        private RSDateChooser dateChooser = new RSDateChooser();
 
-    public DateChooserEditor() {
-        // Agrega un listener para detectar cambios y detener la edición automáticamente
-        dateChooser.addPropertyChangeListener("datoFecha", evt -> {
-            if (evt.getNewValue() != null) {
-                stopCellEditing(); // Termina la edición cuando se selecciona una fecha
+        @Override
+        public Object getCellEditorValue() {
+            return dateFormat.format(dateChooser.getDatoFecha());  // Devuelve la fecha seleccionada
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            if (value != null && value instanceof String) {
+                try {
+                    dateChooser.setDatoFecha(dateFormat.parse((String) value));  // Setea la fecha inicial
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
-        });
-    }
-
-    @Override
-    public Object getCellEditorValue() {
-        // Obtiene la fecha seleccionada y formateada
-        String selectedDate = dateFormat.format(dateChooser.getDatoFecha());
-
-        // Actualiza el modelo de la tabla con la fecha seleccionada
-        JTable table = (JTable) SwingUtilities.getAncestorOfClass(JTable.class, dateChooser);
-        if (table != null) {
-            table.setValueAt(selectedDate, editingRow, 7); // Actualiza la fecha en la columna de devolución
+            return dateChooser;
         }
-
-        return selectedDate;
     }
-
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        this.editingRow = row; // Guarda la fila en edición para actualizar el valor después
-
-        // Configura la fecha inicial en el editor si ya tiene un valor
-        if (value != null && value instanceof String) {
-            try {
-                dateChooser.setDatoFecha(dateFormat.parse((String) value));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        } else {
-            dateChooser.setDatoFecha(null); // Limpia la fecha si no hay un valor inicial
-        }
-
-        // Asegura que el editor se muestre correctamente
-        return dateChooser;
-    }
-
-    @Override
-    public boolean stopCellEditing() {
-        // Aquí se asegura de que la edición se detenga correctamente
-        String selectedDate = dateFormat.format(dateChooser.getDatoFecha());
-        JTable table = (JTable) SwingUtilities.getAncestorOfClass(JTable.class, dateChooser);
-        if (table != null) {
-            table.setValueAt(selectedDate, editingRow, 7); // Actualiza la celda con la fecha seleccionada
-        }
-
-        return super.stopCellEditing(); // Llama al método padre para completar la edición
-    }
-}
-
 }

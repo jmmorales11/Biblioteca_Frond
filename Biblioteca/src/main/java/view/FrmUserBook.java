@@ -10,6 +10,7 @@ import Controller.CtrUser;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -35,7 +36,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         this.ctrUserBooks.loadSelectedBooksTableInto(JTable_User_book);
         ctrUser = new CtrUser();
         this.ctrUserBooks.getDate(TXT_Date);
-        this.ctrUserBooks.getDateDelivery(TXT_dateDelivery);
+        this.ctrUserBooks.setDateDelivery(RSDate);
         this.ctrUserBooks.mostrar(this);
         
     }
@@ -59,7 +60,6 @@ public class FrmUserBook extends javax.swing.JFrame {
         TF_name_user = new Components.TextField();
         TF_last_name_user = new Components.TextField();
         TF_mail_user = new Components.TextField();
-        TXT_dateDelivery = new Components.TextField();
         panelBorder2 = new Components.PanelBorder();
         JSCROLL_user_book = new javax.swing.JScrollPane();
         JTable_User_book = new Components.TableModel();
@@ -67,6 +67,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        RSDate = new rojeru_san.componentes.RSDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -118,9 +119,9 @@ public class FrmUserBook extends javax.swing.JFrame {
         jPanel2.add(TXT_Date);
         TXT_Date.setBounds(980, 30, 240, 41);
         jPanel2.add(TF_name_user);
-        TF_name_user.setBounds(150, 100, 500, 41);
+        TF_name_user.setBounds(150, 91, 500, 50);
         jPanel2.add(TF_last_name_user);
-        TF_last_name_user.setBounds(720, 100, 500, 41);
+        TF_last_name_user.setBounds(720, 91, 500, 50);
 
         TF_mail_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,9 +129,7 @@ public class FrmUserBook extends javax.swing.JFrame {
             }
         });
         jPanel2.add(TF_mail_user);
-        TF_mail_user.setBounds(150, 170, 500, 41);
-        jPanel2.add(TXT_dateDelivery);
-        TXT_dateDelivery.setBounds(720, 170, 500, 41);
+        TF_mail_user.setBounds(150, 170, 500, 50);
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -198,6 +197,14 @@ public class FrmUserBook extends javax.swing.JFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(160, 140, 120, 20);
 
+        RSDate.setColorBackground(new java.awt.Color(9, 57, 134));
+        RSDate.setColorButtonHover(new java.awt.Color(204, 204, 204));
+        RSDate.setColorDiaActual(new java.awt.Color(0, 51, 204));
+        RSDate.setColorForeground(new java.awt.Color(0, 0, 0));
+        RSDate.setFormatoFecha("yyyy-MM-dd");
+        jPanel2.add(RSDate);
+        RSDate.setBounds(730, 170, 480, 40);
+
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 90, 1350, 450);
 
@@ -224,6 +231,7 @@ public class FrmUserBook extends javax.swing.JFrame {
     private void BTN_loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loanActionPerformed
         // TODO add your handling code here:
         ctrUserBooks.insertloan(this);
+        
         ctrUser.menu();
     }//GEN-LAST:event_BTN_loanActionPerformed
 
@@ -241,8 +249,20 @@ public class FrmUserBook extends javax.swing.JFrame {
 
     //Get y Set
     public String getDateDelivery() {
-        return TXT_dateDelivery.getText();
+    // Obtener la fecha seleccionada del RSDateChooser
+    java.util.Date selectedDate = RSDate.getDatoFecha();
+
+    // Verificar si la fecha es nula
+    if (selectedDate == null) {
+        return "";  // Retornar una cadena vacía si no se ha seleccionado una fecha
     }
+
+    // Crear un formato de fecha
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+    // Devolver la fecha formateada como String
+    return formatter.format(selectedDate);
+}
     
     public String getDate() {
         return TXT_Date.getText();
@@ -303,11 +323,11 @@ public class FrmUserBook extends javax.swing.JFrame {
     private javax.swing.JButton BTN_loan;
     private javax.swing.JScrollPane JSCROLL_user_book;
     private Components.TableModel JTable_User_book;
+    private rojeru_san.componentes.RSDateChooser RSDate;
     private Components.TextField TF_last_name_user;
     private Components.TextField TF_mail_user;
     private Components.TextField TF_name_user;
     private Components.TextField TXT_Date;
-    private Components.TextField TXT_dateDelivery;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

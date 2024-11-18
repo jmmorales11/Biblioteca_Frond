@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
+import rojeru_san.componentes.RSDateChooser;
 import view.FrmBook;
 import view.FrmUserBook;
 
@@ -97,11 +98,12 @@ public class CtrUserBooks {
         String date= frmUserbook.getDate();
         String datetime=frmUserbook.getDateDelivery();
         System.out.println("Id User"+id);
+        System.out.println("----------"+datetime+"-------------");
         for (String[] book : selectedBooksList) {
-            // Imprimir solo el valor de la posición [0]
+            //Imprimir solo el valor de la posición [0]
             System.out.println("Libro seleccionado: " + book[0]+" "+id+" "+date+ " "+datetime);
             this.getUserBook().addLoan(Integer.parseInt(book[0]), id, date, datetime);
-            System.out.println("-----------------------");
+            
         }
         
     }
@@ -123,24 +125,31 @@ public class CtrUserBooks {
     //obtener la fecha actual
     public void getDate(JTextField DateTextField) {
         LocalDateTime actualDate = LocalDateTime.now(); 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd  HH:mm:ss"); 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
         String formattedDate = actualDate.format(formatter); 
         DateTextField.setText(formattedDate); 
     }
     
-    public void getDateDelivery(JTextField DateTextField) {
-        LocalDateTime actualDateTime = LocalDateTime.now();
-        LocalDateTime futureDateTime = actualDateTime.plusDays(7);
+    public void setDateDelivery(RSDateChooser dateChooser) {
+    LocalDateTime actualDateTime = LocalDateTime.now();
+    LocalDateTime futureDateTime = actualDateTime.plusDays(15);
 
-        DayOfWeek dayOfWeek = futureDateTime.getDayOfWeek();
-        if (dayOfWeek == DayOfWeek.SATURDAY) {
-            futureDateTime = futureDateTime.plusDays(2);  // Sumar 2 días si es sábado
-        } else if (dayOfWeek == DayOfWeek.SUNDAY) {
-            futureDateTime = futureDateTime.plusDays(1);  // Sumar 1 día si es domingo
-        }
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDate = futureDateTime.format(formatter);
-        DateTextField.setText(formattedDate);
+    DayOfWeek dayOfWeek = futureDateTime.getDayOfWeek();
+    if (dayOfWeek == DayOfWeek.SATURDAY) {
+        futureDateTime = futureDateTime.plusDays(2);  // Sumar 2 días si es sábado
+    } else if (dayOfWeek == DayOfWeek.SUNDAY) {
+        futureDateTime = futureDateTime.plusDays(1);  // Sumar 1 día si es domingo
     }
+
+    // Convertir LocalDateTime a LocalDate (solo fecha, sin la parte de tiempo)
+    LocalDate futureDate = futureDateTime.toLocalDate();
+
+    // Establecer la fecha en el RSDateChooser
+    dateChooser.setDatoFecha(java.sql.Date.valueOf(futureDate));
+}
+
+    public void getDateDelivery(RSDateChooser RSDate) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
