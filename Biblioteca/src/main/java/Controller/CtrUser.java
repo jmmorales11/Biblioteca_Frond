@@ -9,16 +9,26 @@ import Components.ButtonEditor;
 import Components.ButtonRenderer;
 import Components.CenteredCellRenderer;
 import Modelo.User;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.AbstractCellEditor;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import org.json.JSONArray;
@@ -80,33 +90,150 @@ public class CtrUser {
         return usersList;
     }
 
-    public void loadUsers(JTable JTableUser) {
-        DefaultTableModel tableModel = new DefaultTableModel(
-                new Object[][]{}, 
-                new String[]{"ID","Código", "Tipo de usuario", "Nombre", "Apellido", "Grado", "Correo"} // Nombres de las columnas
-        );
-
-        JTableUser.setModel(tableModel);
-
-        CtrUser controller = new CtrUser();
-        List<String[]> users = controller.getUsers();
-
-        // Limpia las celdas (en caso que se use la misma tabla pa otra cosa)
-        tableModel.setRowCount(0);
-
-        for (String[] userData : users) {
-            tableModel.addRow(userData); 
+    // Clase principal para cargar usuarios en la tabla
+public void loadUsers(JTable JTableUser) {
+    DefaultTableModel tableModel = new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"ID", "Código", "Tipo de usuario", "Nombre", "Apellido", "Grado", "Correo", "Acciones User"}
+    ) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Permite editar todas las columnas excepto la columna de "Acciones User"
+            return column >= 1 && column <= 6;
         }
-        
-        sorter = new TableRowSorter<>(tableModel);
-        JTableUser.setRowSorter(sorter);
-        TableColumn codigoColumn = JTableUser.getColumnModel().getColumn(0);
-        codigoColumn.setMinWidth(0);
-        codigoColumn.setMaxWidth(0);
-        codigoColumn.setPreferredWidth(0);
-        codigoColumn.setResizable(false);
+    };
+
+    JTableUser.setModel(tableModel);
+
+    CtrUser controller = new CtrUser();
+    List<String[]> users = controller.getUsers();
+
+    // Limpia las filas en caso de reutilizar la tabla
+    tableModel.setRowCount(0);
+
+    for (String[] userData : users) {
+        Object[] rowData = new Object[userData.length + 1];
+        System.arraycopy(userData, 0, rowData, 0, userData.length);
+        rowData[userData.length] = ""; // Columna "Acciones User"
+        tableModel.addRow(rowData);
     }
-    
+
+    sorter = new TableRowSorter<>(tableModel);
+    JTableUser.setRowSorter(sorter);
+
+    TableColumn idColumn = JTableUser.getColumnModel().getColumn(0);
+    idColumn.setMinWidth(0);
+    idColumn.setMaxWidth(0);
+    idColumn.setPreferredWidth(0);
+    idColumn.setResizable(false);
+
+    // Asignar renderer y editor a la columna de acciones
+    JTableUser.getColumnModel().getColumn(7).setCellRenderer(new ActionCellRenderer());
+    JTableUser.getColumnModel().getColumn(7).setCellEditor(new ActionCellEditor(JTableUser));
+}
+
+// Renderer para mostrar el ícono de "visto" en la columna de acciones
+public class ActionCellRenderer extends JPanel implements TableCellRenderer {
+    public ActionCellRenderer() {
+        setLayout(new FlowLayout(FlowLayout.CENTER, 1, 0));
+        JButton viewButton = createIconButton("visto.png");
+        add(viewButton);
+        setOpaque(true);
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        // Configurar el color de fondo
+        if (isSelected) {
+            setBackground(table.getSelectionBackground()); // Fondo al seleccionar
+        } else {
+            setBackground(java.awt.Color.WHITE); // Fondo blanco
+        }
+        return this;
+    }
+
+    private JButton createIconButton(String iconName) {
+        JButton button = new JButton(loadIcon(iconName));
+        button.setMargin(new Insets(0, 0, 0, 0));
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        return button;
+    }
+
+    private Icon loadIcon(String iconName) {
+        String path = "/img/" + iconName;
+        return new ImageIcon(getClass().getResource(path));
+    }
+}
+
+// Editor para manejar la acción del botón en la columna de acciones
+public class ActionCellEditor extends AbstractCellEditor implements TableCellEditor {
+    private JPanel panel;
+    private JButton viewButton;
+    private JTable table;
+
+    public ActionCellEditor(JTable table) {
+        this.table = table;
+        panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 1, 0));
+        viewButton = createIconButton("visto.png");
+
+        viewButton.addActionListener(e -> {
+            int row = table.getEditingRow();
+            // Extraer datos de la fila actual
+            String codigo = table.getValueAt(row, 1).toString();
+            String tipoUsuario = table.getValueAt(row, 2).toString();
+            String nombre = table.getValueAt(row, 3).toString();
+            String apellido = table.getValueAt(row, 4).toString();
+            String grado = table.getValueAt(row, 5).toString();
+            String correo = table.getValueAt(row, 6).toString();
+
+            // Mostrar datos en un cuadro de diálogo para validación
+            JOptionPane.showMessageDialog(
+                    table,
+                    "Datos actualizados:\n" +
+                            "Código: " + codigo + "\n" +
+                            "Tipo de Usuario: " + tipoUsuario + "\n" +
+                            "Nombre: " + nombre + "\n" +
+                            "Apellido: " + apellido + "\n" +
+                            "Grado: " + grado + "\n" +
+                            "Correo: " + correo,
+                    "Validación de Cambios",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+            if (table.isEditing()) {
+                table.getCellEditor().stopCellEditing();
+            }
+        });
+
+        panel.add(viewButton);
+    }
+
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        return panel;
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        return "";
+    }
+
+    private JButton createIconButton(String iconName) {
+        JButton button = new JButton(loadIcon(iconName));
+        button.setMargin(new Insets(0, 0, 0, 0));
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        return button;
+    }
+
+    private Icon loadIcon(String iconName) {
+        String path = "/img/" + iconName;
+        return new ImageIcon(getClass().getResource(path));
+    }
+}
 
     
     //Filtrar busqueda de tabla
