@@ -31,17 +31,9 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
     public ActionCellEditor(JTable table) {
         this.table = table;
         panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 1, 0));
-        editButton = createIconButton("editar.png");
         viewButton = createIconButton("visto.png");
 
-        editButton.addActionListener(e -> {
-            int row = table.getEditingRow();
-            table.editCellAt(row, 7);
-            Component editor = table.getEditorComponent();
-            if (editor != null) {
-                editor.requestFocus();
-            }
-        });
+
 
         viewButton.addActionListener(e -> {
             int row = table.getEditingRow();
@@ -56,7 +48,6 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
             CtrLoan ctrLoan = new CtrLoan();
             ctrLoan.loadLoan(table);
         });
-        panel.add(editButton);
         panel.add(viewButton);
     }
 

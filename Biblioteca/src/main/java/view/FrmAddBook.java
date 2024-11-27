@@ -150,7 +150,7 @@ public class FrmAddBook extends javax.swing.JFrame {
         jScroll_TextArea_Book.setBounds(170, 330, 977, 116);
 
         SLC_grade.setBorder(null);
-        SLC_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "p", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        SLC_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria", "Bachillerato", "Null", " " }));
         jPanel2.add(SLC_grade);
         SLC_grade.setBounds(165, 110, 440, 45);
 

@@ -97,7 +97,8 @@ public class FrmMenuManagement extends javax.swing.JFrame {
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(6, 6, 1290, 100);
 
-        jPanel2.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel2.setOpaque(false);
 
         BTN_back_menu.setBackground(new java.awt.Color(9, 57, 134));
         BTN_back_menu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -114,20 +115,19 @@ public class FrmMenuManagement extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(22, 22, 22)
                 .addComponent(BTN_back_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1159, Short.MAX_VALUE))
+                .addContainerGap(1158, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(BTN_back_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         panelBorder1.add(jPanel2);
-        jPanel2.setBounds(20, 550, 1280, 50);
+        jPanel2.setBounds(10, 540, 1280, 60);
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 153));
         jPanel3.setOpaque(false);

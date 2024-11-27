@@ -18,6 +18,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import rojeru_san.componentes.RSDateChooser;
 import view.FrmBook;
+import view.FrmMenuOptions;
 import view.FrmUserBook;
 
 /**
@@ -120,6 +121,11 @@ public class CtrUserBooks {
     public void backpurchaseBook(CtrUserBooks ctrUserBooks, FrmUserBook frmuserbook){
         FrmBook frmBooks= new FrmBook(ctrUserBooks);
         frmBooks.setVisible(true);
+        frmuserbook.setVisible(false);
+    }
+    public void userBookMenu(FrmUserBook frmuserbook){
+        FrmMenuOptions frmMenu= new FrmMenuOptions();
+        frmMenu.setVisible(true);
         frmuserbook.setVisible(false);
     }
     //obtener la fecha actual

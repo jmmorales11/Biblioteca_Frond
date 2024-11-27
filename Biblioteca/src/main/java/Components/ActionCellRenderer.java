@@ -21,11 +21,9 @@ import javax.swing.table.TableCellRenderer;
 public class ActionCellRenderer extends JPanel implements TableCellRenderer {
     public ActionCellRenderer() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 1, 0));
-        JButton editButton = createIconButton("editar.png");
         JButton viewButton = createIconButton("visto.png");
 
         setOpaque(true); // Mantiene el fondo del panel
-        add(editButton);
         add(viewButton);
     }
 

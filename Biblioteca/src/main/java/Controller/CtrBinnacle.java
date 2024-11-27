@@ -53,7 +53,7 @@ public class CtrBinnacle {
                 userData[9] = bookObject.optString("role", "N/A");
                 userData[10] = bookObject.optString("acquisition_date", "N/A");
                 userData[11] = bookObject.optString("date_of_devolution", "N/A");
-                userData[12] = bookObject.optString("status", "N/A");
+                userData[12] = bookObject.optString("confirm_devolution", "N/A");
                 
 
                 booksList.add(userData);

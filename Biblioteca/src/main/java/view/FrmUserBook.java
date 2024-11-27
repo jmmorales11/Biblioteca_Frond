@@ -232,7 +232,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctrUserBooks.insertloan(this);
         
-        ctrUser.menu();
+        ctrUserBooks.userBookMenu(this);
     }//GEN-LAST:event_BTN_loanActionPerformed
 
     private void BTN_back_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_bookActionPerformed

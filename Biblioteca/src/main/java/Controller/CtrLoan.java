@@ -86,6 +86,11 @@ public class CtrLoan {
             rowData[loanData.length] = "";  // Columna "Acciones"
             tableModel.addRow(rowData);
         }
+        TableColumn codigoColumn = JTableLoan.getColumnModel().getColumn(0);
+        codigoColumn.setMinWidth(0);
+        codigoColumn.setMaxWidth(0);
+        codigoColumn.setPreferredWidth(0);
+        codigoColumn.setResizable(false);
         // Asigna el renderer y el editor a la columna de devoluciones
         JTableLoan.getColumnModel().getColumn(7).setCellEditor(new DateChooserEditor());
         JTableLoan.getColumnModel().getColumn(8).setCellRenderer(new ActionCellRenderer());
