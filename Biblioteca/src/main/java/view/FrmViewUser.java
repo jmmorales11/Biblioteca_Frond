@@ -27,7 +27,7 @@ public class FrmViewUser extends javax.swing.JFrame {
         jScroll_View_User.getViewport().setBackground(Color.WHITE);
         jScroll_View_User.setVerticalScrollBar(new ScrollBar());
         ctruser= new CtrUser();
-        ctruser.loadUsers(tableModel1);
+        ctruser.loadUsersEdit(tableModel1, this);
     }
 
     /**
