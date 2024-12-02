@@ -52,7 +52,6 @@ public class FrmViewUser extends javax.swing.JFrame {
         tableModel1 = new Components.TableModel();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -159,13 +158,6 @@ public class FrmViewUser extends javax.swing.JFrame {
         jPanel4.add(jButton1);
         jButton1.setBounds(40, 0, 100, 40);
 
-        jButton2.setBackground(new java.awt.Color(9, 57, 134));
-        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("jButton2");
-        jPanel4.add(jButton2);
-        jButton2.setBounds(1160, 3, 110, 40);
-
         panelBorder1.add(jPanel4);
         jPanel4.setBounds(0, 550, 1300, 50);
 
@@ -222,7 +214,6 @@ public class FrmViewUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
