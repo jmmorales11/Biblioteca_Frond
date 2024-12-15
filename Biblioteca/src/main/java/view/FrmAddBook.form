@@ -78,7 +78,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="86" green="39" red="9" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gestion Biblioteca Libros"/>
+                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Biblioteca"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -126,16 +126,22 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Codigo"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="10" width="69" height="-1"/>
+                  <AbsoluteConstraints x="170" y="10" width="69" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Grado"/>
               </Properties>
               <Constraints>
@@ -146,6 +152,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Idioma"/>
               </Properties>
               <Constraints>
@@ -156,7 +165,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Descripcion"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -166,6 +178,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Autor"/>
               </Properties>
               <Constraints>
@@ -176,7 +191,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Titulo de la Obra"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="T&#xed;tulo de la Obra"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -186,7 +204,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Seccion"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Secci&#xf3;n"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -209,7 +230,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="170" y="330" width="977" height="116"/>
+                  <AbsoluteConstraints x="167" y="330" width="980" height="116"/>
                 </Constraint>
               </Constraints>
 
@@ -229,12 +250,13 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Primaria"/>
-                    <StringItem index="1" value="Secundaria"/>
-                    <StringItem index="2" value="Bachillerato"/>
-                    <StringItem index="3" value="Null"/>
-                    <StringItem index="4" value=" "/>
+                  <StringArray count="6">
+                    <StringItem index="0" value="SECUNDARIA"/>
+                    <StringItem index="1" value="PRIMARIA"/>
+                    <StringItem index="2" value="DOCENTES"/>
+                    <StringItem index="3" value="PREESCOLAR"/>
+                    <StringItem index="4" value="TEACHING GUIDE"/>
+                    <StringItem index="5" value="NINGUNA"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -247,11 +269,27 @@
             <Component class="Components.Select" name="SLC_section">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="LL"/>
-                    <StringItem index="1" value="GR"/>
-                    <StringItem index="2" value="FR"/>
-                    <StringItem index="3" value=" "/>
+                  <StringArray count="20">
+                    <StringItem index="0" value="AG"/>
+                    <StringItem index="1" value="CP"/>
+                    <StringItem index="2" value="D"/>
+                    <StringItem index="3" value="DOCENTE"/>
+                    <StringItem index="4" value="FE"/>
+                    <StringItem index="5" value="FG"/>
+                    <StringItem index="6" value="FLL"/>
+                    <StringItem index="7" value="FR"/>
+                    <StringItem index="8" value="FT"/>
+                    <StringItem index="9" value="GF"/>
+                    <StringItem index="10" value="GR"/>
+                    <StringItem index="11" value="I"/>
+                    <StringItem index="12" value="INV"/>
+                    <StringItem index="13" value="LG"/>
+                    <StringItem index="14" value="LL"/>
+                    <StringItem index="15" value="R"/>
+                    <StringItem index="16" value="S"/>
+                    <StringItem index="17" value="SR"/>
+                    <StringItem index="18" value="TC"/>
+                    <StringItem index="19" value="NINGUNA"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -264,12 +302,21 @@
             <Component class="Components.Select" name="SLC_language">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Espa&#xf1;ol"/>
-                    <StringItem index="1" value="Ingles"/>
+                  <StringArray count="8">
+                    <StringItem index="0" value="ESPA&#xd1;OL"/>
+                    <StringItem index="1" value="CIENCIAS"/>
+                    <StringItem index="2" value="&#xc1;LGEBRA"/>
+                    <StringItem index="3" value="ESPA&#xd1;OL- INGLES"/>
+                    <StringItem index="4" value="F&#xcd;SICA"/>
+                    <StringItem index="5" value="INGL&#xc9;S"/>
+                    <StringItem index="6" value="MATEM&#xc1;TICAS"/>
+                    <StringItem index="7" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SLC_languageActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="165" y="180" width="440" height="45"/>
@@ -285,7 +332,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Estado Fisico"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Estado F&#xed;sico"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -311,7 +361,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace pref="1069" max="32767" attributes="0"/>
+                      <EmptySpace pref="1060" max="32767" attributes="0"/>
                       <Component id="BTN_addBook" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -333,6 +383,15 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="86" green="39" red="9" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Regresar"/>
               </Properties>
               <Events>
@@ -341,6 +400,15 @@
             </Component>
             <Component class="javax.swing.JButton" name="BTN_addBook">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="86" green="39" red="9" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
               <Events>

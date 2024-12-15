@@ -45,7 +45,6 @@ public class FrmAddUser extends javax.swing.JFrame {
         panelBorder1 = new Components.PanelBorder();
         jPanel1 = new javax.swing.JPanel();
         TXT_name = new Components.TextField();
-        TXT_TypeUser = new Components.TextField();
         TXT_codeUser = new Components.TextField();
         TXT_last_name = new Components.TextField();
         jLabel3 = new javax.swing.JLabel();
@@ -56,6 +55,7 @@ public class FrmAddUser extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         TXT_email = new Components.TextField();
         TXT_grade = new Components.Select();
+        TXT_TypeUser = new Components.Select();
         jPanel2 = new javax.swing.JPanel();
         BTN_back_menu = new javax.swing.JButton();
         BTN_back_menu1 = new javax.swing.JButton();
@@ -71,16 +71,14 @@ public class FrmAddUser extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
         jPanel1.add(TXT_name);
-        TXT_name.setBounds(700, 200, 500, 50);
-        jPanel1.add(TXT_TypeUser);
-        TXT_TypeUser.setBounds(110, 120, 1090, 50);
+        TXT_name.setBounds(700, 200, 510, 50);
         jPanel1.add(TXT_codeUser);
         TXT_codeUser.setBounds(110, 41, 500, 50);
         jPanel1.add(TXT_last_name);
         TXT_last_name.setBounds(110, 200, 550, 50);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jLabel3.setText("Codigo Usuario");
+        jLabel3.setText("Cedula");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(120, 20, 110, 16);
 
@@ -111,9 +109,13 @@ public class FrmAddUser extends javax.swing.JFrame {
         jPanel1.add(TXT_email);
         TXT_email.setBounds(110, 350, 1100, 50);
 
-        TXT_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria", "bachillerato", " " }));
+        TXT_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10EGB_A", "10EGB_B", "10MO_B", "1BGU_ B", "1BGU_A", "1BGU_B", "1EGB_Cañar", "1EGB_Napo", "2_do_Loja", "2BGU", "2BGU_A", "2BGU_B", "2EGB_Loja", "2EGB_Pichincha", "3 BGU", "3BGU_A", "3EGB_Galápagos", "3EGB_Sucumbíos", "3ro_BGU", "3ro_EGB_Sucumbios", "4EGB_Cotopaxi", "4EGB_Guayas", "4to_Cotopaxi", "4TO_Guayas", "5EGB_Azuay", "5EGB_Esmeraldas", "5to_EGB_Esmeraldas", "6EGB_Carchi", "6EGB_Chimborazo", "6to_Chimborazo", "7_mo_Bolívar", "7EGB_Bolívar", "7EGB_Manabí", "8_vo_B", "8EGB_A", "8EGB_B", "8VO_EGB", "9EGB_A", "9EGB_B", "9no_A", "9nO_B", "Inicial 1_Pastaza", "Inicial 2_Orellana", "Inicial 2_Tungurahua", "Ninguno" }));
         jPanel1.add(TXT_grade);
         TXT_grade.setBounds(115, 280, 1090, 40);
+
+        TXT_TypeUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Académico", "Administrativo", "Adminsitrativo", "Apoyo", "DECE", "Directivo", "Docente", "Estudiante", "Inglés", "Limpieza", "Técnico", "Transporte", "Ninguna" }));
+        jPanel1.add(TXT_TypeUser);
+        TXT_TypeUser.setBounds(114, 130, 1090, 40);
 
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(0, 100, 1300, 420);
@@ -216,9 +218,10 @@ public class FrmAddUser extends javax.swing.JFrame {
         ctrUser.returnManagement(this);
     }//GEN-LAST:event_BTN_back_menu1ActionPerformed
     /*Metodos get y set*/
+    
     public String getTypeUser() {
-            return TXT_TypeUser.getText();
-        }
+        return TXT_TypeUser.getSelectedItem().toString();  // Supone que Select tiene este método
+    }
     
     public String getCodeUser() {
         return TXT_codeUser.getText();
@@ -231,6 +234,7 @@ public class FrmAddUser extends javax.swing.JFrame {
     public String getGrade() {
         return TXT_grade.getSelectedItem().toString();  // Supone que Select tiene este método
     }
+    
     
     public String getLastName() {
         return TXT_last_name.getText();
@@ -283,7 +287,7 @@ public class FrmAddUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JButton BTN_back_menu1;
-    private Components.TextField TXT_TypeUser;
+    private Components.Select TXT_TypeUser;
     private Components.TextField TXT_codeUser;
     private Components.TextField TXT_email;
     private Components.Select TXT_grade;

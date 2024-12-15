@@ -52,7 +52,6 @@ public class FrmLoan extends javax.swing.JFrame {
         JSCROLL_tableUser = new javax.swing.JScrollPane();
         JTableLoan = new Components.TableModel();
         jPanel6 = new javax.swing.JPanel();
-        BTN_nexUser = new javax.swing.JButton();
         BTN_back_menu = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -99,8 +98,8 @@ public class FrmLoan extends javax.swing.JFrame {
             panelBorder3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -116,23 +115,13 @@ public class FrmLoan extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         panelBorder2.add(jPanel5);
         jPanel5.setBounds(0, 140, 1350, 400);
 
         jPanel6.setBackground(new java.awt.Color(217, 217, 217));
-
-        BTN_nexUser.setBackground(new java.awt.Color(9, 57, 134));
-        BTN_nexUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BTN_nexUser.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_nexUser.setText("Siguiente");
-        BTN_nexUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_nexUserActionPerformed(evt);
-            }
-        });
 
         BTN_back_menu.setBackground(new java.awt.Color(9, 57, 134));
         BTN_back_menu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -148,27 +137,17 @@ public class FrmLoan extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(1222, Short.MAX_VALUE)
-                .addComponent(BTN_nexUser)
-                .addGap(34, 34, 34))
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addGap(38, 38, 38)
-                    .addComponent(BTN_back_menu)
-                    .addContainerGap(1224, Short.MAX_VALUE)))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(BTN_back_menu)
+                .addContainerGap(1224, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BTN_nexUser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTN_back_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(7, 7, 7)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BTN_back_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7))
         );
 
         panelBorder2.add(jPanel6);
@@ -251,11 +230,6 @@ public class FrmLoan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BTN_nexUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nexUserActionPerformed
-        
-        
-    }//GEN-LAST:event_BTN_nexUserActionPerformed
-
     private void BTN_back_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_back_menuActionPerformed
         ctrLoan.backmenu(this);
         
@@ -284,7 +258,6 @@ public class FrmLoan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_menu;
-    private javax.swing.JButton BTN_nexUser;
     private javax.swing.JScrollPane JSCROLL_tableUser;
     private Components.TableModel JTableLoan;
     private Components.TextField TF_search_user_loan;

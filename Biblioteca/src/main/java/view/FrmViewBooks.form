@@ -84,7 +84,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="86" green="39" red="9" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gestion Biblioteca Libros"/>
+                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n Biblioteca Libros"/>
               </Properties>
             </Component>
           </SubComponents>

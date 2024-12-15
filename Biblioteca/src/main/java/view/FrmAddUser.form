@@ -56,14 +56,7 @@
             <Component class="Components.TextField" name="TXT_name">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="700" y="200" width="500" height="50"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Components.TextField" name="TXT_TypeUser">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="110" y="120" width="1090" height="50"/>
+                  <AbsoluteConstraints x="700" y="200" width="510" height="50"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -86,7 +79,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Emoji" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Codigo Usuario"/>
+                <Property name="text" type="java.lang.String" value="Cedula"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -169,17 +162,84 @@
             <Component class="Components.Select" name="TXT_grade">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Primaria"/>
-                    <StringItem index="1" value="Secundaria"/>
-                    <StringItem index="2" value="bachillerato"/>
-                    <StringItem index="3" value=" "/>
+                  <StringArray count="45">
+                    <StringItem index="0" value="10EGB_A"/>
+                    <StringItem index="1" value="10EGB_B"/>
+                    <StringItem index="2" value="10MO_B"/>
+                    <StringItem index="3" value="1BGU_ B"/>
+                    <StringItem index="4" value="1BGU_A"/>
+                    <StringItem index="5" value="1BGU_B"/>
+                    <StringItem index="6" value="1EGB_Ca&#xf1;ar"/>
+                    <StringItem index="7" value="1EGB_Napo"/>
+                    <StringItem index="8" value="2_do_Loja"/>
+                    <StringItem index="9" value="2BGU"/>
+                    <StringItem index="10" value="2BGU_A"/>
+                    <StringItem index="11" value="2BGU_B"/>
+                    <StringItem index="12" value="2EGB_Loja"/>
+                    <StringItem index="13" value="2EGB_Pichincha"/>
+                    <StringItem index="14" value="3 BGU"/>
+                    <StringItem index="15" value="3BGU_A"/>
+                    <StringItem index="16" value="3EGB_Gal&#xe1;pagos"/>
+                    <StringItem index="17" value="3EGB_Sucumb&#xed;os"/>
+                    <StringItem index="18" value="3ro_BGU"/>
+                    <StringItem index="19" value="3ro_EGB_Sucumbios"/>
+                    <StringItem index="20" value="4EGB_Cotopaxi"/>
+                    <StringItem index="21" value="4EGB_Guayas"/>
+                    <StringItem index="22" value="4to_Cotopaxi"/>
+                    <StringItem index="23" value="4TO_Guayas"/>
+                    <StringItem index="24" value="5EGB_Azuay"/>
+                    <StringItem index="25" value="5EGB_Esmeraldas"/>
+                    <StringItem index="26" value="5to_EGB_Esmeraldas"/>
+                    <StringItem index="27" value="6EGB_Carchi"/>
+                    <StringItem index="28" value="6EGB_Chimborazo"/>
+                    <StringItem index="29" value="6to_Chimborazo"/>
+                    <StringItem index="30" value="7_mo_Bol&#xed;var"/>
+                    <StringItem index="31" value="7EGB_Bol&#xed;var"/>
+                    <StringItem index="32" value="7EGB_Manab&#xed;"/>
+                    <StringItem index="33" value="8_vo_B"/>
+                    <StringItem index="34" value="8EGB_A"/>
+                    <StringItem index="35" value="8EGB_B"/>
+                    <StringItem index="36" value="8VO_EGB"/>
+                    <StringItem index="37" value="9EGB_A"/>
+                    <StringItem index="38" value="9EGB_B"/>
+                    <StringItem index="39" value="9no_A"/>
+                    <StringItem index="40" value="9nO_B"/>
+                    <StringItem index="41" value="Inicial 1_Pastaza"/>
+                    <StringItem index="42" value="Inicial 2_Orellana"/>
+                    <StringItem index="43" value="Inicial 2_Tungurahua"/>
+                    <StringItem index="44" value="Ninguno"/>
                   </StringArray>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="115" y="280" width="1090" height="40"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="Components.Select" name="TXT_TypeUser">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="13">
+                    <StringItem index="0" value="Acad&#xe9;mico"/>
+                    <StringItem index="1" value="Administrativo"/>
+                    <StringItem index="2" value="Adminsitrativo"/>
+                    <StringItem index="3" value="Apoyo"/>
+                    <StringItem index="4" value="DECE"/>
+                    <StringItem index="5" value="Directivo"/>
+                    <StringItem index="6" value="Docente"/>
+                    <StringItem index="7" value="Estudiante"/>
+                    <StringItem index="8" value="Ingl&#xe9;s"/>
+                    <StringItem index="9" value="Limpieza"/>
+                    <StringItem index="10" value="T&#xe9;cnico"/>
+                    <StringItem index="11" value="Transporte"/>
+                    <StringItem index="12" value="Ninguna"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="114" y="130" width="1090" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>

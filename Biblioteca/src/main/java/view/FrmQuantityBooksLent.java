@@ -67,7 +67,7 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(9, 57, 134));
-        jLabel1.setText("Gestion Biblioteca Conteo de prestamos");
+        jLabel1.setText("Gestión Biblioteca Conteo de Prestamos");
         jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
 
         panelBorder1.add(jPanel1);

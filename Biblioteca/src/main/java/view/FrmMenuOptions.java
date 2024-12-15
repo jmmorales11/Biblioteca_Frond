@@ -77,7 +77,7 @@ public class FrmMenuOptions extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 58)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(9, 57, 134));
-        jLabel1.setText("Sistema de biblioteca");
+        jLabel1.setText("Sistema de Biblioteca");
         jPanel4.add(jLabel1, new java.awt.GridBagConstraints());
 
         panelBorder1.add(jPanel4);
@@ -131,9 +131,9 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         jLabel23.setBounds(30, 20, 90, 90);
 
         jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel24.setText("Gestion");
+        jLabel24.setText("Gestión");
         panelBorder4.add(jLabel24);
-        jLabel24.setBounds(40, 120, 70, 20);
+        jLabel24.setBounds(50, 120, 70, 20);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;

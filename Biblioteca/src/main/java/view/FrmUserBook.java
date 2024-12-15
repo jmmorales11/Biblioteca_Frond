@@ -137,9 +137,9 @@ public class FrmUserBook extends javax.swing.JFrame {
 
         JTable_User_book.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"fdfdf", null, null, null},
-                {"dfdf", null, null, null},
-                {"vvvv", null, null, null},
+                {"", null, null, null},
+                {"", null, null, null},
+                {"", null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -183,7 +183,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         jLabel1.setBounds(730, 70, 120, 20);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jLabel2.setText("Fecha de devolucion");
+        jLabel2.setText("Fecha de devolución");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(730, 140, 160, 20);
 

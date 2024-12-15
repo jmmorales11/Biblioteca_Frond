@@ -138,4 +138,66 @@ public class Book {
 
         return information.toString(); 
     }
+    public String updateBook(int bookId, String title, String author, String language, String code, String grade, String section, String description, String physicalState) {
+    try {
+        // Establecer la URL para la actualización del libro
+        URL url = new URL("http://localhost:8080/book/update/" + bookId);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("PUT"); // Cambiar a PUT para la actualización
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+        connection.setRequestProperty("Accept", "application/json");
+
+        // Crear el cuerpo JSON con los nuevos datos del libro
+        String jsonInputString = "{" +
+            "\"title\": \"" + title + "\"," +
+            "\"author\": \"" + author + "\"," +
+            "\"language\": \"" + language + "\"," +
+            "\"code\": \"" + code + "\"," +
+            "\"grade\": \"" + grade + "\"," +
+            "\"section\": \"" + section + "\"," +
+            "\"description\": \"" + description + "\"," +
+            "\"physical_state\": \"" + physicalState + "\"" +
+        "}";
+
+        System.out.println("Datos a enviar: " + jsonInputString);
+
+        // Enviar datos al backend
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        // Leer la respuesta del backend
+        int responseCode = connection.getResponseCode();
+        System.out.println("Código de respuesta: " + responseCode);
+
+        if (responseCode == 200) {
+            // Leer la respuesta exitosa
+            StringBuilder response = new StringBuilder();
+            try (Scanner scanner = new Scanner(connection.getInputStream())) {
+                while (scanner.hasNext()) {
+                    response.append(scanner.nextLine());
+                }
+            }
+            System.out.println("Respuesta: " + response.toString());
+            return "Actualización exitosa";
+        } else {
+            // Leer la respuesta de error como JSON
+            StringBuilder errorResponse = new StringBuilder();
+            try (Scanner scanner = new Scanner(connection.getErrorStream())) {
+                while (scanner.hasNext()) {
+                    errorResponse.append(scanner.nextLine());
+                }
+            }
+            JSONObject json = new JSONObject(errorResponse.toString());
+            String errorMessage = json.getString("message");
+            System.err.println("Error del backend: " + errorMessage);
+            return errorMessage;
+        }
+    } catch (Exception e) {
+        return "Ocurrió un error inesperado: " + e.getMessage();
+    }
+}
+
 }

@@ -72,7 +72,7 @@ public class FrmAddBook extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(9, 57, 134));
-        jLabel8.setText("Gestion Biblioteca Libros");
+        jLabel8.setText("Gestión de Biblioteca");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,31 +110,38 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel2.add(TXT_title);
         TXT_title.setBounds(690, 180, 450, 52);
 
-        jLabel1.setText("Codigo");
+        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel1.setText("Código");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(180, 10, 69, 16);
+        jLabel1.setBounds(170, 10, 69, 16);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel2.setText("Grado");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(170, 90, 73, 16);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel3.setText("Idioma");
         jPanel2.add(jLabel3);
         jLabel3.setBounds(170, 160, 57, 16);
 
-        jLabel4.setText("Descripcion");
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel4.setText("Descripción");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(170, 310, 80, 16);
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel5.setText("Autor");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(700, 90, 68, 16);
 
-        jLabel6.setText("Titulo de la Obra");
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel6.setText("Título de la Obra");
         jPanel2.add(jLabel6);
         jLabel6.setBounds(700, 160, 140, 16);
 
-        jLabel7.setText("Seccion");
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel7.setText("Sección");
         jPanel2.add(jLabel7);
         jLabel7.setBounds(700, 230, 57, 16);
 
@@ -147,24 +154,30 @@ public class FrmAddBook extends javax.swing.JFrame {
         jScroll_TextArea_Book.setViewportView(TA_description);
 
         jPanel2.add(jScroll_TextArea_Book);
-        jScroll_TextArea_Book.setBounds(170, 330, 977, 116);
+        jScroll_TextArea_Book.setBounds(167, 330, 980, 116);
 
         SLC_grade.setBorder(null);
-        SLC_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primaria", "Secundaria", "Bachillerato", "Null", " " }));
+        SLC_grade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SECUNDARIA", "PRIMARIA", "DOCENTES", "PREESCOLAR", "TEACHING GUIDE", "NINGUNA" }));
         jPanel2.add(SLC_grade);
         SLC_grade.setBounds(165, 110, 440, 45);
 
-        SLC_section.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LL", "GR", "FR", " " }));
+        SLC_section.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AG", "CP", "D", "DOCENTE", "FE", "FG", "FLL", "FR", "FT", "GF", "GR", "I", "INV", "LG", "LL", "R", "S", "SR", "TC", "NINGUNA" }));
         jPanel2.add(SLC_section);
         SLC_section.setBounds(695, 250, 440, 45);
 
-        SLC_language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Español", "Ingles" }));
+        SLC_language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ESPAÑOL", "CIENCIAS", "ÁLGEBRA", "ESPAÑOL- INGLES", "FÍSICA", "INGLÉS", "MATEMÁTICAS", " " }));
+        SLC_language.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SLC_languageActionPerformed(evt);
+            }
+        });
         jPanel2.add(SLC_language);
         SLC_language.setBounds(165, 180, 440, 45);
         jPanel2.add(TXT_physicalState);
         TXT_physicalState.setBounds(160, 250, 450, 55);
 
-        jLabel9.setText("Estado Fisico");
+        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel9.setText("Estado Físico");
         jPanel2.add(jLabel9);
         jLabel9.setBounds(170, 230, 120, 16);
 
@@ -173,6 +186,9 @@ public class FrmAddBook extends javax.swing.JFrame {
 
         jPanel3.setOpaque(false);
 
+        jButton1.setBackground(new java.awt.Color(9, 57, 134));
+        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Regresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +196,9 @@ public class FrmAddBook extends javax.swing.JFrame {
             }
         });
 
+        BTN_addBook.setBackground(new java.awt.Color(9, 57, 134));
+        BTN_addBook.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        BTN_addBook.setForeground(new java.awt.Color(255, 255, 255));
         BTN_addBook.setText("Agregar");
         BTN_addBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +213,7 @@ public class FrmAddBook extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1069, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1060, Short.MAX_VALUE)
                 .addComponent(BTN_addBook)
                 .addGap(40, 40, 40))
         );
@@ -230,6 +249,10 @@ public class FrmAddBook extends javax.swing.JFrame {
     private void BTN_addBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addBookActionPerformed
         ctrbook.addBooks(this);
     }//GEN-LAST:event_BTN_addBookActionPerformed
+
+    private void SLC_languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SLC_languageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SLC_languageActionPerformed
     //Get y Set
     public String getGrade() {
         return SLC_grade.getSelectedItem().toString();

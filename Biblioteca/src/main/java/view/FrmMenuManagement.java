@@ -88,7 +88,7 @@ public class FrmMenuManagement extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(9, 57, 134));
-        jLabel1.setText("Gestion de Biblioteca");
+        jLabel1.setText("Gestión de Biblioteca");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 34;
@@ -241,7 +241,7 @@ public class FrmMenuManagement extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel17.setText("Agregar Libro");
         panelBorder9.add(jLabel17);
-        jLabel17.setBounds(20, 110, 110, 16);
+        jLabel17.setBounds(30, 110, 100, 16);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
@@ -254,12 +254,12 @@ public class FrmMenuManagement extends javax.swing.JFrame {
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bitacora.png"))); // NOI18N
         panelBorder10.add(jLabel18);
-        jLabel18.setBounds(30, 10, 100, 100);
+        jLabel18.setBounds(30, 10, 100, 90);
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel19.setText("Bitacora");
         panelBorder10.add(jLabel19);
-        jLabel19.setBounds(40, 110, 70, 16);
+        jLabel19.setBounds(50, 110, 60, 20);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
@@ -279,12 +279,12 @@ public class FrmMenuManagement extends javax.swing.JFrame {
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ver_usuarios.png"))); // NOI18N
         panelBorder11.add(jLabel20);
-        jLabel20.setBounds(20, 10, 110, 110);
+        jLabel20.setBounds(30, 10, 100, 110);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel21.setText("Ver Usuario");
         panelBorder11.add(jLabel21);
-        jLabel21.setBounds(20, 120, 110, 16);
+        jLabel21.setBounds(40, 120, 80, 16);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
@@ -297,12 +297,12 @@ public class FrmMenuManagement extends javax.swing.JFrame {
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ver_libro.png"))); // NOI18N
         panelBorder12.add(jLabel22);
-        jLabel22.setBounds(20, 10, 110, 100);
+        jLabel22.setBounds(30, 10, 100, 100);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel23.setText("Ver Libro");
         panelBorder12.add(jLabel23);
-        jLabel23.setBounds(40, 120, 70, 16);
+        jLabel23.setBounds(50, 120, 60, 16);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
@@ -320,7 +320,7 @@ public class FrmMenuManagement extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel25.setText("Conteo ");
         panelBorder13.add(jLabel25);
-        jLabel25.setBounds(40, 120, 70, 16);
+        jLabel25.setBounds(50, 120, 60, 16);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;

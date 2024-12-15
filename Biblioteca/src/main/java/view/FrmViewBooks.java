@@ -27,7 +27,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
         jScroll_view_book.getViewport().setBackground(Color.WHITE);
         jScroll_view_book.setVerticalScrollBar(new ScrollBar());
         ctrbook= new CtrBook();
-        ctrbook.loadBooksInformation(tableModel1);
+        ctrbook.loadBooksEdit(tableModel1, this);
         
     }
 
@@ -65,7 +65,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(9, 57, 134));
-        jLabel4.setText("Gestion Biblioteca Libros");
+        jLabel4.setText("Gestión Biblioteca Libros");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

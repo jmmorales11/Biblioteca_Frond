@@ -4,17 +4,24 @@
  */
 package Controller;
 
+import Components.ActionCellRenderer;
 import Components.ActiveStatusRenderer;
 import Components.CircularLabel;
 import Modelo.Book;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.AbstractCellEditor;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,6 +32,7 @@ import javax.swing.RowFilter;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
@@ -86,11 +94,12 @@ public class CtrBook {
 
         return booksList;
     }
+    
         
     public void loadBooks(JTable JTableBook) {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new Object[][]{}, 
-                new String[]{"id","Código", "Libro", "Autor", "Descripcion","Estado" } // Nombres de las columnas
+                new String[]{"id","Código", "Libro", "Autor", "Descripción","Estado" } // Nombres de las columnas
         );
 
         JTableBook.setModel(tableModel);
@@ -141,7 +150,184 @@ public class CtrBook {
     });
     }
       
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+    public List<String[]> getBookEdit() {
+        List<String[]> booksList = new ArrayList<>();
+
+        try {
+            String jsonString = book.getBook();  // Assuming some_user returns JSON string
+            JSONArray usersArray = new JSONArray(jsonString);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject bookObject = usersArray.getJSONObject(i);
+                String[] userData = new String[9];  // Array of size 6 for each column
+                userData[0] = bookObject.optString("id_book", "N/A");
+                userData[1] = bookObject.optString("title", "N/A");
+                userData[2] = bookObject.optString("author", "N/A");
+                userData[3] = bookObject.optString("language", "N/A");
+                userData[4] = bookObject.optString("code", "N/A");
+                userData[5] = bookObject.optString("grade", "N/A");
+                userData[6] = bookObject.optString("section", "N/A");
+                userData[7] = bookObject.optString("physical_state", "N/A");
+                userData[8] = bookObject.optString("description", "N/A");
+                
+                
+                
+                
+                booksList.add(userData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return booksList;
+    }
     
+    
+    public void loadBooksEdit(JTable JTableBook, FrmViewBooks frmviewbook) {
+    DefaultTableModel tableModel = new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"ID", "Título", "Autor", "Idioma", "Código", "Grado", "Sección", "Estado Físico","Descripción", "Acciones"}
+    ) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Permite editar todas las columnas excepto la columna de "Acciones"
+            return column >= 1 && column <= 8;
+        }
+    };
+
+    JTableBook.setModel(tableModel);
+
+    CtrBook controller = new CtrBook();
+    List<String[]> books = controller.getBookEdit();
+
+    // Limpia las filas en caso de reutilizar la tabla
+    tableModel.setRowCount(0);
+
+    for (String[] bookData : books) {
+        Object[] rowData = new Object[bookData.length + 1];
+        System.arraycopy(bookData, 0, rowData, 0, bookData.length);
+        rowData[bookData.length] = ""; // Columna "Acciones"
+        tableModel.addRow(rowData);
+    }
+
+    sorter = new TableRowSorter<>(tableModel);
+    JTableBook.setRowSorter(sorter);
+
+    TableColumn idColumn = JTableBook.getColumnModel().getColumn(0);
+    idColumn.setMinWidth(0);
+    idColumn.setMaxWidth(0);
+    idColumn.setPreferredWidth(0);
+    idColumn.setResizable(false);
+
+    // Asignar renderer y editor a la columna de acciones
+    JTableBook.getColumnModel().getColumn(9).setCellRenderer(new ActionCellRenderer());
+    JTableBook.getColumnModel().getColumn(9).setCellEditor(new ActionCellEditor(JTableBook, frmviewbook));
+}
+public class ActionCellEditor extends AbstractCellEditor implements TableCellEditor {
+    private JPanel panel;
+    private JButton viewButton;
+    private JTable table;
+    private FrmViewBooks frmviewbook;
+
+    public ActionCellEditor(JTable table, FrmViewBooks frmviewbook) {
+        this.table = table;
+        this.frmviewbook = frmviewbook;
+        panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 1, 0));
+        viewButton = createIconButton("visto.png");
+
+        viewButton.addActionListener(e -> {
+            int row = table.getEditingRow();
+
+            // Extraer datos de la fila actual
+            int id = Integer.parseInt(table.getValueAt(row, 0).toString());
+            String titulo = table.getValueAt(row, 1).toString();
+            String autor = table.getValueAt(row, 2).toString();
+            String idioma = table.getValueAt(row, 3).toString();
+            String codigo = table.getValueAt(row, 4).toString();
+            String grado = table.getValueAt(row, 5).toString();
+            String seccion = table.getValueAt(row, 6).toString();
+            String estadoFisico = table.getValueAt(row, 7).toString();
+            String descrpcion = table.getValueAt(row, 8).toString();
+            
+
+            // Mostrar datos y confirmar la actualización
+            int confirm = JOptionPane.showConfirmDialog(
+                    table,
+                    "Datos actuales:\n" +
+                            "Título: " + titulo + "\n" +
+                            "Autor: " + autor + "\n" +
+                            "Idioma: " + idioma + "\n" +
+                            "Código: " + codigo + "\n" +
+                            "Grado: " + grado + "\n" +
+                            "Sección: " + seccion + "\n" +
+                            "Descripción: " + descrpcion + "\n" +
+                            "Estado Físico: " + estadoFisico + "\n\n" +
+                            "¿Desea actualizar estos datos?",
+                    "Confirmación de Actualización",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                // Lógica para actualizar el libro
+                CtrBook controller = new CtrBook();
+                book.updateBook(id, titulo, autor,idioma , codigo, grado, seccion, descrpcion, estadoFisico);
+
+                // Mostrar mensaje de éxito
+                JOptionPane.showMessageDialog(
+                        table,
+                        "Datos actualizados exitosamente.",
+                        "Actualización Exitosa",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+
+                // Recargar la tabla
+                loadBooksEdit(table, frmviewbook);
+            } else {
+                // Recargar la tabla y mostrar mensaje de cancelación
+                loadBooksEdit(table, frmviewbook);
+                JOptionPane.showMessageDialog(
+                        table,
+                        "Actualización cancelada.",
+                        "Cancelado",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            }
+
+            // Detener la edición para evitar problemas visuales
+            if (table.isEditing()) {
+                table.getCellEditor().stopCellEditing();
+            }
+        });
+
+        panel.add(viewButton);
+    }
+
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        return panel;
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        return "";
+    }
+
+    private JButton createIconButton(String iconName) {
+        JButton button = new JButton(loadIcon(iconName));
+        button.setMargin(new Insets(0, 0, 0, 0));
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        return button;
+    }
+
+    private Icon loadIcon(String iconName) {
+        String path = "/img/" + iconName;
+        return new ImageIcon(getClass().getResource(path));
+    }
+}
+
     //Filtrar busqueda de tabla
     public void DataFiltter(JTextField FiltterTextField){
         try{
@@ -183,7 +369,7 @@ public class CtrBook {
     public void loadBooksInformation(JTable JTableBook) {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new Object[][]{}, 
-                new String[]{"Código",  "Autor","Grado" ,"Titulo","Idioma", "Sección","Descripcion"} 
+                new String[]{"Código",  "Autor","Grado" ,"Titulo","Idioma", "Sección","Descripción"} 
         );
 
         JTableBook.setModel(tableModel);

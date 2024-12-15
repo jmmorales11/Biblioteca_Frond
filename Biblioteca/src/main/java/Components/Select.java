@@ -17,7 +17,7 @@ public class Select<E> extends JComboBox<E> {
         setForeground(Color.BLACK); 
         setBorder(new EmptyBorder(5, 10, 5, 10)); 
         setOpaque(false); 
-        setFont(new Font("Arial", Font.PLAIN, 16));
+        setFont(new Font("Segoe UI Emoji", Font.PLAIN, 12));
         
         setEditor(new BasicComboBoxEditor() {
             @Override
