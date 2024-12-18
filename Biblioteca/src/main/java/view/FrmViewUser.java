@@ -49,7 +49,7 @@ public class FrmViewUser extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         panelBorder2 = new Components.PanelBorder();
         jScroll_View_User = new javax.swing.JScrollPane();
-        tableModel1 = new Components.TableModel();
+        tableModel1 = new Components.TableEdit();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -64,7 +64,7 @@ public class FrmViewUser extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(9, 57, 134));
-        jLabel1.setText("Gestion Biblioteca Usuarios");
+        jLabel1.setText("Gestión Biblioteca Usuarios");
         jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
 
         panelBorder1.add(jPanel1);
@@ -121,8 +121,8 @@ public class FrmViewUser extends javax.swing.JFrame {
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScroll_View_User, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScroll_View_User, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -138,7 +138,7 @@ public class FrmViewUser extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         panelBorder1.add(jPanel3);
@@ -224,7 +224,7 @@ public class FrmViewUser extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScroll_View_User;
     private Components.PanelBorder panelBorder1;
     private Components.PanelBorder panelBorder2;
-    private Components.TableModel tableModel1;
+    private Components.TableEdit tableModel1;
     private Components.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

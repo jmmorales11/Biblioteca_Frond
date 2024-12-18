@@ -23,7 +23,7 @@ public class Loan {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
-
+            
             int responseCode = connection.getResponseCode();
 
             if (responseCode != 200) {
@@ -36,7 +36,8 @@ public class Loan {
                 }
                 scanner.close();
                 
-                
+                System.out.println("Información obtenida de la base de datos: " + information.toString());
+        
             }
             
         } catch (Exception e) {

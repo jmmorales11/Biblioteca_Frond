@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author ASUS TUF A15
  */
-public class TableModel extends JTable {
-    public TableModel(){
+public class TableEdit extends JTable {
+    public TableEdit(){
         setShowHorizontalLines(true);
         setGridColor(new Color(230,230,230));
         setRowHeight(40);
@@ -64,7 +64,7 @@ public class TableModel extends JTable {
      @Override
     public boolean isCellEditable(int row, int column) {
         // Evitar que cualquier celda sea editable
-            return false;
+            return true;
         }
 
       

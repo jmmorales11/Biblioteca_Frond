@@ -38,7 +38,7 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
         viewButton.addActionListener(e -> {
             int row = table.getEditingRow();
             int codigo = Integer.parseInt(table.getValueAt(row, 0).toString());
-            String fechaDevolucion = table.getValueAt(row, 7).toString();
+            String fechaDevolucion = table.getValueAt(row, 8).toString();
            
             Loan lo= new Loan();
             lo.addLoan(codigo, fechaDevolucion);

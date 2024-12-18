@@ -5,6 +5,8 @@
 package view;
 
 import Components.Background;
+import Components.ScrollBar;
+import Controller.CtrUser;
 import java.awt.Color;
 
 /**
@@ -17,11 +19,16 @@ public class FrmQuantityUser extends javax.swing.JFrame {
      * Creates new form FrmQuantityUser
      */
     Background back = new Background();
+    CtrUser ctrUser;
     public FrmQuantityUser() {
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setExtendedState(FrmUserBook.MAXIMIZED_BOTH);
+        ctrUser= new CtrUser();
+        ctrUser.loadUsersQuantity(JTableUser);
+        JSCROLL_user_quantity.getViewport().setBackground(Color.WHITE);
+        JSCROLL_user_quantity.setVerticalScrollBar(new ScrollBar());
     }
 
     /**
@@ -39,10 +46,16 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        textField1 = new Components.TextField();
+        TXT_quantity_user = new Components.TextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         panelBorder2 = new Components.PanelBorder();
+        JSCROLL_user_quantity = new javax.swing.JScrollPane();
+        JTableUser = new Components.TableModel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -56,11 +69,7 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(9, 57, 134));
         jLabel1.setText("Gestion Biblioteca Estadísticas de Lectura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
 
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(0, 0, 1300, 100);
@@ -71,25 +80,71 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel2.setText("Buscar:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(122, 6, 98, 38);
-        jPanel2.add(textField1);
-        textField1.setBounds(232, 0, 697, 50);
+        jLabel2.setBounds(200, 10, 98, 38);
+
+        TXT_quantity_user.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TXT_quantity_userKeyReleased(evt);
+            }
+        });
+        jPanel2.add(TXT_quantity_user);
+        TXT_quantity_user.setBounds(320, 0, 660, 50);
+
+        jButton3.setBackground(new java.awt.Color(14, 190, 209));
+        jButton3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Libros");
+        jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+        jButton3.setBounds(1030, 10, 70, 30);
+
+        jButton4.setBackground(new java.awt.Color(201, 153, 11));
+        jButton4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Usuario");
+        jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4);
+        jButton4.setBounds(1110, 10, 80, 30);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 100, 1300, 50);
 
         jPanel3.setOpaque(false);
+        jPanel3.setLayout(null);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
+        jButton1.setBackground(new java.awt.Color(9, 57, 134));
+        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+        jButton1.setBounds(30, 0, 95, 44);
+
+        jButton2.setBackground(new java.awt.Color(9, 57, 134));
+        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Imprimir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2);
+        jButton2.setBounds(1160, 0, 100, 40);
 
         panelBorder1.add(jPanel3);
         jPanel3.setBounds(0, 550, 1300, 50);
@@ -98,17 +153,25 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder2.setLayout(null);
 
-        javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
-        panelBorder2.setLayout(panelBorder2Layout);
-        panelBorder2Layout.setHorizontalGroup(
-            panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        panelBorder2Layout.setVerticalGroup(
-            panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
+        JSCROLL_user_quantity.setBorder(null);
+
+        JTableUser.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        JSCROLL_user_quantity.setViewportView(JTableUser);
+
+        panelBorder2.add(JSCROLL_user_quantity);
+        JSCROLL_user_quantity.setBounds(10, 10, 980, 330);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 1000;
@@ -125,6 +188,26 @@ public class FrmQuantityUser extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ctrUser.seeBook(this);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ctrUser.returnManagementQ(this);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void TXT_quantity_userKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_quantity_userKeyReleased
+        ctrUser.DataFiltter(TXT_quantity_user);
+    }//GEN-LAST:event_TXT_quantity_userKeyReleased
 
     /**
      * @param args the command line arguments
@@ -162,6 +245,13 @@ public class FrmQuantityUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JSCROLL_user_quantity;
+    private Components.TableModel JTableUser;
+    private Components.TextField TXT_quantity_user;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -170,6 +260,5 @@ public class FrmQuantityUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private Components.PanelBorder panelBorder1;
     private Components.PanelBorder panelBorder2;
-    private Components.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

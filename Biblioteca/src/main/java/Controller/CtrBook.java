@@ -43,6 +43,7 @@ import view.FrmAddUser;
 import view.FrmBook;
 import view.FrmMenuManagement;
 import view.FrmQuantityBooksLent;
+import view.FrmQuantityUser;
 import view.FrmUserBook;
 import view.FrmUser;
 import view.FrmViewBooks;
@@ -329,13 +330,15 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
 }
 
     //Filtrar busqueda de tabla
-    public void DataFiltter(JTextField FiltterTextField){
-        try{
-            sorter.setRowFilter(RowFilter.regexFilter(FiltterTextField.getText()));
-        }catch(Exception e){
-            throw new RuntimeException("Error internal");
+    public void DataFiltter(JTextField FiltterTextField) {
+        try {
+            // Filtro que ignora mayúsculas y minúsculas usando (?i)
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + FiltterTextField.getText()));
+        } catch (Exception e) {
+            throw new RuntimeException("Error interno en el filtrado");
         }
     }
+
     
     //Mostrar y editar los libros 
     public List<String[]> getBookInformation() {
@@ -517,5 +520,10 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
         frmMenumana.setVisible(true);
     }
     
+    public void seeUser(FrmQuantityBooksLent frmaddbook){
+        FrmQuantityUser frmQuantityUser = new FrmQuantityUser();
+         frmaddbook.setVisible(false);
+        frmQuantityUser.setVisible(true);
+    }
     
 }

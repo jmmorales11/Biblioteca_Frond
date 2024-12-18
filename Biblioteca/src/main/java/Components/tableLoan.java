@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author ASUS TUF A15
  */
-public class TableModel extends JTable {
-    public TableModel(){
+public class tableLoan extends JTable {
+    public tableLoan(){
         setShowHorizontalLines(true);
         setGridColor(new Color(230,230,230));
         setRowHeight(40);
@@ -61,11 +61,20 @@ public class TableModel extends JTable {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-     @Override
-    public boolean isCellEditable(int row, int column) {
-        // Evitar que cualquier celda sea editable
-            return false;
+    @Override
+public boolean isCellEditable(int row, int column) {
+    // Lista de columnas que deben estar bloqueadas
+    int[] columnasBloqueadas = {0, 1, 2, 3, 4, 5, 6, 7}; // Bloquea estas columnas
+    
+    // Comprueba si la columna actual está en la lista de columnas bloqueadas
+    for (int col : columnasBloqueadas) {
+        if (column == col) {
+            return false; // Bloquea esta columna
         }
-
-      
+    }
+    
+    // Si no está en la lista de columnas bloqueadas, permite la edición
+    return true;
+}
+   
 }

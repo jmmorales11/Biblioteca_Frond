@@ -38,6 +38,8 @@ import view.FrmAddUser;
 import view.FrmMenuOptions;
 import view.FrmBook;
 import view.FrmMenuManagement;
+import view.FrmQuantityBooksLent;
+import view.FrmQuantityUser;
 import view.FrmUserBook;
 import view.FrmUser;
 import view.FrmViewUser;
@@ -297,14 +299,15 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
 }
 
     
-    //Filtrar busqueda de tabla
-    public void DataFiltter(JTextField FiltterTextField){
-        try{
-            sorter.setRowFilter(RowFilter.regexFilter(FiltterTextField.getText()));
-        }catch(Exception e){
-            throw new RuntimeException("Error internal");
-        }
+    public void DataFiltter(JTextField FiltterTextField) {
+    try {
+        // Filtro que ignora mayúsculas y minúsculas usando (?i)
+        sorter.setRowFilter(RowFilter.regexFilter("(?i)" + FiltterTextField.getText()));
+    } catch (Exception e) {
+        throw new RuntimeException("Error interno en el filtrado");
     }
+}
+
     
     //obtener la fecha actual
     public void getDate(JTextField DateTextField) {
@@ -365,6 +368,58 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
     }
 
     
+    //Mostrar la cantidad de usuarios 
+    public List<String[]> getUsersQuantity() {
+        List<String[]> usersList = new ArrayList<>();
+
+        try {
+            String jsonString = user.userQuantity();  // Assuming some_user returns JSON string
+            JSONArray usersArray = new JSONArray(jsonString);
+
+            for (int i = 0; i < usersArray.length(); i++) {
+                JSONObject userObject = usersArray.getJSONObject(i);
+                String[] userData = new String[5];  // Array of size 6 for each column
+                userData[0] = userObject.optString("id", "N/A");
+                userData[1] = userObject.optString("firstName", "N/A");
+                userData[2] = userObject.optString("lastName", "N/A");
+                userData[3] = userObject.optString("grade", "N/A");
+                userData[4] = userObject.optString("count", "N/A");
+
+
+                usersList.add(userData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return usersList;
+    }
+
+    public void loadUsersQuantity(JTable JTableUser) {
+        
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new Object[][]{}, 
+                new String[]{"ID","Nombre", "Apellido",  "Grado", "Cantidad"} // Nombres de las columnas
+        );
+
+        JTableUser.setModel(tableModel);
+
+
+        List<String[]> users = this.getUsersQuantity();
+
+        // Limpia las celdas (en caso que se use la misma tabla pa otra cosa)
+        tableModel.setRowCount(0);
+
+        for (String[] userData : users) {
+            tableModel.addRow(userData); 
+        }
+        
+        sorter = new TableRowSorter<>(tableModel);
+        JTableUser.setRowSorter(sorter);
+        
+    }
+
+    
     
     
     public void mostrarDatos(FrmUserBook frmuserbook){
@@ -401,5 +456,15 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
         frmMenumana.setVisible(true);
     }
     
+    public void seeBook(FrmQuantityUser frmQuantityUser){
+        FrmQuantityBooksLent frmQuantityBooksLent = new FrmQuantityBooksLent();
+        frmQuantityUser.setVisible(false);
+        frmQuantityBooksLent.setVisible(true);
+    }
+     public void returnManagementQ(FrmQuantityUser frmQuantityUser){
+        FrmMenuManagement frmMenumana = new FrmMenuManagement();
+        frmQuantityUser.setVisible(false);
+        frmMenumana.setVisible(true);
+    }
     
 }

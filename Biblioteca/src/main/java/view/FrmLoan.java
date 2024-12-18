@@ -50,7 +50,7 @@ public class FrmLoan extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         panelBorder3 = new Components.PanelBorder();
         JSCROLL_tableUser = new javax.swing.JScrollPane();
-        JTableLoan = new Components.TableModel();
+        JTableLoan = new Components.tableLoan();
         jPanel6 = new javax.swing.JPanel();
         BTN_back_menu = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -70,8 +70,6 @@ public class FrmLoan extends javax.swing.JFrame {
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
 
-        JSCROLL_tableUser.setBorder(null);
-
         JTableLoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -90,15 +88,15 @@ public class FrmLoan extends javax.swing.JFrame {
         panelBorder3Layout.setHorizontalGroup(
             panelBorder3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
+                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelBorder3Layout.setVerticalGroup(
             panelBorder3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addComponent(JSCROLL_tableUser, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -115,7 +113,7 @@ public class FrmLoan extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBorder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         panelBorder2.add(jPanel5);
@@ -259,7 +257,7 @@ public class FrmLoan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_back_menu;
     private javax.swing.JScrollPane JSCROLL_tableUser;
-    private Components.TableModel JTableLoan;
+    private Components.tableLoan JTableLoan;
     private Components.TextField TF_search_user_loan;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;

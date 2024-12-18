@@ -44,15 +44,16 @@ public class CtrLoan {
 
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject userObject = usersArray.getJSONObject(i);
-                String[] loanData = new String[8];
+                String[] loanData = new String[9];
                 loanData[0] = userObject.optString("id_loan", "N/A");
                 loanData[1] = userObject.optString("codeUser", "N/A");
                 loanData[2] = userObject.optString("user_name", "N/A");
                 loanData[3] = userObject.optString("user_last_name", "N/A");
                 loanData[4] = userObject.optString("codeBook", "N/A");
-                loanData[5] = userObject.optString("title", "N/A");
-                loanData[6] = userObject.optString("acquisition_date", "N/A");
-                loanData[7] = userObject.optString("date_of_devolution", "N/A");
+                loanData[5] = userObject.optString("author", "N/A");
+                loanData[6] = userObject.optString("title", "N/A");
+                loanData[7] = userObject.optString("acquisition_date", "N/A");
+                loanData[8] = userObject.optString("date_of_devolution", "N/A");
 
                 loanList.add(loanData);
             }
@@ -67,11 +68,11 @@ public class CtrLoan {
     public void loadLoan(JTable JTableLoan) {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"", "Cédula", "Nombre", "Apellido", "Código", "Libro", "Adquisición", "Devolución", "Acciones"}
+                new String[]{"", "Cédula", "Nombre", "Apellido", "Código","Autor", "Libro", "Adquisición", "Devolución", "Acciones"}
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column == 7;  // Solo la columna de "Devolución" es editable
+                return column == 8;  // Solo la columna de "Devolución" es editable
             }
         };
 
@@ -85,6 +86,9 @@ public class CtrLoan {
             System.arraycopy(loanData, 0, rowData, 0, loanData.length);
             rowData[loanData.length] = "";  // Columna "Acciones"
             tableModel.addRow(rowData);
+            // Imprime en consola la fecha de devolución
+        System.out.println("Fecha de devolución (inicial): " + loanData[8]); // Cambia el índice según corresponda
+    
         }
         TableColumn codigoColumn = JTableLoan.getColumnModel().getColumn(0);
         codigoColumn.setMinWidth(0);
@@ -92,9 +96,9 @@ public class CtrLoan {
         codigoColumn.setPreferredWidth(0);
         codigoColumn.setResizable(false);
         // Asigna el renderer y el editor a la columna de devoluciones
-        JTableLoan.getColumnModel().getColumn(7).setCellEditor(new DateChooserEditor());
-        JTableLoan.getColumnModel().getColumn(8).setCellRenderer(new ActionCellRenderer());
-        JTableLoan.getColumnModel().getColumn(8).setCellEditor(new ActionCellEditor(JTableLoan));
+        JTableLoan.getColumnModel().getColumn(8).setCellEditor(new DateChooserEditor());
+        JTableLoan.getColumnModel().getColumn(9).setCellRenderer(new ActionCellRenderer());
+        JTableLoan.getColumnModel().getColumn(9).setCellEditor(new ActionCellEditor(JTableLoan));
 
         sorter = new TableRowSorter<>(tableModel);
         JTableLoan.setRowSorter(sorter);
@@ -102,11 +106,13 @@ public class CtrLoan {
 
     public void DataFiltter(JTextField FiltterTextField) {
         try {
-            sorter.setRowFilter(RowFilter.regexFilter(FiltterTextField.getText()));
+            // Filtro que ignora mayúsculas y minúsculas usando (?i)
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + FiltterTextField.getText()));
         } catch (Exception e) {
-            throw new RuntimeException("Error interno");
+            throw new RuntimeException("Error interno en el filtrado");
         }
     }
+
 
     public void backmenu(FrmLoan frmloan) {
         FrmMenuOptions frmMenu = new FrmMenuOptions();
@@ -131,11 +137,11 @@ class DateChooserEditor extends AbstractCellEditor implements TableCellEditor {
     public Object getCellEditorValue() {
         // Obtiene la fecha seleccionada y formateada
         String selectedDate = dateFormat.format(dateChooser.getDatoFecha());
-
+        System.out.println("Fecha seleccionada: " + dateChooser.getDatoFecha());
         // Actualiza el modelo de la tabla con la fecha seleccionada
         JTable table = (JTable) SwingUtilities.getAncestorOfClass(JTable.class, dateChooser);
         if (table != null) {
-            table.setValueAt(selectedDate, editingRow, 7); // Actualiza la fecha en la columna de devolución
+            table.setValueAt(selectedDate, editingRow, 8); // Actualiza la fecha en la columna de devolución
         }
 
         return selectedDate;
@@ -166,7 +172,7 @@ class DateChooserEditor extends AbstractCellEditor implements TableCellEditor {
         String selectedDate = dateFormat.format(dateChooser.getDatoFecha());
         JTable table = (JTable) SwingUtilities.getAncestorOfClass(JTable.class, dateChooser);
         if (table != null) {
-            table.setValueAt(selectedDate, editingRow, 7); // Actualiza la celda con la fecha seleccionada
+            table.setValueAt(selectedDate, editingRow, 8); // Actualiza la celda con la fecha seleccionada
         }
 
         return super.stopCellEditing(); // Llama al método padre para completar la edición

@@ -97,13 +97,15 @@ public class CtrBinnacle {
     }
     
     //Filtrar busqueda de tabla
-    public void DataFiltter(JTextField FiltterTextField){
-        try{
-            sorter.setRowFilter(RowFilter.regexFilter(FiltterTextField.getText()));
-        }catch(Exception e){
-            throw new RuntimeException("Error internal");
+    public void DataFiltter(JTextField FiltterTextField) {
+        try {
+            // Filtro que ignora mayúsculas y minúsculas usando (?i)
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + FiltterTextField.getText()));
+        } catch (Exception e) {
+            throw new RuntimeException("Error interno en el filtrado");
         }
     }
+
     
     public void returnMenuManagement(FrmReport frmreport){
         FrmMenuManagement frmMenumana = new FrmMenuManagement();

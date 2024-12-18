@@ -50,7 +50,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         panelBorder2 = new Components.PanelBorder();
         jScroll_view_book = new javax.swing.JScrollPane();
-        tableModel1 = new Components.TableModel();
+        tableModel1 = new Components.TableEdit();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -119,8 +119,6 @@ public class FrmViewBooks extends javax.swing.JFrame {
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jScroll_view_book.setBorder(null);
-
         tableModel1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -147,8 +145,8 @@ public class FrmViewBooks extends javax.swing.JFrame {
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScroll_view_book, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScroll_view_book, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -163,7 +161,8 @@ public class FrmViewBooks extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         panelBorder1.add(jPanel3);
@@ -261,7 +260,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScroll_view_book;
     private Components.PanelBorder panelBorder1;
     private Components.PanelBorder panelBorder2;
-    private Components.TableModel tableModel1;
+    private Components.TableEdit tableModel1;
     private Components.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

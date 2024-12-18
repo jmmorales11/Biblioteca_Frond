@@ -81,6 +81,11 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(200, 0, 90, 50);
 
+        TXT_book_quantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXT_book_quantityActionPerformed(evt);
+            }
+        });
         TXT_book_quantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 TXT_book_quantityKeyReleased(evt);
@@ -102,6 +107,11 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Usuario");
         jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton4);
         jButton4.setBounds(1110, 10, 80, 30);
 
@@ -127,7 +137,12 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(9, 57, 134));
         jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("jButton2");
+        jButton2.setText("Imprimir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2);
         jButton2.setBounds(1160, 0, 100, 40);
 
@@ -183,6 +198,18 @@ public class FrmQuantityBooksLent extends javax.swing.JFrame {
     private void TXT_book_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_book_quantityKeyReleased
         ctrbook.DataFiltter(TXT_book_quantity);
     }//GEN-LAST:event_TXT_book_quantityKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ctrbook.seeUser(this);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void TXT_book_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_book_quantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXT_book_quantityActionPerformed
 
     /**
      * @param args the command line arguments
