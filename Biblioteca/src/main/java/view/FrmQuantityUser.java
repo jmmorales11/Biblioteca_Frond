@@ -5,9 +5,14 @@
 package view;
 
 import Components.Background;
+import Components.PDFExporter;
 import Components.ScrollBar;
 import Controller.CtrUser;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,7 +56,7 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnExportarPDF = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         panelBorder2 = new Components.PanelBorder();
         JSCROLL_user_quantity = new javax.swing.JScrollPane();
@@ -134,17 +139,17 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         jPanel3.add(jButton1);
         jButton1.setBounds(30, 0, 95, 44);
 
-        jButton2.setBackground(new java.awt.Color(9, 57, 134));
-        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Imprimir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnExportarPDF.setBackground(new java.awt.Color(9, 57, 134));
+        btnExportarPDF.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnExportarPDF.setForeground(new java.awt.Color(255, 255, 255));
+        btnExportarPDF.setText("Imprimir");
+        btnExportarPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnExportarPDFActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2);
-        jButton2.setBounds(1160, 0, 100, 40);
+        jPanel3.add(btnExportarPDF);
+        btnExportarPDF.setBounds(1160, 0, 100, 40);
 
         panelBorder1.add(jPanel3);
         jPanel3.setBounds(0, 550, 1300, 50);
@@ -201,9 +206,35 @@ public class FrmQuantityUser extends javax.swing.JFrame {
         ctrUser.returnManagementQ(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnExportarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarPDFActionPerformed
+          btnExportarPDF.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Guardar archivo PDF");
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Archivos PDF", "pdf"));
+
+            int userSelection = fileChooser.showSaveDialog(null);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+                if (!filePath.toLowerCase().endsWith(".pdf")) {
+                    filePath += ".pdf";
+                }
+
+                
+                PDFExporter exporter = new PDFExporter();
+                try {
+                    exporter.exportTableToPDF(JTableUser, filePath, "Reporte de Usuario");
+                    JOptionPane.showMessageDialog(null, "Datos exportados a PDF exitosamente en:");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error al exportar PDF: " + e.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Exportación cancelada.");
+            }
+        }
+    });
+    }//GEN-LAST:event_btnExportarPDFActionPerformed
 
     private void TXT_quantity_userKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_quantity_userKeyReleased
         ctrUser.DataFiltter(TXT_quantity_user);
@@ -248,8 +279,8 @@ public class FrmQuantityUser extends javax.swing.JFrame {
     private javax.swing.JScrollPane JSCROLL_user_quantity;
     private Components.TableModel JTableUser;
     private Components.TextField TXT_quantity_user;
+    private javax.swing.JButton btnExportarPDF;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

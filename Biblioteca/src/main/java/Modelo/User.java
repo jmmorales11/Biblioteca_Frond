@@ -83,40 +83,41 @@ public class User {
     
     
 
-    public boolean login(String user, String password) {
-        try {
-            URL url = new URL("http://localhost:8080/user/login");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-Type", "application/json; utf-8");
-            connection.setRequestProperty("Accept", "application/json");
+    public String login(String user, String password) {
+    try {
+        URL url = new URL("http://localhost:8080/user/login");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+        connection.setRequestProperty("Accept", "application/json");
 
-            String jsonInputString = "{\"code\": \"" + user + "\", \"password\": \"" + password + "\"}";
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-            int responseCode = connection.getResponseCode();
-            if (responseCode != 200) {
-                throw new RuntimeException("Error: " + responseCode);
-            } else {
-                StringBuilder response = new StringBuilder();
-                Scanner scanner = new Scanner(connection.getInputStream());
-                while (scanner.hasNext()) {
-                    response.append(scanner.nextLine());
-                }
-                scanner.close();
-
-                // Mostrar la respuesta
-                //System.out.println(response.toString());
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        String jsonInputString = "{\"code\": \"" + user + "\", \"password\": \"" + password + "\"}";
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes("utf-8");
+            os.write(input, 0, input.length);
         }
+        int responseCode = connection.getResponseCode();
+        StringBuilder response = new StringBuilder();
+        try (Scanner scanner = new Scanner(connection.getInputStream())) {
+            while (scanner.hasNext()) {
+                response.append(scanner.nextLine());
+            }
+        }
+
+        if (responseCode != 200) {
+            return "Error: " + response.toString();
+        }
+
+        return response.toString(); // Devuelve el mensaje del servidor
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return "Error al conectar con el servidor.";
     }
+}
+
+
     
     
 
