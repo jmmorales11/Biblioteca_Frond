@@ -45,7 +45,7 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         TXT_code = new Components.TextField();
         TXT_author = new Components.TextField();
-        TXT_title = new Components.TextField();
+        TXT_price = new Components.TextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -60,6 +60,8 @@ public class FrmAddBook extends javax.swing.JFrame {
         SLC_language = new Components.Select();
         TXT_physicalState = new Components.TextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        TXT_title = new Components.TextField();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         BTN_addBook = new javax.swing.JButton();
@@ -108,9 +110,9 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel2.add(TXT_code);
         TXT_code.setBounds(160, 30, 450, 55);
         jPanel2.add(TXT_author);
-        TXT_author.setBounds(690, 110, 450, 55);
-        jPanel2.add(TXT_title);
-        TXT_title.setBounds(690, 180, 450, 52);
+        TXT_author.setBounds(690, 30, 450, 55);
+        jPanel2.add(TXT_price);
+        TXT_price.setBounds(690, 180, 450, 52);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel1.setText("Código");
@@ -135,17 +137,17 @@ public class FrmAddBook extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel5.setText("Autor");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(700, 90, 68, 16);
+        jLabel5.setBounds(700, 10, 68, 16);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jLabel6.setText("Título de la Obra");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(700, 160, 140, 16);
+        jLabel6.setBounds(700, 90, 140, 16);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jLabel7.setText("Sección");
+        jLabel7.setText("Precio");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(700, 230, 57, 16);
+        jLabel7.setBounds(700, 160, 57, 16);
 
         jScroll_TextArea_Book.setBackground(new java.awt.Color(255, 255, 255));
         jScroll_TextArea_Book.setBorder(null);
@@ -182,6 +184,13 @@ public class FrmAddBook extends javax.swing.JFrame {
         jLabel9.setText("Estado Físico");
         jPanel2.add(jLabel9);
         jLabel9.setBounds(170, 230, 120, 16);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel10.setText("Sección");
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(700, 230, 57, 16);
+        jPanel2.add(TXT_title);
+        TXT_title.setBounds(690, 110, 450, 52);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 100, 1300, 450);
@@ -282,6 +291,10 @@ public class FrmAddBook extends javax.swing.JFrame {
         return TXT_title.getText();
     }
     
+    public String getTXTprice(){
+        return TXT_price.getText();
+    }
+    
     public String getPhysicalstate() {
         return TXT_physicalState.getText();
     }
@@ -329,9 +342,11 @@ public class FrmAddBook extends javax.swing.JFrame {
     private Components.TextField TXT_author;
     private Components.TextField TXT_code;
     private Components.TextField TXT_physicalState;
+    private Components.TextField TXT_price;
     private Components.TextField TXT_title;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

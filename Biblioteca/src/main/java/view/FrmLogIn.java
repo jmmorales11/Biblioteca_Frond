@@ -185,24 +185,7 @@ public class FrmLogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_TF_passwordActionPerformed
 
     private void TF_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_passwordKeyReleased
-        // Obtener el texto ingresado
-    String text = TF_password.getText();
     
-    // Actualizar el texto real de la contraseña
-    realPassword = text;
-    
-    // Establecer el texto como puntos (uno por cada caráctere ingresado)
-    StringBuilder maskedText = new StringBuilder();
-    for (int i = 0; i < text.length(); i++) {
-        maskedText.append('•'); // Añadir el punto por cada caráctere
-    }
-    
-    // Actualizar el texto del JTextField con los puntos
-    TF_password.setText(maskedText.toString());
-    
-    // Actualizar el texto del JTextField con los puntos
-    TF_password.setText(maskedText.toString());
-        
     }//GEN-LAST:event_TF_passwordKeyReleased
 
     /**
@@ -250,8 +233,8 @@ public class FrmLogIn extends javax.swing.JFrame {
         return TF_username.getText();
     }
     public String getPassword(){
-        System.out.println(realPassword);
-        return realPassword;
+
+        return TF_password.getText();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

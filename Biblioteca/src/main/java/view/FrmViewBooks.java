@@ -30,6 +30,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
         jScroll_view_book.setVerticalScrollBar(new ScrollBar());
         ctrbook= new CtrBook();
         ctrbook.loadBooksEdit(tableModel1, this);
+        ctrbook.updatePriceTextField(TXT_totalprice);
         
     }
 
@@ -53,9 +54,10 @@ public class FrmViewBooks extends javax.swing.JFrame {
         panelBorder2 = new Components.PanelBorder();
         jScroll_view_book = new javax.swing.JScrollPane();
         tableModel1 = new Components.TableEdit();
+        TXT_totalprice = new Components.TextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -147,9 +149,14 @@ public class FrmViewBooks extends javax.swing.JFrame {
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScroll_view_book, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScroll_view_book, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        TXT_totalprice.setEditable(false);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel2.setText("Total precio de libros");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -157,14 +164,24 @@ public class FrmViewBooks extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(150, 150, 150)
-                .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TXT_totalprice, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(150, 150, 150))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TXT_totalprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         panelBorder1.add(jPanel3);
@@ -184,13 +201,6 @@ public class FrmViewBooks extends javax.swing.JFrame {
         });
         jPanel4.add(jButton1);
         jButton1.setBounds(14, 4, 90, 40);
-
-        jButton2.setBackground(new java.awt.Color(9, 57, 134));
-        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("jButton2");
-        jPanel4.add(jButton2);
-        jButton2.setBounds(1165, 3, 100, 40);
 
         panelBorder1.add(jPanel4);
         jPanel4.setBounds(0, 550, 1300, 50);
@@ -215,6 +225,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -251,9 +262,10 @@ public class FrmViewBooks extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Components.TextField TXT_totalprice;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

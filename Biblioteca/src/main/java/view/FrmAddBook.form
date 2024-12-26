@@ -113,11 +113,11 @@
             <Component class="Components.TextField" name="TXT_author">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="690" y="110" width="450" height="55"/>
+                  <AbsoluteConstraints x="690" y="30" width="450" height="55"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="Components.TextField" name="TXT_title">
+            <Component class="Components.TextField" name="TXT_price">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="690" y="180" width="450" height="52"/>
@@ -185,7 +185,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="700" y="90" width="68" height="-1"/>
+                  <AbsoluteConstraints x="700" y="10" width="68" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -198,7 +198,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="700" y="160" width="140" height="-1"/>
+                  <AbsoluteConstraints x="700" y="90" width="140" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -207,11 +207,11 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Emoji" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Secci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Precio"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="700" y="230" width="57" height="-1"/>
+                  <AbsoluteConstraints x="700" y="160" width="57" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -340,6 +340,26 @@
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="170" y="230" width="120" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Secci&#xf3;n"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="700" y="230" width="57" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="Components.TextField" name="TXT_title">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="690" y="110" width="450" height="52"/>
                 </Constraint>
               </Constraints>
             </Component>

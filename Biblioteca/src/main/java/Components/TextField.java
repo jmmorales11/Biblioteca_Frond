@@ -84,10 +84,6 @@ public class TextField extends JTextField {
         
     }
 
-   
-
-    
-
     private class TextUI extends BasicTextFieldUI {
 
         //  Override this method to remove background or not paint background

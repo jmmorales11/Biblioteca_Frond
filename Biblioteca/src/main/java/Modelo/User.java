@@ -142,7 +142,70 @@ public class User {
 //}
 
 
-    public String login(String user, String password) {
+//////////    public String login(String user, String password) {
+//////////    try {
+//////////        // Establecer la URL para el inicio de sesión
+//////////        URL url = new URL("http://localhost:8080/user/login");
+//////////        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//////////        connection.setRequestMethod("POST");
+//////////        connection.setDoOutput(true);
+//////////        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+//////////        connection.setRequestProperty("Accept", "application/json");
+//////////
+//////////        // Crear el cuerpo JSON con las credenciales del usuario
+//////////        String jsonInputString = "{" +
+//////////            "\"code\": \"" + user + "\"," +
+//////////            "\"password\": \"" + password + "\"" +
+//////////        "}";
+//////////
+//////////        System.out.println(jsonInputString);
+//////////        // Enviar datos al backend
+//////////        try (OutputStream os = connection.getOutputStream()) {
+//////////            byte[] input = jsonInputString.getBytes("utf-8");
+//////////            os.write(input, 0, input.length);
+//////////        }
+//////////
+//////////        // Leer el código de respuesta
+//////////        int responseCode = connection.getResponseCode();
+//////////      
+//////////        System.out.println(responseCode);
+//////////        if (responseCode == 200) {
+//////////            // Leer la respuesta exitosa
+//////////            StringBuilder response = new StringBuilder();
+//////////            try (Scanner scanner = new Scanner(connection.getInputStream())) {
+//////////                while (scanner.hasNext()) {
+//////////                    response.append(scanner.nextLine());
+//////////                }
+//////////            }
+//////////            JSONObject json = new JSONObject(response.toString());
+//////////            String message = json.getString("message");
+//////////           
+//////////            return message; // Respuesta de éxito
+//////////        } else {
+//////////            // Leer el flujo de error y extraer el mensaje del backend
+//////////            StringBuilder errorResponse = new StringBuilder();
+//////////            try (Scanner scanner = new Scanner(connection.getErrorStream())) {
+//////////                while (scanner.hasNext()) {
+//////////                    errorResponse.append(scanner.nextLine());
+//////////                }
+//////////            }
+//////////             // Intentar procesar como JSON
+//////////            try {
+//////////                JSONObject json = new JSONObject(errorResponse.toString());
+//////////                String errorMessage = json.getString("message");
+//////////                
+//////////                return "Error: " + errorMessage;
+//////////            } catch (Exception e) {
+//////////                
+//////////                return "Error: " + errorResponse.toString();
+//////////            }
+//////////        }
+//////////    } catch (Exception e) {
+//////////        return "Error: Ocurrió un error inesperado: " + e.getMessage();
+//////////    }
+//////////}
+
+public String login(String user, String password) {
     try {
         // Establecer la URL para el inicio de sesión
         URL url = new URL("http://localhost:8080/user/login");
@@ -158,6 +221,7 @@ public class User {
             "\"password\": \"" + password + "\"" +
         "}";
 
+        System.out.println(jsonInputString);
 
         // Enviar datos al backend
         try (OutputStream os = connection.getOutputStream()) {
@@ -167,7 +231,7 @@ public class User {
 
         // Leer el código de respuesta
         int responseCode = connection.getResponseCode();
-       
+        System.out.println("Código de respuesta: " + responseCode);
 
         if (responseCode == 200) {
             // Leer la respuesta exitosa
@@ -177,10 +241,17 @@ public class User {
                     response.append(scanner.nextLine());
                 }
             }
+            System.out.println("Respuesta: " + response.toString());
             JSONObject json = new JSONObject(response.toString());
-            String message = json.getString("message");
-           
-            return message; // Respuesta de éxito
+
+            // Comprobar si el campo "message" existe en la respuesta
+            if (json.has("message")) {
+                String message = json.getString("message");
+                return message; // Respuesta de éxito
+            } else {
+                // Devolver un mensaje por defecto si "message" no está presente
+                return "Inicio de sesión exitoso.";
+            }
         } else {
             // Leer el flujo de error y extraer el mensaje del backend
             StringBuilder errorResponse = new StringBuilder();
@@ -189,14 +260,16 @@ public class User {
                     errorResponse.append(scanner.nextLine());
                 }
             }
-             // Intentar procesar como JSON
+            // Intentar procesar como JSON
             try {
                 JSONObject json = new JSONObject(errorResponse.toString());
-                String errorMessage = json.getString("message");
-                
-                return "Error: " + errorMessage;
+                if (json.has("message")) {
+                    String errorMessage = json.getString("message");
+                    return "Error: " + errorMessage;
+                } else {
+                    return "Error: " + errorResponse.toString();
+                }
             } catch (Exception e) {
-                
                 return "Error: " + errorResponse.toString();
             }
         }

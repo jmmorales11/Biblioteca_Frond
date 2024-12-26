@@ -16,6 +16,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.RenderingHints;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractCellEditor;
@@ -161,7 +162,7 @@ public class CtrBook {
 
             for (int i = 0; i < usersArray.length(); i++) {
                 JSONObject bookObject = usersArray.getJSONObject(i);
-                String[] userData = new String[9];  // Array of size 6 for each column
+                String[] userData = new String[10];  // Array of size 6 for each column
                 userData[0] = bookObject.optString("id_book", "N/A");
                 userData[1] = bookObject.optString("title", "N/A");
                 userData[2] = bookObject.optString("author", "N/A");
@@ -171,10 +172,7 @@ public class CtrBook {
                 userData[6] = bookObject.optString("section", "N/A");
                 userData[7] = bookObject.optString("physical_state", "N/A");
                 userData[8] = bookObject.optString("description", "N/A");
-                
-                
-                
-                
+                userData[9] = bookObject.optString("price", "N/A");    
                 booksList.add(userData);
             }
         } catch (Exception e) {
@@ -188,12 +186,12 @@ public class CtrBook {
     public void loadBooksEdit(JTable JTableBook, FrmViewBooks frmviewbook) {
     DefaultTableModel tableModel = new DefaultTableModel(
             new Object[][]{},
-            new String[]{"ID", "Título", "Autor", "Idioma", "Código", "Grado", "Sección", "Estado Físico","Descripción", "Acciones"}
+            new String[]{"ID", "Título", "Autor", "Idioma", "Código", "Grado", "Sección", "Estado Físico","Descripción","Precio", "Acciones"}
     ) {
         @Override
         public boolean isCellEditable(int row, int column) {
             // Permite editar todas las columnas excepto la columna de "Acciones"
-            return column >= 1 && column <= 8;
+            return column >= 1 && column <= 9;
         }
     };
 
@@ -222,8 +220,8 @@ public class CtrBook {
     idColumn.setResizable(false);
 
     // Asignar renderer y editor a la columna de acciones
-    JTableBook.getColumnModel().getColumn(9).setCellRenderer(new ActionCellRenderer());
-    JTableBook.getColumnModel().getColumn(9).setCellEditor(new ActionCellEditor(JTableBook, frmviewbook));
+    JTableBook.getColumnModel().getColumn(10).setCellRenderer(new ActionCellRenderer());
+    JTableBook.getColumnModel().getColumn(10).setCellEditor(new ActionCellEditor(JTableBook, frmviewbook));
 }
 public class ActionCellEditor extends AbstractCellEditor implements TableCellEditor {
     private JPanel panel;
@@ -250,6 +248,8 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
             String seccion = table.getValueAt(row, 6).toString();
             String estadoFisico = table.getValueAt(row, 7).toString();
             String descrpcion = table.getValueAt(row, 8).toString();
+            BigDecimal precio = new BigDecimal(table.getValueAt(row, 9).toString());
+
             
 
             // Mostrar datos y confirmar la actualización
@@ -263,7 +263,8 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
                             "Grado: " + grado + "\n" +
                             "Sección: " + seccion + "\n" +
                             "Descripción: " + descrpcion + "\n" +
-                            "Estado Físico: " + estadoFisico + "\n\n" +
+                            "Estado Físico: " + estadoFisico + "\n" +
+                            "Precio: "+precio+"\n\n"+
                             "¿Desea actualizar estos datos?",
                     "Confirmación de Actualización",
                     JOptionPane.YES_NO_OPTION
@@ -272,7 +273,7 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
             if (confirm == JOptionPane.YES_OPTION) {
                 // Lógica para actualizar el libro
                 CtrBook controller = new CtrBook();
-                book.updateBook(id, titulo, autor,idioma , codigo, grado, seccion, descrpcion, estadoFisico);
+                book.updateBook(id, titulo, autor,idioma , codigo, grado, seccion, descrpcion, estadoFisico,precio);
 
                 // Mostrar mensaje de éxito
                 JOptionPane.showMessageDialog(
@@ -306,6 +307,7 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        
         return panel;
     }
 
@@ -438,6 +440,15 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
         JTableBook.setRowSorter(sorter);  
     }
     
+    public void updatePriceTextField(JTextField priceTextField) { 
+        String price = book.getPriceBook(); 
+        if (price != null) { priceTextField.setText(price); 
+        } else { 
+            priceTextField.setText("Error al obtener el precio"); 
+        }
+    }
+
+    
     public void backUser(){
         FrmUser frmUserNew= new FrmUser ();
         frmBooks.setVisible(false);
@@ -460,6 +471,7 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
         String section = frmaddbook.getSection();
         String description =frmaddbook.getDescription();
         String physical_state =frmaddbook.getPhysicalstate();
+        BigDecimal price = new BigDecimal(frmaddbook.getTXTprice());
         
        
         // Confirmar si se desea agregar el usuario
@@ -472,7 +484,7 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
 
         // Si el usuario confirma
         if (confirm == JOptionPane.YES_OPTION) {
-            String resultMessage = book.addBook(title, author, language, code, grade, section, description, physical_state);
+            String resultMessage = book.addBook(title, author, language, code, grade, section, description, physical_state,price);
 
             // Mostrar mensaje según el resultado
             if (resultMessage.isEmpty()) {
@@ -502,6 +514,8 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
             );
         }
     }
+    
+
     
     public void returnManagement(FrmViewBooks frmviewBooks){
         FrmMenuManagement frmMenumana = new FrmMenuManagement();

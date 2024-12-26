@@ -5,6 +5,7 @@
 package Modelo;
 
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -48,7 +49,7 @@ public class Book {
         return information.toString(); 
     }
     
-    public String addBook(String title, String author, String language, String code, String grade, String section, String description, String physical_state) {
+    public String addBook(String title, String author, String language, String code, String grade, String section, String description, String physical_state, BigDecimal price) {
         try {
             System.out.println("Inicio");
             URL url = new URL("http://localhost:8080/book");
@@ -66,7 +67,9 @@ public class Book {
                     "\", \"grade\": \"" + grade + 
                     "\" , \"section\": \"" + section +
                     "\" , \"description\": \"" + description + 
-                    "\" , \"physical_state\": \"" + physical_state+ "\"}";
+                    "\" , \"physical_state\": \"" + physical_state+ "\"," +
+            "\"price\": " +  price.toPlainString()+ // Sin comillas alrededor de precio
+        "}";
             System.out.println(jsonInputString);
 
             // Enviar datos al backend
@@ -138,7 +141,7 @@ public class Book {
 
         return information.toString(); 
     }
-    public String updateBook(int bookId, String title, String author, String language, String code, String grade, String section, String description, String physicalState) {
+    public String updateBook(int bookId, String title, String author, String language, String code, String grade, String section, String description, String physicalState, BigDecimal precio) {
     try {
         // Establecer la URL para la actualización del libro
         URL url = new URL("http://localhost:8080/book/update/" + bookId);
@@ -148,7 +151,6 @@ public class Book {
         connection.setRequestProperty("Content-Type", "application/json; utf-8");
         connection.setRequestProperty("Accept", "application/json");
 
-        // Crear el cuerpo JSON con los nuevos datos del libro
         String jsonInputString = "{" +
             "\"title\": \"" + title + "\"," +
             "\"author\": \"" + author + "\"," +
@@ -157,8 +159,10 @@ public class Book {
             "\"grade\": \"" + grade + "\"," +
             "\"section\": \"" + section + "\"," +
             "\"description\": \"" + description + "\"," +
-            "\"physical_state\": \"" + physicalState + "\"" +
+            "\"physical_state\": \"" + physicalState + "\"," +
+            "\"price\": " +  precio.toPlainString()+ // Sin comillas alrededor de precio
         "}";
+
 
         System.out.println("Datos a enviar: " + jsonInputString);
 
@@ -199,5 +203,36 @@ public class Book {
         return "Ocurrió un error inesperado: " + e.getMessage();
     }
 }
+    public String getPriceBook() {
+        StringBuilder information = new StringBuilder();
+
+        try {
+            URL url = new URL("http://localhost:8080/book/amount");
+            
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode != 200) {
+                throw new RuntimeException("Error: " + responseCode);
+            } else {
+                // Leer los datos
+                Scanner scanner = new Scanner(url.openStream());
+                while (scanner.hasNext()) {
+                    information.append(scanner.nextLine());
+                }
+                scanner.close();
+                System.out.println(information);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; 
+        }
+
+        return information.toString(); 
+    }
 
 }

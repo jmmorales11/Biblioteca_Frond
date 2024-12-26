@@ -31,11 +31,41 @@ public class Ctrlogin {
     }
     
     
+//public void input() {
+//    String username = frmlogin.getUser();
+//    String password = frmlogin.getPassword();
+//
+//    String responseMessage = user.login(username, password);
+//
+//    // Verificar si la respuesta contiene un error
+//    if (responseMessage.startsWith("Error:")) {
+//        // Mostrar el mensaje de error en un cuadro de diálogo de advertencia
+//        System.out.println("Invalido");
+//        String displayMessage = responseMessage.replaceFirst("Error:", "").trim();
+//        JOptionPane.showMessageDialog(frmlogin, displayMessage, "Advertencia", JOptionPane.WARNING_MESSAGE);
+//    } else {
+//        // Mostrar el mensaje de éxito e ir al menú
+//        System.out.println("VALIDO");
+//        JOptionPane.showMessageDialog(frmlogin, responseMessage, "Información", JOptionPane.INFORMATION_MESSAGE);
+//        frmlogin.setVisible(false); // Ocultar la ventana de login
+//        frmMenu.setVisible(true);   // Mostrar la siguiente página
+//    }
+//}
+
+
+
 public void input() {
     String username = frmlogin.getUser();
     String password = frmlogin.getPassword();
 
+    // Agregar mensajes de depuración
+    System.out.println("Usuario: " + username);
+    System.out.println("Contraseña: " + password);
+
     String responseMessage = user.login(username, password);
+
+    // Agregar más mensajes de depuración
+    System.out.println("Mensaje de respuesta: " + responseMessage);
 
     // Verificar si la respuesta contiene un error
     if (responseMessage.startsWith("Error:")) {
@@ -45,11 +75,14 @@ public void input() {
     } else {
         // Mostrar el mensaje de éxito e ir al menú
         JOptionPane.showMessageDialog(frmlogin, responseMessage, "Información", JOptionPane.INFORMATION_MESSAGE);
+        
+        // Agregar mensajes de depuración antes de redirigir
+        System.out.println("Redirigiendo al menú...");
+        
         frmlogin.setVisible(false); // Ocultar la ventana de login
         frmMenu.setVisible(true);   // Mostrar la siguiente página
     }
 }
-
 
     
 

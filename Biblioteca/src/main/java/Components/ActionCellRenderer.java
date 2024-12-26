@@ -4,6 +4,7 @@
  */
 package Components;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Insets;
@@ -22,14 +23,14 @@ public class ActionCellRenderer extends JPanel implements TableCellRenderer {
     public ActionCellRenderer() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 1, 0));
         JButton viewButton = createIconButton("visto.png");
-
+        setBackground(Color.WHITE);
         setOpaque(true); // Mantiene el fondo del panel
         add(viewButton);
     }
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+
         return this;
     }
     private JButton createIconButton(String iconName) {
