@@ -8,6 +8,7 @@ import Components.Background;
 import Components.ScrollBar;
 import Controller.CtrBook;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,7 @@ public class FrmViewBooks extends javax.swing.JFrame {
     Background back = new Background();
     CtrBook ctrbook;
     public FrmViewBooks() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);

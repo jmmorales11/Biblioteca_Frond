@@ -27,20 +27,9 @@ public class Biblioteca {
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
 
-//        FrmLogIn login= new FrmLogIn();
+        FrmLogIn login= new FrmLogIn();
 //        // Hacer visible la ventana
-//        login.setVisible(true);
-
-//          Book book= new Book();
-//          book.addBook("hola", "ooo", "ingles", "1111", "segundo", "fr", "deeee", "bueno");
-          
-            User user =  new User();
-//            user.addUser("1754146676", "Estudiante", "Jeimy", "Morales", "jeimym@gmail.com", "segundaria");
-    user.updateUser(29, "aaaa", "aa", "jj@gmail.com","11111", "11111111", "1754146676");
-//            UserBook ub= new UserBook();
-//            ub.addLoan("2024-10-24 10:13:15", "2024-10-26 10:13:15", 11, 19);
-//           Loan lo= new Loan();
-//           lo.addLoan(15, "2024-12-24 10:13:15");
+        login.setVisible(true);
 
     }
 }

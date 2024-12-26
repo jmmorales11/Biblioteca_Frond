@@ -9,6 +9,7 @@ import view.FrmAddUser;
 import view.FrmMenuOptions;
 import view.FrmBook;
 import view.FrmLoan;
+import view.FrmLogIn;
 import view.FrmMenuManagement;
 import view.FrmQuantityBooksLent;
 import view.FrmReport;
@@ -87,6 +88,13 @@ public class CtrMenuOptions {
         FrmQuantityBooksLent frmQuantity = new FrmQuantityBooksLent();
         frmMenuManagement.setVisible(false);
         frmQuantity.setVisible(true);
+    }
+    public void closeSession(){
+        System.out.println("Holaaaaaaa1111");
+        FrmLogIn frmLogIn = new FrmLogIn();
+        frmMenu.setVisible(false);
+        frmLogIn.setVisible(true);
+        System.out.println("Holaaaaaaa");
     }
     
    

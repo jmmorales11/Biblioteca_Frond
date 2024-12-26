@@ -7,6 +7,7 @@ package view;
 import Components.Background;
 import Controller.CtrUser;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +21,7 @@ public class FrmAddUser extends javax.swing.JFrame {
     Background back = new Background();
     CtrUser ctrUser;
     public FrmAddUser() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);

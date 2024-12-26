@@ -7,6 +7,7 @@ package view;
 import Components.Background;
 import Controller.CtrMenuOptions;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -21,6 +22,7 @@ public class FrmMenuOptions extends javax.swing.JFrame {
     CtrMenuOptions ctrM ;
     Background back= new Background();
     public FrmMenuOptions() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
@@ -197,8 +199,13 @@ public class FrmMenuOptions extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
-        jButton1.setBounds(30, 103, 72, 30);
+        jButton1.setBounds(30, 103, 80, 40);
 
         panelBorder1.add(jPanel1);
         jPanel1.setBounds(0, 440, 1300, 150);
@@ -226,6 +233,10 @@ public class FrmMenuOptions extends javax.swing.JFrame {
     private void BTN_manageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_manageActionPerformed
         ctrM.menuManagement();
     }//GEN-LAST:event_BTN_manageActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ctrM.closeSession();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     //Trasparencia boton
     

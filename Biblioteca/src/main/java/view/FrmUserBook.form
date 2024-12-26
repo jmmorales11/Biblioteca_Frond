@@ -121,6 +121,9 @@
           </Layout>
           <SubComponents>
             <Component class="Components.TextField" name="TXT_Date">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TXT_DateActionPerformed"/>
               </Events>
@@ -131,6 +134,9 @@
               </Constraints>
             </Component>
             <Component class="Components.TextField" name="TF_name_user">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="150" y="91" width="500" height="50"/>
@@ -138,6 +144,9 @@
               </Constraints>
             </Component>
             <Component class="Components.TextField" name="TF_last_name_user">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="720" y="91" width="500" height="50"/>
@@ -145,6 +154,9 @@
               </Constraints>
             </Component>
             <Component class="Components.TextField" name="TF_mail_user">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TF_mail_userActionPerformed"/>
               </Events>

@@ -11,6 +11,7 @@ import Controller.CtrUserBooks;
 import Modelo.UserBook;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,6 +26,7 @@ public class FrmUserBook extends javax.swing.JFrame {
     CtrUser ctrUser;
     Background back = new Background();
     public FrmUserBook(CtrUserBooks ctrUserBooks) {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.ctrUserBooks= ctrUserBooks;
@@ -111,6 +113,7 @@ public class FrmUserBook extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(217, 217, 217));
         jPanel2.setLayout(null);
 
+        TXT_Date.setEditable(false);
         TXT_Date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_DateActionPerformed(evt);
@@ -118,11 +121,16 @@ public class FrmUserBook extends javax.swing.JFrame {
         });
         jPanel2.add(TXT_Date);
         TXT_Date.setBounds(980, 30, 240, 41);
+
+        TF_name_user.setEditable(false);
         jPanel2.add(TF_name_user);
         TF_name_user.setBounds(150, 91, 500, 50);
+
+        TF_last_name_user.setEditable(false);
         jPanel2.add(TF_last_name_user);
         TF_last_name_user.setBounds(720, 91, 500, 50);
 
+        TF_mail_user.setEditable(false);
         TF_mail_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TF_mail_userActionPerformed(evt);

@@ -30,28 +30,28 @@ public class Ctrlogin {
         this.frmlogin = frmlogin;
     }
     
-    public void input() {
+    
+public void input() {
     String username = frmlogin.getUser();
     String password = frmlogin.getPassword();
 
     String responseMessage = user.login(username, password);
 
-    if (responseMessage.startsWith("Error:") || responseMessage.equals("Error al conectar con el servidor.")) {
-        // Mostrar ventana de advertencia si hay un error
-        JOptionPane.showMessageDialog(frmlogin, responseMessage, "Advertencia", JOptionPane.WARNING_MESSAGE);
-        // No redirigir a la siguiente pantalla
+    // Verificar si la respuesta contiene un error
+    if (responseMessage.startsWith("Error:")) {
+        // Mostrar el mensaje de error en un cuadro de diálogo de advertencia
+        String displayMessage = responseMessage.replaceFirst("Error:", "").trim();
+        JOptionPane.showMessageDialog(frmlogin, displayMessage, "Advertencia", JOptionPane.WARNING_MESSAGE);
     } else {
-        // Mostrar mensaje de éxito y redirigir al menú principal
+        // Mostrar el mensaje de éxito e ir al menú
         JOptionPane.showMessageDialog(frmlogin, responseMessage, "Información", JOptionPane.INFORMATION_MESSAGE);
-        frmlogin.setVisible(false);
-        frmMenu.setVisible(true);
+        frmlogin.setVisible(false); // Ocultar la ventana de login
+        frmMenu.setVisible(true);   // Mostrar la siguiente página
     }
 }
-    
-    
 
 
-      
     
-    
+
+   
 }

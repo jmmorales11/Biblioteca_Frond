@@ -11,6 +11,7 @@ import Controller.CtrUser;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,7 @@ public class FrmQuantityUser extends javax.swing.JFrame {
     Background back = new Background();
     CtrUser ctrUser;
     public FrmQuantityUser() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);

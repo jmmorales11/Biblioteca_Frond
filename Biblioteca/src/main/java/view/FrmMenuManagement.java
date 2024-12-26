@@ -7,6 +7,7 @@ package view;
 import Components.Background;
 import Controller.CtrMenuOptions;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +21,7 @@ public class FrmMenuManagement extends javax.swing.JFrame {
     CtrMenuOptions ctrM ;
     Background back= new Background();
     public FrmMenuManagement() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);

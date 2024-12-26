@@ -7,6 +7,7 @@ package view;
 import Components.Background;
 import Components.ScrollBar;
 import Controller.CtrBook;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +21,7 @@ public class FrmAddBook extends javax.swing.JFrame {
     Background back = new Background();
     CtrBook ctrbook;
     public FrmAddBook() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);

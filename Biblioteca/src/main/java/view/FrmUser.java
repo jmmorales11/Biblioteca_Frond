@@ -10,6 +10,7 @@ import Controller.CtrUser;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
 
 /**
@@ -25,6 +26,7 @@ public class FrmUser extends javax.swing.JFrame {
     CtrUser ctrUser;
     private CtrUserBooks ctrUserBooks;
     public FrmUser() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         UserBook userbook = new UserBook();

@@ -20,12 +20,14 @@ import javax.swing.JPanel;
  */
 public class FrmLogIn extends javax.swing.JFrame {
     Background back = new Background();
+    private String realPassword = "";
     
     Ctrlogin log;
     /**
      * Creates new form LogIn
      */
     public FrmLogIn() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmLogIn.MAXIMIZED_BOTH);
@@ -49,10 +51,10 @@ public class FrmLogIn extends javax.swing.JFrame {
         PA_login_form1 = new javax.swing.JPanel();
         login_title1 = new javax.swing.JLabel();
         JL_user1 = new javax.swing.JLabel();
-        TF_username = new javax.swing.JTextField();
         JL_password1 = new javax.swing.JLabel();
-        TF_password = new javax.swing.JTextField();
         BTN_login = new javax.swing.JButton();
+        TF_username = new Components.TextField();
+        TF_password = new Components.TextField();
         img_acces1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,25 +62,22 @@ public class FrmLogIn extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(300, 300));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder2.setBackground(new java.awt.Color(227, 227, 227));
 
         PA_login_form1.setBackground(new java.awt.Color(255, 253, 255));
+        PA_login_form1.setOpaque(false);
 
-        login_title1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        login_title1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         login_title1.setText("Login");
 
+        JL_user1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         JL_user1.setText("Usuario");
 
+        JL_password1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         JL_password1.setText("Contraseña");
 
-        TF_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TF_passwordActionPerformed(evt);
-            }
-        });
-
         BTN_login.setBackground(new java.awt.Color(9, 57, 134));
-        BTN_login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BTN_login.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         BTN_login.setForeground(new java.awt.Color(255, 255, 255));
         BTN_login.setText("Ingresar");
         BTN_login.addActionListener(new java.awt.event.ActionListener() {
@@ -87,41 +86,57 @@ public class FrmLogIn extends javax.swing.JFrame {
             }
         });
 
+        TF_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TF_usernameActionPerformed(evt);
+            }
+        });
+
+        TF_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TF_passwordActionPerformed(evt);
+            }
+        });
+        TF_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TF_passwordKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout PA_login_form1Layout = new javax.swing.GroupLayout(PA_login_form1);
         PA_login_form1.setLayout(PA_login_form1Layout);
         PA_login_form1Layout.setHorizontalGroup(
             PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PA_login_form1Layout.createSequentialGroup()
-                .addGroup(PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PA_login_form1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JL_user1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JL_password1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_username)
-                            .addComponent(TF_password)
-                            .addComponent(BTN_login, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)))
-                    .addGroup(PA_login_form1Layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(login_title1)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addGroup(PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BTN_login, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                    .addComponent(TF_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TF_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JL_password1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JL_user1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PA_login_form1Layout.createSequentialGroup()
+                .addContainerGap(137, Short.MAX_VALUE)
+                .addComponent(login_title1)
+                .addGap(180, 180, 180))
         );
         PA_login_form1Layout.setVerticalGroup(
             PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PA_login_form1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(69, 69, 69)
                 .addComponent(login_title1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(55, 55, 55)
                 .addComponent(JL_user1)
                 .addGap(18, 18, 18)
-                .addComponent(TF_username, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(TF_username, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JL_password1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TF_password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
+                .addComponent(TF_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(BTN_login, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         img_acces1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_acc1.png"))); // NOI18N
@@ -140,10 +155,12 @@ public class FrmLogIn extends javax.swing.JFrame {
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder2Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PA_login_form1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(img_acces1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(142, 142, 142))
+                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PA_login_form1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelBorder2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(img_acces1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(32, 32, 32))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -155,13 +172,38 @@ public class FrmLogIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TF_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_passwordActionPerformed
-
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
         log.input();
     }//GEN-LAST:event_BTN_loginActionPerformed
+
+    private void TF_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_usernameActionPerformed
+
+    private void TF_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_passwordActionPerformed
+        
+    }//GEN-LAST:event_TF_passwordActionPerformed
+
+    private void TF_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_passwordKeyReleased
+        // Obtener el texto ingresado
+    String text = TF_password.getText();
+    
+    // Actualizar el texto real de la contraseña
+    realPassword = text;
+    
+    // Establecer el texto como puntos (uno por cada caráctere ingresado)
+    StringBuilder maskedText = new StringBuilder();
+    for (int i = 0; i < text.length(); i++) {
+        maskedText.append('•'); // Añadir el punto por cada caráctere
+    }
+    
+    // Actualizar el texto del JTextField con los puntos
+    TF_password.setText(maskedText.toString());
+    
+    // Actualizar el texto del JTextField con los puntos
+    TF_password.setText(maskedText.toString());
+        
+    }//GEN-LAST:event_TF_passwordKeyReleased
 
     /**
      * @param args the command line arguments
@@ -204,10 +246,12 @@ public class FrmLogIn extends javax.swing.JFrame {
     }
     
     public String getUser(){
+        
         return TF_username.getText();
     }
     public String getPassword(){
-        return TF_password.getText();
+        System.out.println(realPassword);
+        return realPassword;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -215,8 +259,8 @@ public class FrmLogIn extends javax.swing.JFrame {
     private javax.swing.JLabel JL_password1;
     private javax.swing.JLabel JL_user1;
     private javax.swing.JPanel PA_login_form1;
-    private javax.swing.JTextField TF_password;
-    public javax.swing.JTextField TF_username;
+    private Components.TextField TF_password;
+    private Components.TextField TF_username;
     private javax.swing.JLabel img_acces1;
     private javax.swing.JLabel login_title1;
     private Components.PanelBorder panelBorder2;

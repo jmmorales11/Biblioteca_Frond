@@ -8,6 +8,7 @@ import Components.Background;
 import Components.ScrollBar;
 import Controller.CtrBinnacle;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,7 @@ public class FrmReport extends javax.swing.JFrame {
     Background back = new Background();
     CtrBinnacle ctrbinnacle;
     public FrmReport() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
@@ -85,7 +87,7 @@ public class FrmReport extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Regresar);
-        Regresar.setBounds(48, 6, 86, 38);
+        Regresar.setBounds(48, 6, 90, 38);
 
         panelBorder1.add(jPanel2);
         jPanel2.setBounds(0, 550, 1300, 50);

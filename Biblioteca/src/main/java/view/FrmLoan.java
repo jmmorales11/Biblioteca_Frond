@@ -11,6 +11,7 @@ import Controller.CtrUser;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,6 +26,7 @@ public class FrmLoan extends javax.swing.JFrame {
     CtrLoan ctrLoan;
     private CtrUserBooks ctrUserBooks;
     public FrmLoan() {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.getContentPane().setBackground(Color.white);
@@ -69,6 +71,8 @@ public class FrmLoan extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(217, 217, 217));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
+
+        JSCROLL_tableUser.setBorder(null);
 
         JTableLoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

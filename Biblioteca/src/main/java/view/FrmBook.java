@@ -11,6 +11,7 @@ import Controller.CtrBook;
 import Controller.CtrUserBooks;
 import Modelo.UserBook;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
 /**
@@ -25,6 +26,7 @@ public class FrmBook extends javax.swing.JFrame {
     CtrBook ctrbook;
     private CtrUserBooks ctrUserBooks;
     public FrmBook(CtrUserBooks ctrUserBooks) {
+        setIconImage(new ImageIcon(getClass().getResource("/img/iconof.png")).getImage());
         this.setContentPane(back);
         initComponents();
         this.setExtendedState(FrmMenuOptions.MAXIMIZED_BOTH);
