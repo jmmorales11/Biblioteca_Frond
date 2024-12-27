@@ -8,6 +8,7 @@ import Components.ActiveStatusRenderer;
 import Components.ButtonEditor;
 import Components.ButtonRenderer;
 import Components.CenteredCellRenderer;
+import Components.Select;
 import Modelo.User;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultCellEditor;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -159,7 +161,24 @@ public void loadUsersEdit(JTable JTableUser,FrmViewUser frmviewuser) {
     // Asignar renderer y editor a la columna de acciones
     JTableUser.getColumnModel().getColumn(7).setCellRenderer(new ActionCellRenderer());
     JTableUser.getColumnModel().getColumn(7).setCellEditor(new ActionCellEditor(JTableUser,frmviewuser));
+    String[] role= {"Académico", "Administrativo", "Adminsitrativo", "Apoyo", "DECE", "Directivo", "Docente", "Estudiante", "Inglés", "Limpieza", "Técnico", "Transporte", "Ninguna" };
+    setComboBoxEditor(JTableUser, 2, role); // Asignar editor a la columna "Idioma" (índice 3)
+    String[] grade = {"10EGB_A", "10EGB_B", "10MO_B", "1BGU_ B", "1BGU_A", "1BGU_B", "1EGB_Cañar", "1EGB_Napo", "2_do_Loja", "2BGU", "2BGU_A", "2BGU_B", "2EGB_Loja", "2EGB_Pichincha", "3 BGU", "3BGU_A", "3EGB_Galápagos", "3EGB_Sucumbíos", "3ro_BGU", "3ro_EGB_Sucumbios", "4EGB_Cotopaxi", "4EGB_Guayas", "4to_Cotopaxi", "4TO_Guayas", "5EGB_Azuay", "5EGB_Esmeraldas", "5to_EGB_Esmeraldas", "6EGB_Carchi", "6EGB_Chimborazo", "6to_Chimborazo", "7_mo_Bolívar", "7EGB_Bolívar", "7EGB_Manabí", "8_vo_B", "8EGB_A", "8EGB_B", "8VO_EGB", "9EGB_A", "9EGB_B", "9no_A", "9nO_B", "Inicial 1_Pastaza", "Inicial 2_Orellana", "Inicial 2_Tungurahua", "Ninguno"};
+    setComboBoxEditor(JTableUser, 5, grade);
+
+
 }
+    public static void setComboBoxEditor(JTable table, int columnIndex, String[] items) {
+        // Crear una instancia de Select con los elementos proporcionados
+        Select<String> selectEditor = new Select<>();
+        for (String item : items) {
+            selectEditor.addItem(item);
+        }
+        // Asignar Select como editor para la columna especificada
+        TableColumn column = table.getColumnModel().getColumn(columnIndex);
+        column.setCellEditor(new DefaultCellEditor(selectEditor));
+    }
+
 
 // Renderer para mostrar el ícono de "visto" en la columna de acciones
 public class ActionCellRenderer extends JPanel implements TableCellRenderer {

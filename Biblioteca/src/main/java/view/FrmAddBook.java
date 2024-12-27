@@ -176,7 +176,7 @@ public class FrmAddBook extends javax.swing.JFrame {
         jPanel2.add(SLC_section);
         SLC_section.setBounds(695, 250, 440, 45);
 
-        SLC_language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ESPAÑOL", "CIENCIAS", "ÁLGEBRA", "ESPAÑOL- INGLES", "FÍSICA", "INGLÉS", "MATEMÁTICAS", " " }));
+        SLC_language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ESPAÑOL", "CIENCIAS", "ÁLGEBRA", "ESPAÑOL- INGLES", "FÍSICA", "INGLÉS", "MATEMÁTICAS", "" }));
         SLC_language.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SLC_languageActionPerformed(evt);

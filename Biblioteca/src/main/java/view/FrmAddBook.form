@@ -316,7 +316,7 @@
                     <StringItem index="4" value="F&#xcd;SICA"/>
                     <StringItem index="5" value="INGL&#xc9;S"/>
                     <StringItem index="6" value="MATEM&#xc1;TICAS"/>
-                    <StringItem index="7" value=" "/>
+                    <StringItem index="7" value=""/>
                   </StringArray>
                 </Property>
               </Properties>

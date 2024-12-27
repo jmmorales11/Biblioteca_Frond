@@ -7,6 +7,7 @@ package Controller;
 import Components.ActionCellRenderer;
 import Components.ActiveStatusRenderer;
 import Components.CircularLabel;
+import Components.Select;
 import Modelo.Book;
 import java.awt.Color;
 import java.awt.Component;
@@ -20,9 +21,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultCellEditor;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -222,7 +225,25 @@ public class CtrBook {
     // Asignar renderer y editor a la columna de acciones
     JTableBook.getColumnModel().getColumn(10).setCellRenderer(new ActionCellRenderer());
     JTableBook.getColumnModel().getColumn(10).setCellEditor(new ActionCellEditor(JTableBook, frmviewbook));
+    // Crear un editor de celda personalizado usando la clase Select
+    String[] languages = {"ESPAÑOL", "CIENCIAS", "ÁLGEBRA", "ESPAÑOL- INGLES", "FÍSICA", "INGLÉS", "MATEMÁTICAS" };
+    setComboBoxEditor(JTableBook, 3, languages); // Asignar editor a la columna "Idioma" (índice 3)
+    String[] grade = {"SECUNDARIA", "PRIMARIA", "DOCENTES", "PREESCOLAR", "TEACHING GUIDE", "NINGUNA" };
+    setComboBoxEditor(JTableBook, 5, grade);
+    String[] section = {"AG", "CP", "D", "DOCENTE", "FE", "FG", "FLL", "FR", "FT", "GF", "GR", "I", "INV", "LG", "LL", "R", "S", "SR", "TC", "NINGUNA" };
+    setComboBoxEditor(JTableBook, 6, section);
+
 }
+    public static void setComboBoxEditor(JTable table, int columnIndex, String[] items) {
+        // Crear una instancia de Select con los elementos proporcionados
+        Select<String> selectEditor = new Select<>();
+        for (String item : items) {
+            selectEditor.addItem(item);
+        }
+        // Asignar Select como editor para la columna especificada
+        TableColumn column = table.getColumnModel().getColumn(columnIndex);
+        column.setCellEditor(new DefaultCellEditor(selectEditor));
+    }
 public class ActionCellEditor extends AbstractCellEditor implements TableCellEditor {
     private JPanel panel;
     private JButton viewButton;
@@ -272,19 +293,28 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
 
             if (confirm == JOptionPane.YES_OPTION) {
                 // Lógica para actualizar el libro
-                CtrBook controller = new CtrBook();
-                book.updateBook(id, titulo, autor,idioma , codigo, grado, seccion, descrpcion, estadoFisico,precio);
 
-                // Mostrar mensaje de éxito
-                JOptionPane.showMessageDialog(
-                        table,
-                        "Datos actualizados exitosamente.",
-                        "Actualización Exitosa",
+                String resultMessage=book.updateBook(id, titulo, autor,idioma , codigo, grado, seccion, descrpcion, estadoFisico,precio);
+
+            // Mostrar mensaje según el resultado
+                if (resultMessage.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Libro actualizado con éxito.",
+                        "Éxito",
                         JOptionPane.INFORMATION_MESSAGE
-                );
+                    );
 
-                // Recargar la tabla
-                loadBooksEdit(table, frmviewbook);
+                } else {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Error al actualizar el libro: " + resultMessage,
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                }
+                    // Recargar la tabla
+                    loadBooksEdit(table, frmviewbook);
             } else {
                 // Recargar la tabla y mostrar mensaje de cancelación
                 loadBooksEdit(table, frmviewbook);
