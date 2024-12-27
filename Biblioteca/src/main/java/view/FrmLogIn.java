@@ -53,8 +53,8 @@ public class FrmLogIn extends javax.swing.JFrame {
         JL_user1 = new javax.swing.JLabel();
         JL_password1 = new javax.swing.JLabel();
         BTN_login = new javax.swing.JButton();
-        TF_username = new Components.TextField();
-        TF_password = new Components.TextField();
+        TF_username = new javax.swing.JTextField();
+        TF_password = new javax.swing.JPasswordField();
         img_acces1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,40 +86,30 @@ public class FrmLogIn extends javax.swing.JFrame {
             }
         });
 
-        TF_username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TF_usernameActionPerformed(evt);
-            }
-        });
+        TF_username.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        TF_username.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        TF_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TF_passwordActionPerformed(evt);
-            }
-        });
-        TF_password.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                TF_passwordKeyReleased(evt);
-            }
-        });
+        TF_password.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        TF_password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout PA_login_form1Layout = new javax.swing.GroupLayout(PA_login_form1);
         PA_login_form1.setLayout(PA_login_form1Layout);
         PA_login_form1Layout.setHorizontalGroup(
             PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PA_login_form1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BTN_login, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                    .addComponent(TF_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TF_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JL_password1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JL_user1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PA_login_form1Layout.createSequentialGroup()
                 .addContainerGap(137, Short.MAX_VALUE)
                 .addComponent(login_title1)
                 .addGap(180, 180, 180))
+            .addGroup(PA_login_form1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TF_password, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                    .addGroup(PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TF_username)
+                        .addComponent(BTN_login, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                        .addComponent(JL_password1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JL_user1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PA_login_form1Layout.setVerticalGroup(
             PA_login_form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,12 +119,12 @@ public class FrmLogIn extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addComponent(JL_user1)
                 .addGap(18, 18, 18)
-                .addComponent(TF_username, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TF_username, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JL_password1)
                 .addGap(18, 18, 18)
-                .addComponent(TF_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(TF_password, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(BTN_login, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
@@ -175,18 +165,6 @@ public class FrmLogIn extends javax.swing.JFrame {
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
         log.input();
     }//GEN-LAST:event_BTN_loginActionPerformed
-
-    private void TF_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_usernameActionPerformed
-
-    private void TF_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_passwordActionPerformed
-        
-    }//GEN-LAST:event_TF_passwordActionPerformed
-
-    private void TF_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_passwordKeyReleased
-    
-    }//GEN-LAST:event_TF_passwordKeyReleased
 
     /**
      * @param args the command line arguments
@@ -242,8 +220,8 @@ public class FrmLogIn extends javax.swing.JFrame {
     private javax.swing.JLabel JL_password1;
     private javax.swing.JLabel JL_user1;
     private javax.swing.JPanel PA_login_form1;
-    private Components.TextField TF_password;
-    private Components.TextField TF_username;
+    private javax.swing.JPasswordField TF_password;
+    private javax.swing.JTextField TF_username;
     private javax.swing.JLabel img_acces1;
     private javax.swing.JLabel login_title1;
     private Components.PanelBorder panelBorder2;

@@ -237,16 +237,26 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
     );
 
     if (confirm == JOptionPane.YES_OPTION) {
-
-        // Mostrar mensaje de éxito
-        JOptionPane.showMessageDialog(
-            table,
-            "Datos actualizados exitosamente.",
-            "Actualización Exitosa",
-            JOptionPane.INFORMATION_MESSAGE
-        );
+       
         
-        user.updateUser(id,nombre,apellido,correo,tipoUsuario,grado,codigo);
+        String resultMessage= user.updateUser(id,nombre,apellido,correo,tipoUsuario,grado,codigo);
+        // Mostrar mensaje según el resultado
+            if (resultMessage.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Usuario actualizado con éxito.",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                
+            } else {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Error al actualizar el usuario: " + resultMessage,
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
         loadUsersEdit(table, frmviewuser);
  
         

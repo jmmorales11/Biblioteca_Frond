@@ -442,6 +442,7 @@ public class ActionCellEditor extends AbstractCellEditor implements TableCellEdi
     
     public void updatePriceTextField(JTextField priceTextField) { 
         String price = book.getPriceBook(); 
+        price=price+" $";
         if (price != null) { priceTextField.setText(price); 
         } else { 
             priceTextField.setText("Error al obtener el precio"); 

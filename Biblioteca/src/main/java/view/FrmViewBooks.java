@@ -123,6 +123,8 @@ public class FrmViewBooks extends javax.swing.JFrame {
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jScroll_view_book.setBorder(null);
+
         tableModel1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

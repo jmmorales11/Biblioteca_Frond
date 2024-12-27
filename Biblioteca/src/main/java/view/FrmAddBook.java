@@ -111,6 +111,13 @@ public class FrmAddBook extends javax.swing.JFrame {
         TXT_code.setBounds(160, 30, 450, 55);
         jPanel2.add(TXT_author);
         TXT_author.setBounds(690, 30, 450, 55);
+
+        TXT_price.setText("0");
+        TXT_price.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXT_priceActionPerformed(evt);
+            }
+        });
         jPanel2.add(TXT_price);
         TXT_price.setBounds(690, 180, 450, 52);
 
@@ -264,6 +271,10 @@ public class FrmAddBook extends javax.swing.JFrame {
     private void SLC_languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SLC_languageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SLC_languageActionPerformed
+
+    private void TXT_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_priceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXT_priceActionPerformed
     //Get y Set
     public String getGrade() {
         return SLC_grade.getSelectedItem().toString();
